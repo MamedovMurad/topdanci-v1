@@ -9,7 +9,8 @@ interface BannerProps {
 
 const Banner: FunctionComponent<BannerProps> = ({ isOpen = true }) => {
     const [isActive, setisActive] = useState(isOpen);
-    function handleBanner() {
+    function handleBanner(e:any) {
+        e.stopPropagation()
         if (isOpen) {
             return
         }

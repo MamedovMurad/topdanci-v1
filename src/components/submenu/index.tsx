@@ -14,11 +14,12 @@ const Submenu: FunctionComponent<SubmenuProps> = ({activeElem}) => {
     return (<div >
         <ul className=" border-b-4 rounded border-[#E8E9F2] m-0  w-fit flex items-center ">
             <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7 "+((activeElem==="profile")&&'border-b-4 rounded border-primaryColor')}>
-                <span><UserSVG color={activeElem==="profile"?"#E61C23":"#9EA0AD"}/></span> <Link href={'#'} className={"  text-sm font-normal "+(activeElem==="profile"? "text-primaryColor":"text-[#9EA0AD]") }>Profil</Link></li>
+                <span><UserSVG color={activeElem==="profile"?"#E61C23":"#9EA0AD"}/></span> <Link href={'/dashboard'} className={"  text-sm font-normal "+(activeElem==="profile"? "text-primaryColor":"text-[#9EA0AD]") }>Profil</Link></li>
             <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7 "+((activeElem==="products")&&'border-b-4 rounded border-primaryColor')}>
-                <span><ListSVG color={activeElem==="products"?"#E61C23":undefined}/></span> <Link href={'#'} className={"text-sm font-normal "+(activeElem==='products'?"text-primaryColor":"text-[#9EA0AD]")}>Elanlar</Link>
+                <span><ListSVG color={activeElem==="products"?"#E61C23":undefined}/></span> <Link href={'/dashboard/my-products'} className={"text-sm font-normal "+(activeElem==='products'?"text-primaryColor":"text-[#9EA0AD]")}>Elanlar</Link>
             </li>
-            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7"+((activeElem==="payments")&&'border-b-4 rounded border-primaryColor')}><span><PaymentSVG/></span> <Link href={'#'} className=" text-[#9EA0AD] text-sm font-normal">Ödənişlər</Link></li>
+            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7 "+((activeElem==="payments")&&'border-b-4 rounded border-primaryColor')}>
+                <span><PaymentSVG color={activeElem==="payments"?"#E61C23":undefined}/></span> <Link href={'/dashboard/payments'} className={" text-[#9EA0AD] text-sm font-normal "+(activeElem==='payments'?"text-primaryColor":"text-[#9EA0AD]") }>Ödənişlər</Link></li>
             <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7"+((activeElem==="limits")&&'border-b-4 rounded border-primaryColor')}><span><TimeBigSVG/></span> <Link href={'#'} className=" text-[#9EA0AD] text-sm font-normal">Elan limiti</Link></li>
         </ul>
     </div>);

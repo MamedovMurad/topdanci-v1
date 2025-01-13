@@ -1,4 +1,5 @@
 import { PlusSVG } from "@/svg/allSvgs";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 
 interface EmptyProps {
@@ -14,10 +15,10 @@ const Empty: FunctionComponent<EmptyProps> = ({text,button}) => {
 
             {
                 button&&<div className=" mt-8">
-                    <button className=" w-[170px] h-[50px] font-bold text-base text-white rounded-xl flex justify-center  items-center bg-[#FDBB11]">
+                    <Link href={'/new-product'} className=" w-[170px] h-[50px] font-bold text-base text-white rounded-xl flex justify-center  items-center bg-[#FDBB11]">
                         <span><PlusSVG/></span>
                         <span>YENİ ELAN</span>
-                    </button>
+                    </Link>
                 </div>
             }
         </div>);
