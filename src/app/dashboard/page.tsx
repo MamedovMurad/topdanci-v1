@@ -11,7 +11,7 @@ interface DashboardProps {
 const Profile: FunctionComponent<DashboardProps> = () => {
     const { control } = useForm()
     return (<div className=" mb-16">
-        <Submenu />
+        <Submenu activeElem="profile" />
 
         <div className=" bg-[#E8E9F2] rounded-[20px] flex justify-center items-center py-20 mt-[30px]">
             <div className=" w-1/2">
