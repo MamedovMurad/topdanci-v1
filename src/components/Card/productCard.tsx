@@ -8,7 +8,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: FunctionComponent<ProductCardProps> = () => {
-    return (<Link href={''} className=" w-full h-[324px]  block overflow-hidden bg-[#F0F0F0] rounded-2xl">
+    return (<Link href={'/products/example-item'} className=" w-full h-[324px]  block overflow-hidden bg-[#F0F0F0] rounded-2xl">
         <div className=" relative h-[217px] rounded-2xl overflow-hidden">
            <span className=" absolute top-0 left-0 z-10">
            <KingSvg/>
