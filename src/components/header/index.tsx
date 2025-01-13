@@ -27,13 +27,13 @@ const Header: FunctionComponent<HeaderProps> = () => {
                 <div>
                    <div className="flex items-center gap-x-9">
                     <div>
-                       <Link href={'/new-product'} className=" flex gap-x-2 items-center"> <UserSVG/>
+                       <Link href={'/dashboard'}  className=" flex gap-x-2 items-center cursor-pointer"> <UserSVG/>
                        <span className=" text-primaryColor  text-sm font-medium">Səməd</span></Link>
                     </div>
-                    <button className=" h-[50px] bg-[#FDBB11] text-white flex gap-x-1 items-center justify-center rounded-[14px] w-[170px]">
+                    <Link href={'/new-product'} className=" h-[50px] bg-[#FDBB11] text-white flex gap-x-1 items-center justify-center rounded-[14px] w-[170px]">
                         <PlusSVG/>
                         <span>YENİ ELAN</span>
-                    </button>
+                    </Link>
                    </div>
                 </div>
 
