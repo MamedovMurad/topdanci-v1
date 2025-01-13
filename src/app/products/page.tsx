@@ -1,4 +1,5 @@
 import Banner from "@/components/banner";
+import Filter from "@/components/filter";
 import ProductsContainer from "@/containers/product";
 import { FunctionComponent } from "react";
 
@@ -11,8 +12,9 @@ const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
         <Banner isOpen={false} />
   
         <section >
-          <div className="container mx-auto  ">
-            <div className=" my-20  ">
+          <div className="container mx-auto mt-5  ">
+            <Filter/>
+            <div className=" mb-20 mt-5  ">
              
     
         <ProductsContainer/>
