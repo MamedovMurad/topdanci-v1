@@ -12,7 +12,7 @@ const Topdancilar: FunctionComponent<TopdancilarProps> = () => {
       <LabelHeader/>
 
         <section>
-            <div className="container mx-auto">
+            <div className="container mx-auto md:px-0 px-5">
                 <TopdanciCard/>
                 <TopdanciCard/>
                 <TopdanciCard/>

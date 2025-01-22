@@ -1,5 +1,5 @@
 'use client'
-import { LogoSVG, PlusSVG, UserSVG } from "@/svg/allSvgs";
+import { Burger, LogoSVG, PlusSVG, UserSVG } from "@/svg/allSvgs";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 
@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header: FunctionComponent<HeaderProps> = () => {
     return (
         <header className=" h-24">
-            <div className=" flex justify-between mx-12 h-full items-center backdrop-blur">
+            <div className=" hidden md:flex justify-between mx-12 h-full items-center backdrop-blur">
                 <div>
                    <Link href={'/'}> <LogoSVG/></Link>
                 </div>
@@ -37,6 +37,20 @@ const Header: FunctionComponent<HeaderProps> = () => {
                    </div>
                 </div>
 
+            </div>
+
+            <div className="flex md:hidden px-5 justify-between items-center pt-3">
+                <div>
+                    <Burger />
+                </div>
+            <div>
+                   <Link href={'/'}> <LogoSVG width="117" height="20"/></Link>
+                </div>
+                <div>
+                    <button className=" h-10 w-[90px] bg-primaryColor rounded-[10px] flex justify-center items-center">
+                        <PlusSVG/>
+                    </button>
+                </div>
             </div>
         </header>);
 }

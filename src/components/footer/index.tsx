@@ -6,7 +6,7 @@ interface FooterProps {
 }
  
 const Footer: FunctionComponent<FooterProps> = () => {
-    return ( <footer className=" bg-primaryColor h-[240px] py-8">
+    return ( <footer className=" bg-primaryColor h-[240px] py-8 hidden md:block">
         <div className="container mx-auto">
             <div >
                 <ul className="flex justify-between items-center">
