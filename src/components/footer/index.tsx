@@ -1,3 +1,4 @@
+import { HeardIconSVG, HeardSVG, HomeIconSVG, MarketIcon, PlusIconSvg, UserIconSVG, UserSVG } from "@/svg/allSvgs";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 
@@ -6,8 +7,8 @@ interface FooterProps {
 }
  
 const Footer: FunctionComponent<FooterProps> = () => {
-    return ( <footer className=" bg-primaryColor h-[240px] py-8 hidden md:block">
-        <div className="container mx-auto">
+    return ( <footer className=" md:bg-primaryColor md:h-[240px] md:py-8 mt-24 md:mt-0">
+        <div className="container mx-auto hidden md:block">
             <div >
                 <ul className="flex justify-between items-center">
                     <li>
@@ -62,6 +63,40 @@ const Footer: FunctionComponent<FooterProps> = () => {
                     </li>
                 </ul>
             </div>
+        </div>
+        <div className="md:hidden fixed bottom-0 z-30 h-20 bg-white w-full flex flex-col items-center justify-center">
+                <ul className="flex  px-5 justify-between items-center ">
+                <li className=" text-center">
+                            <Link href={''}>
+                                <button className=" flex justify-center items-center rounded-[20px] w-16 h-8 "><HomeIconSVG color="#404040"/></button>
+                              <span className=" font-medium text-[11px]">Home</span>
+                            </Link>
+                        </li>
+                        <li className=" text-center">
+                            <Link href={''}>
+                                <button className=" bg-[#FFCC23]  flex justify-center items-center rounded-[20px] w-16 h-8 "><MarketIcon color="white" /></button>
+                              <span className=" font-medium text-[11px]">Topdançılar</span>
+                            </Link>
+                        </li>
+                        <li className=" text-center">
+                            <Link href={''}>
+                                <button className="  flex justify-center items-center rounded-[20px] w-16 h-8 "><PlusIconSvg/></button>
+                              <span className=" font-medium text-[11px]">Yeni Elan</span>
+                            </Link>
+                        </li>
+                        <li className=" text-center">
+                            <Link href={''}>
+                                <button className="  flex justify-center items-center rounded-[20px] w-16 h-8 "><HeardIconSVG/></button>
+                              <span className=" font-medium text-[11px]">Seçilənlər</span>
+                            </Link>
+                        </li>
+                        <li className=" text-center">
+                            <Link href={''}>
+                                <button className="  flex justify-center items-center rounded-[20px] w-16 h-8 "><UserIconSVG/></button>
+                              <span className=" font-medium text-[11px]">Hesab</span>
+                            </Link>
+                        </li>
+                </ul>
         </div>
     </footer> );
 }
