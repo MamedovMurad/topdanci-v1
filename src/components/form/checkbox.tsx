@@ -13,13 +13,12 @@ const CheckboxField = ({label, control,id,reverse=true, required=true}:{required
             )}
         />
            
-            <div className="w-6 h-6 flex items-center  justify-center border-2 border-primaryColor rounded-sm peer-checked:bg-primaryColor">
+            <div className="md:w-6 md:h-6 h-[14px] w-[14px] flex items-center  justify-center border-2 border-primaryColor rounded-sm peer-checked:bg-primaryColor">
                 {/* SVG Checkmark */} 
                 <svg
-                    className=" text-[#E8E9F2] opacity-100 transition-opacity duration-200 ease-in-out peer-checked:opacity-100"
+                    className=" md:w-6 md:h-6 h-[14px] w-[14px] text-[#E8E9F2] opacity-100 transition-opacity duration-200 ease-in-out peer-checked:opacity-100"
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                   
                     viewBox="0 0 24 24"
                     fill="none"
                 >
@@ -29,7 +28,7 @@ const CheckboxField = ({label, control,id,reverse=true, required=true}:{required
                     />
                 </svg>
             </div>
-            <span className={" text-gray-700 font-medium text-xl "+(reverse?"mr-2":"ml-2")}> {label}
+            <span className={" text-gray-700 font-medium md:text-xl text-sm "+(reverse?"mr-2":"ml-2")}> {label}
                 {required&& <sup className=" text-primaryColor">*</sup>}
                
                 

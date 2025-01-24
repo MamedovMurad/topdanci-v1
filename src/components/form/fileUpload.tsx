@@ -23,7 +23,7 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({ label, id, name, requi
         control={control}
         defaultValue={null}
         render={({ field }) => (
-          <div className="bg-white outline-none border-none rounded h-[50px] pl-2 w-2/3">
+          <div className="bg-white outline-none border-none rounded md:h-[50px] text-[30px] pl-2 w-2/3">
             <input
               type="file"
               multiple
@@ -31,7 +31,7 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({ label, id, name, requi
               className="hidden"
               onChange={(e) => field.onChange(e.target.files)} // Set files in RHF
             />
-            <label htmlFor={id} className=" w-full flex justify-center items-center gap-x-2  h-[50px] text-lg font-medium cursor-pointer">
+            <label htmlFor={id} className=" w-full flex justify-center items-center gap-x-2  md:h-[50px] h-[30px] md:text-lg text-sm font-medium cursor-pointer">
               {(field.value?.length)?(field.value?.length)+ " Fayl seçilib": (<><PhotoIconSVG/> Şəkil əlavə et</>)}
             </label>
           </div>

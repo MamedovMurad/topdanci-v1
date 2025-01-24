@@ -11,14 +11,15 @@ interface InputFieldProps {
     labelSize?: string;
     inputSize?: string;
     wrapperSize?:string;
+    placeHolder?:string;
 }
 
-const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrapperSize, label, required, control, text, labelSize, inputSize }) => {
-    return (<div className={" flex justify-between items-center mb-7 "+wrapperSize }>
-        <label htmlFor={id} className={" font-medium text-xl  " + (labelSize || "w-1/3")}>
+const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrapperSize, label, required, control, text, labelSize, inputSize,placeHolder }) => {
+    return (<div className={" flex justify-between items-center md:mb-7 mb-4 "+wrapperSize }>
+        <label htmlFor={id} className={" font-medium md:text-xl text-sm  " + (labelSize || "w-1/3")}>
             <p>{label}   {required && <sup className=" inline-block ml-1 text-primaryColor ">*</sup>}</p>
             {
-                text && <p className=" text-xs font-light text-[#7E7E7E]">{text}</p>
+                text && <p className=" md:text-xs text-[8px] leading-3 md:leading-none font-light text-[#7E7E7E]">{text}</p>
             }
 
 
@@ -28,8 +29,8 @@ const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrap
             control={control}
             render={({ field }) => (
 
-                <input className={" outline-none border-none rounded h-[50px]  text-lg pl-2 " + (inputSize || "w-2/3")}
-                    type={type} id={id} {...field} />
+                <input className={" outline-none border-none rounded md:h-[50px] h-[30px]  text-[10px] md:text-lg pl-2 " + (inputSize || "w-2/3")}
+                   placeholder={placeHolder} type={type} id={id} {...field} />
 
             )}
         />
