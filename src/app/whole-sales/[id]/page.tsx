@@ -7,7 +7,7 @@ interface WholeSaleProps {
 }
 
 const WholeSale: FunctionComponent<WholeSaleProps> = () => {
-    return (<div className=" mt-8">
+    return (<div className=" md:mt-8 mt-5">
         <ProductsContainer/>
     </div>);
 }

@@ -15,19 +15,29 @@ const LayoutWholeSales: FunctionComponent<LayoutWholeSalesProps> = async ({ para
     return (
         <main>
             <section
-                className="h-[500px] bg-center bg-no-repeat bg-cover"
+                className="md:h-[500px] h-[173px] bg-center bg-no-repeat bg-cover"
                 style={{ backgroundImage: "url('/topdanic_banner.png')" }}
             ></section>
 
-            <section className="-translate-y-12">
+            <section className="md:-translate-y-12">
                 <div className="container mx-auto">
-                    <div className="flex gap-x-7 bg-[#F0F0F0] overflow-hidden rounded-2xl p-1 pt-6">
-                        <div>
-                            <div className="relative w-[220px] h-[220px] rounded-2xl overflow-hidden">
+                    <div className="md:flex gap-x-7 md:bg-[#F0F0F0] md:overflow-hidden rounded-2xl p-1 pt-6">
+                        <div className=" md:block flex gap-x-7 md:gap-x-0 px-5 md:px-0">
+                            <div className="relative md:-translate-y-0 -translate-y-14  md:w-[220px] md:h-[220px] w-[120px] h-[120px] rounded-2xl overflow-hidden">
                                 <Image alt="logo" src={"/topdanci.png"} layout="fill" />
                             </div>
+                            <div className="md:hidden flex  flex-col  ">
+                                        <div className="flex items-center gap-x-3">
+                                            <PhoneSVG color="#E51C23" />
+                                            <span className=" text-[10px]">055 973 63 13</span>
+                                        </div>
+                                        <div className="flex items-center gap-x-3 mt-4">
+                                            <LocationSvg color="#E51C23" />
+                                            <span className=" text-[10px]">Bakı şəh.Mikayıl Rəfili 39</span>
+                                        </div>
+                             </div>
                         </div>
-                        <div className="text-black">
+                        <div className="text-black md:px-0 px-5 md:-translate-y-0 -translate-y-10">
                             <h2 className="font-bold text-xl">EFOR MMC</h2>
                             <p className="text-sm mt-2">
                                 What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
@@ -36,10 +46,10 @@ const LayoutWholeSales: FunctionComponent<LayoutWholeSalesProps> = async ({ para
                                 <span>Hər gün /8:00-19:00</span>
                             </div>
                             <div>
-                                <button className="mt-1 flex w-[70px] bg-primaryColor h-[18px] items-center justify-center text-xs text-white rounded">52 Elan</button>
+                                <button className="md:mt-1 mt-2 flex w-[70px] bg-primaryColor h-[18px] items-center justify-center text-xs text-white rounded">52 Elan</button>
                             </div>
                         </div>
-                        <div>
+                        <div className=" md:block hidden">
                             <div className="w-[400px] flex justify-center items-center text-black">
                                 <div>
                                     <div>
