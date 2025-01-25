@@ -9,8 +9,8 @@ interface ProductCardProps {
 
 const ProductCard: FunctionComponent<ProductCardProps> = ({ status }) => {
     return (
-        <Link href={'/products/example-item'} className={" w-full   block overflow-hidden md:bg-[#F0F0F0] bg-white md:rounded-2xl rounded-[10px] "+(status?"":"md:h-[324px] h-[238px]")}>
-            <div className=" relative md:h-[217px] h-[135px] md:rounded-2xl rounded-[10px] overflow-hidden">
+        <Link href={'/products/example-item'} className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
+            <div className=" relative lg:h-[217px] h-[135px] lg:rounded-2xl rounded-[10px] overflow-hidden">
                 <span className=" absolute top-0 left-0 z-10">
                     <KingSvg />
                 </span>
@@ -30,15 +30,15 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status }) => {
                 }
                 <Image src={'/product.png'} alt="l" className=" w-full h-full object-cover" layout='fill' />
             </div>
-            <div className="  md:flex items-end  md:p-[10px] px-[6px] h-24 md:mt-2  mt-[2px]">
+            <div className="  lg:flex items-end  lg:p-[10px] px-[6px] h-24 lg:mt-2  mt-[2px]">
                 <div>
-                    <p className=" font-bold md:text-base text-sm ">520 AZN</p>
-                    <p className=" md:text-sm text-xs font-bold md:font-normal  ">Samsung televizorlarını topdan alıram</p>
+                    <p className=" font-bold lg:text-base text-sm ">520 AZN</p>
+                    <p className=" lg:text-sm text-xs font-bold lg:font-normal  ">Samsung televizorlarını topdan alıram</p>
 
                     <div>
-                        <div className="flex items-center gap-x-1 md:mt-3 mt-[6px]">
-                            <p className=" md:text-[10px] text-[6px] text-[#808080]">Minimum sifariş</p>
-                            <p className="md:text-[10px] text-[6px]">|</p>
+                        <div className="flex items-center gap-x-1 lg:mt-3 mt-[6px]">
+                            <p className=" lg:text-[10px] text-[6px] text-[#808080]">Minimum sifariş</p>
+                            <p className="lg:text-[10px] text-[6px]">|</p>
                             <p className="  text-primaryColor text-xs font-medium">100 Ədəd</p>
                         </div>
                     </div>

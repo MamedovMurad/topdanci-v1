@@ -7,8 +7,8 @@ interface FooterProps {
 }
  
 const Footer: FunctionComponent<FooterProps> = () => {
-    return ( <footer className=" md:bg-primaryColor md:h-[240px] md:py-8 mt-24 md:mt-0">
-        <div className="container mx-auto hidden md:block">
+    return ( <footer className=" lg:bg-primaryColor lg:h-[240px] lg:py-8 mt-24 lg:mt-0">
+        <div className="container mx-auto hidden lg:block">
             <div >
                 <ul className="flex justify-between items-center">
                     <li>
@@ -64,7 +64,7 @@ const Footer: FunctionComponent<FooterProps> = () => {
                 </ul>
             </div>
         </div>
-        <div className="md:hidden fixed bottom-0 z-30 h-20 bg-white w-full flex flex-col items-center justify-center">
+        <div className="lg:hidden fixed bottom-0 z-30 h-20 bg-white w-full flex flex-col items-center justify-center">
                 <ul className="flex  px-5 justify-between items-center ">
                 <li className=" text-center">
                             <Link href={''}>

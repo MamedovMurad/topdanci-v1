@@ -9,7 +9,7 @@ interface LoginProps {
 const Login: FunctionComponent<LoginProps> = () => {
     return (
         <>
-          <main className=" md:flex hidden   justify-center h-[100svh] w-full bg-no-repeat bg-center bg-contain" style={{ backgroundImage: "url('/Group.png')" }}>
+          <main className=" lg:flex hidden   justify-center h-[100svh] w-full bg-no-repeat bg-center bg-contain" style={{ backgroundImage: "url('/Group.png')" }}>
             <form action="" className=" mt-20 py-11 px-[92px] w-[550px] h-[510px] bg-[rgba(242, 242, 242, 0.8)]  border-[2px] border-white rounded-[20px]" style={{
                 backdropFilter: "blur(9px)"
             }}>
@@ -35,7 +35,7 @@ const Login: FunctionComponent<LoginProps> = () => {
             </form>
         </main>
 {/* mobile */}
-        <main className=" md:hidden   justify-center w-full bg-no-repeat bg-center bg-contain" >
+        <main className=" lg:hidden   justify-center w-full bg-no-repeat bg-center bg-contain" >
           <div className="px-5">
           <form action="" className=" mt-0  bg-[#E8E9F2] px-14 py-7  w-full h-[355px]   border-[2px] border-white rounded-[20px]" >
                 <h1 className=" text-xl font-bold">Kabinetə Giriş</h1>

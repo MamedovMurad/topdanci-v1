@@ -9,16 +9,16 @@ interface ProductsPageProps {
  
 const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
     return (   <main>
-        <section className=" hidden md:block">
+        <section className=" hidden lg:block">
         <Banner isOpen={false} />
         </section>
   
         <section >
-          <div className="container mx-auto md:mt-5  ">
-           <div className=" md:block hidden">
+          <div className="container mx-auto lg:mt-5  ">
+           <div className=" lg:block hidden">
            <Filter/>
            </div>
-            <div className=" mb-20 md:mt-5   ">
+            <div className=" mb-20 lg:mt-5   ">
              
     
         <ProductsContainer/>

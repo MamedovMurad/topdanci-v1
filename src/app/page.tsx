@@ -12,7 +12,7 @@ export default function Home() {
 
       <section >
         <div className="container mx-auto  ">
-          <div className=" my-20  ">
+          <div className=" lg:my-20 my-5  ">
            
   
       <ProductsContainer/>

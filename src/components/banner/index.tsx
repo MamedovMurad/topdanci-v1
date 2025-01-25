@@ -2,6 +2,9 @@
 import { FunctionComponent, useState } from "react";
 import Search from "../search";
 import CategoryCard from "../Card/categoryCard";
+import MobiileSearch from "../search/mobileSearch";
+import MobileSlideHeader from "../ui/mobileSlideHeader";
+import MobileSingleSlider from "../ui/mobileSingleSlider";
 
 interface BannerProps {
     isOpen?: boolean
@@ -16,7 +19,9 @@ const Banner: FunctionComponent<BannerProps> = ({ isOpen = true }) => {
         }
         setisActive(!isActive)
     }
-    return (<div onClick={handleBanner} className={" cursor-pointer  bg-no-repeat bg-center bg-cover rounded-[20px] "+ (isActive?"h-[487px]":"h-20")} style={{ backgroundImage: "url('banner.png')" }}>
+    return (
+    <>
+     <div onClick={handleBanner} className={" hidden lg:block cursor-pointer  bg-no-repeat bg-center bg-cover rounded-[20px] "+ (isActive?"h-[487px]":"h-20")} style={{ backgroundImage: "url('banner.png')" }}>
         <div  className={" flex flex-col items-center  w-[740px] mx-auto "+(isActive?"pt-20":"py-4")}>
             <Search />
             {
@@ -38,7 +43,23 @@ const Banner: FunctionComponent<BannerProps> = ({ isOpen = true }) => {
                 </div>
             }
         </div>
-    </div>);
+    </div>
+
+
+    {/* mobile */}
+
+    <div className="lg:hidden">
+            <MobiileSearch/>
+            <div className=" ">
+                <MobileSingleSlider/>
+            </div>
+            <div className=" px-5 mt-5">
+                <MobileSlideHeader/>
+            </div>
+            </div>
+    
+    </>
+   );
 }
 
 export default Banner;

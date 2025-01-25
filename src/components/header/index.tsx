@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header: FunctionComponent<HeaderProps> = () => {
     return (
         <header className=" h-24">
-            <div className=" hidden md:flex justify-between mx-12 h-full items-center backdrop-blur">
+            <div className=" hidden lg:flex justify-between mx-12 h-full items-center backdrop-blur">
                 <div>
                    <Link href={'/'}> <LogoSVG/></Link>
                 </div>
@@ -39,7 +39,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
 
             </div>
 
-            <div className="flex md:hidden px-5 justify-between items-center pt-3">
+            <div className="flex lg:hidden px-5 justify-between items-center pt-3">
                 <div>
                     <Burger />
                 </div>

@@ -28,15 +28,15 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
             <div className="mx-auto container">
 
                 <form action="" >
-                    <div className="  bg-[#E8E9F2] rounded-[20px] md:py-14 md:px-32 px-5 py-5">
-                        <div className="md:w-9/12 w-full">
+                    <div className="  bg-[#E8E9F2] rounded-[20px] lg:py-14 lg:px-32 px-5 py-5">
+                        <div className="lg:w-9/12 w-full">
                             <div className=" border-b-2 rounded-sm border-white">
                                 <InputField control={control} id="name" label="Adınız" required />
                                 <InputField control={control} id="email" label="E-mail" required />
                                 <InputField control={control} id="phone" label="Mobil nömrə"
                                     text="Bu nömrəyə SMS-kod göndəriləcək" required />
                             </div>
-                            <div className=" flex gap-x-3 md:mt-14 mt-4">
+                            <div className=" flex gap-x-3 lg:mt-14 mt-4">
                                 <CheckboxField control={control} id="354" label="Alıcı" />
                                 <CheckboxField control={control} id="354l" label="Satıcı " />
                             </div>
@@ -48,29 +48,29 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
 
 
 
-                            <div className=" flex  justify-between md:mt-14 mt-5 ">
-                                <InputField wrapperSize="md:w-[54%] w-[57%]" placeHolder="100 ədəd"  labelSize=" w-full" inputSize="md:w-[135px] w-[75px]" control={control} id="354fgfd" label="Minimum sifariş " required />
+                            <div className=" flex  justify-between lg:mt-14 mt-5 ">
+                                <InputField wrapperSize="lg:w-[54%] w-[57%]" placeHolder="100 ədəd"  labelSize=" w-full" inputSize="lg:w-[135px] w-[75px]" control={control} id="354fgfd" label="Minimum sifariş " required />
                                 <div className=" mb-7 flex items-center">
                                     <CheckboxField control={control} id="354l" label="Razılaşma yolu ilə " />
                                 </div>
                             </div>
 
-                            <div className=" flex  justify-between md:mt-7 mt-4 ">
-                                <InputField labelSize=" w-full" wrapperSize="md:w-[54%] w-[57%]" placeHolder="Qiymət" inputSize="md:w-[135px] w-[75px]" control={control} id="354fgfftd" label="Topdan qiymət  " text="AZN (1 ədəd) " required />
+                            <div className=" flex  justify-between lg:mt-7 mt-4 ">
+                                <InputField labelSize=" w-full" wrapperSize="lg:w-[54%] w-[57%]" placeHolder="Qiymət" inputSize="lg:w-[135px] w-[75px]" control={control} id="354fgfftd" label="Topdan qiymət  " text="AZN (1 ədəd) " required />
                                 <div className=" mb-7 flex items-center">
                                     <CheckboxField control={control} id="354l" label="Razılaşma yolu ilə " />
                                 </div>
                             </div>
 
-                            <div className=" flex  justify-between md:mt-7 mt-4 ">
-                                <InputField labelSize=" w-full" placeHolder="Ədəd" wrapperSize="md:w-[54%] w-[57%]" inputSize="md:w-[135px] w-[75px]" control={control} id="354fgfdfdg" label="Ölçü vahidi " required />
+                            <div className=" flex  justify-between lg:mt-7 mt-4 ">
+                                <InputField labelSize=" w-full" placeHolder="Ədəd" wrapperSize="lg:w-[54%] w-[57%]" inputSize="lg:w-[135px] w-[75px]" control={control} id="354fgfdfdg" label="Ölçü vahidi " required />
 
                             </div>
 
-                            <div className=" flex  justify-between md:mt-7 mt-4 ">
+                            <div className=" flex  justify-between lg:mt-7 mt-4 ">
 
                                 <div className=" mb-7 flex items-center w-full justify-between">
-                                    <div> <span className="mr-2 text-gray-700 font-medium md:ext-xl text-sm">
+                                    <div> <span className="mr-2 text-gray-700 font-medium lg:ext-xl text-sm">
                                         Pərakəndə satış mümkündür
                                         <sup className=" text-primaryColor">*</sup></span>
                                     </div>
@@ -83,16 +83,16 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                 </div>
                             </div>
 
-                            <div className=" flex  justify-between md:mt-7 mt-4 ">
+                            <div className=" flex  justify-between lg:mt-7 mt-4 ">
                                 <CustomTextArea control={control} id="fdsafds" label="Məzmun" />
                             </div>
 
-                            <div className=" flex  justify-between md:mt-7 mt-4 ">
+                            <div className=" flex  justify-between lg:mt-7 mt-4 ">
                                 <FileUpload control={control} id="fdsafsdfdsfdss" name="dfasdfas" label="Şəkil" required />
                             </div>
                         </div>
                     </div>
-                    <div className=" mt-8 md:px-0 px-5">
+                    <div className=" mt-8 lg:px-0 px-5">
                         <CheckboxField required={false} control={control} id="35sdfdfadsfa4l" reverse={false}
                             label={<span className=" font-light text-sm">Siz Topdançı.az-ın <a href="" className=" underline" target="_blank">İstifadəçi razılaşması</a> ilə razı olduğunuzu təsdiq edirsiniz.</span>} />
                     </div>
