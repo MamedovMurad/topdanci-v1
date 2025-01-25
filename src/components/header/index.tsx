@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: FunctionComponent<HeaderProps> = () => {
     return (
-        <header className=" h-24">
+        <header className=" lg:h-24 h-16">
             <div className=" hidden lg:flex justify-between mx-12 h-full items-center backdrop-blur">
                 <div>
                    <Link href={'/'}> <LogoSVG/></Link>
