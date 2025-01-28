@@ -10,8 +10,8 @@ interface EmptyProps {
 const Empty: FunctionComponent<EmptyProps> = ({text,button}) => {
     return ( 
     
-        <div className=" bg-[#E8E9F2] rounded-[20px] flex justify-center flex-col items-center h-[436px]">
-            <p className=" font-semibold text-xl text-[#9EA0AD]">{text}</p>
+        <div className=" bg-[#E8E9F2] rounded-[20px] flex justify-center flex-col items-center lg:h-[436px] h-[228px]">
+            <p className=" font-semibold lg:text-xl text-base text-[#9EA0AD]">{text}</p>
 
             {
                 button&&<div className=" mt-8">

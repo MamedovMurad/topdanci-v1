@@ -10,9 +10,11 @@ interface DashboardProps {
  
 const Dashboard: FunctionComponent<DashboardProps> = ({children}) => {
     return (<main>
+         <section className=" lg:block hidden">
          <LabelHeader title="Şəxsi kabinet"/>
+         </section>
          <div className="container mx-auto">
-            <div className="flex justify-end mb-[30px]">
+            <div className="flex lg:justify-end mb-[30px] px-5 lg:px-0">
                 <Payments/>
             </div>
 

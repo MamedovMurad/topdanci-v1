@@ -1,15 +1,25 @@
 "use client"
 import InputField from "@/components/form/inputField";
 import Submenu from "@/components/submenu";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useForm } from "react-hook-form";
-
+import { redirect } from 'next/navigation'
+import { useCheckWindow } from "@/hooks/checksizeWindow";
+import { useRouter } from 'next/navigation';
 interface DashboardProps {
 
 }
 
 const Profile: FunctionComponent<DashboardProps> = () => {
     const { control } = useForm()
+    const router = useRouter();
+    useEffect(() => {
+        if (useCheckWindow()) {
+          
+          
+            router.push("/dashboard/my-products")
+        }
+    }, [router]);
     return (<div className=" mb-16">
         <Submenu activeElem="profile" />
 

@@ -12,15 +12,18 @@ const Submenu: FunctionComponent<SubmenuProps> = ({activeElem}) => {
     
 
     return (<div >
-        <ul className=" border-b-4 rounded border-[#E8E9F2] m-0  w-fit flex items-center ">
-            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7 "+((activeElem==="profile")&&'border-b-4 rounded border-primaryColor')}>
-                <span><UserSVG color={activeElem==="profile"?"#E61C23":"#9EA0AD"}/></span> <Link href={'/dashboard'} className={"  text-sm font-normal "+(activeElem==="profile"? "text-primaryColor":"text-[#9EA0AD]") }>Profil</Link></li>
-            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7 "+((activeElem==="products")&&'border-b-4 rounded border-primaryColor')}>
-                <span><ListSVG color={activeElem==="products"?"#E61C23":undefined}/></span> <Link href={'/dashboard/my-products'} className={"text-sm font-normal "+(activeElem==='products'?"text-primaryColor":"text-[#9EA0AD]")}>Elanlar</Link>
+        <ul className=" w-full px-5 lg:px-0 lg:border-b-4 lg:rounded   border-[#E8E9F2] m-0  lg:w-fit flex items-center  justify-between lg:justify-normal ">
+            <li className={"  lg:flex hidden cursor-pointer lg:translate-y-1  items-center gap-x-2 p-5 px-7 "+((activeElem==="profile")&&'lg:border-b-4 rounded bg-primaryColor lg:bg-transparent  lg:border-primaryColor')}>
+                <span><UserSVG color={activeElem==="profile"?"#E61C23":"#9EA0AD"}/></span> 
+                <Link href={'/dashboard'} className={"  text-sm font-normal "+
+                    (activeElem==="profile"? "text-primaryColor":"text-[#9EA0AD]") }>Profil</Link>
+                    </li>
+            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 lg:p-5 p-1 px-7   "+((activeElem==="products")?'border-b-4 bg-primaryColor lg:bg-transparent  rounded border-primaryColor':"bg-[#EDEEF2] lg:bg-transparent")}>
+                <span className=" hidden lg:block"><ListSVG color={activeElem==="products"?"#E61C23":undefined}/></span> <Link href={'/dashboard/my-products'} className={"text-sm font-normal "+(activeElem==='products'?"lg:text-primaryColor text-white":"text-[#9EA0AD] ")}>Elanlar</Link>
             </li>
-            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7 "+((activeElem==="payments")&&'border-b-4 rounded border-primaryColor')}>
-                <span><PaymentSVG color={activeElem==="payments"?"#E61C23":undefined}/></span> <Link href={'/dashboard/payments'} className={" text-[#9EA0AD] text-sm font-normal "+(activeElem==='payments'?"text-primaryColor":"text-[#9EA0AD]") }>Ödənişlər</Link></li>
-            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 p-5 px-7"+((activeElem==="limits")&&'border-b-4 rounded border-primaryColor')}><span><TimeBigSVG/></span> <Link href={'#'} className=" text-[#9EA0AD] text-sm font-normal">Elan limiti</Link></li>
+            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 lg:p-5 p-1 px-7  "+((activeElem==="payments")?'border-b-4 rounded border-primaryColor   bg-primaryColor lg:bg-transparent':'bg-[#EDEEF2] lg:bg-transparent rounded lg:rounded-none')}>
+                <span className=" hidden lg:block"><PaymentSVG color={activeElem==="payments"?"#E61C23":undefined}/></span> <Link href={'/dashboard/payments'} className={"text-sm font-normal "+(activeElem==='payments'?"lg:text-primaryColor text-white":"text-[#9EA0AD] ") }>Ödənişlər</Link></li>
+            <li className={" cursor-pointer translate-y-1 flex items-center gap-x-2 lg:p-5 p-1 px-7 "+((activeElem==="limits")?'border-b-4 rounded border-primaryColor   bg-primaryColor lg:bg-transparent':'text-[#9EA0AD] bg-[#EDEEF2] lg:bg-transparent rounded lg:rounded-none')}><span className=" hidden lg:block"><TimeBigSVG/></span> <Link href={'#'} className=" text-[#9EA0AD] text-sm font-normal">Elan limiti</Link></li>
         </ul>
     </div>);
 }

@@ -11,7 +11,7 @@ interface MyProductsProps {
 
 const MyProducts: FunctionComponent<MyProductsProps> = () => {
   return (
-<div>
+<div className=" px-5 lg:px-0">
  <Empty text="Hazırda aktiv elanınız yoxdur" button />
 </div>);
 }
