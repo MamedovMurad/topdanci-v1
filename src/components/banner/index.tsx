@@ -1,10 +1,11 @@
 "use client"
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Search from "../search";
 import CategoryCard from "../Card/categoryCard";
 import MobiileSearch from "../search/mobileSearch";
 import MobileSlideHeader from "../ui/mobileSlideHeader";
 import MobileSingleSlider from "../ui/mobileSingleSlider";
+import { getcategories } from "@/helper/api/categories";
 
 interface BannerProps {
     isOpen?: boolean
@@ -12,6 +13,7 @@ interface BannerProps {
 
 const Banner: FunctionComponent<BannerProps> = ({ isOpen = true }) => {
     const [isActive, setisActive] = useState(isOpen);
+    const [categories, setcategories] = useState([]);
     function handleBanner(e:any) {
         e.stopPropagation()
         if (isOpen) {
@@ -19,6 +21,15 @@ const Banner: FunctionComponent<BannerProps> = ({ isOpen = true }) => {
         }
         setisActive(!isActive)
     }
+
+    useEffect(() => {
+        getcategories().then((data)=>(
+            setcategories(data.data)
+        ))
+    }, []);
+
+    console.log(categories,'categories');
+    
     return (
     <>
      <div onClick={handleBanner} className={" hidden lg:block cursor-pointer  bg-no-repeat bg-center bg-cover rounded-[20px] "+ (isActive?"h-[487px]":"h-20")} style={{ backgroundImage: "url('banner.png')" }}>
@@ -27,18 +38,12 @@ const Banner: FunctionComponent<BannerProps> = ({ isOpen = true }) => {
             {
                 isActive && <div className=" mt-16" >
                     <div className="flex justify-center items-center gap-7 flex-wrap ">
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
-                        <CategoryCard />
+                        {
+                            categories?.map((item:any)=>(
+                                <CategoryCard {...item} key={item?.id}/>
+                            ))
+                        }
+
                     </div>
                 </div>
             }
@@ -54,7 +59,7 @@ const Banner: FunctionComponent<BannerProps> = ({ isOpen = true }) => {
                 <MobileSingleSlider/>
             </div>
             <div className=" px-5 mt-5">
-                <MobileSlideHeader/>
+                <MobileSlideHeader data={categories}/>
             </div>
             </div>
     

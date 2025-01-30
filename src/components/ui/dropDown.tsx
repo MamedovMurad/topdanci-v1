@@ -2,7 +2,7 @@ import { DownArrowSVG } from "@/svg/allSvgs";
 import React, { useState, useEffect, useRef } from "react";
 
 interface DropdownProps {
-  options: string[];
+  options: {label:string,value:string}[];
   onSelect: (value: string) => void;
 }
 
@@ -25,9 +25,9 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
     };
   }, []);
 
-  const handleSelect = (option: string) => {
-    setSelectedOption(option);
-    onSelect(option);
+  const handleSelect = (option: {label:string,value:string}) => {
+    setSelectedOption(option.label);
+    onSelect(option.value);
     setIsOpen(false);
   };
 
@@ -45,14 +45,14 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
       </button>
 
       {isOpen && (
-        <ul className="absolute left-0 w-48 mt-2 z-20 bg-white border rounded-md shadow-lg">
+        <ul className="absolute left-0 w-48 mt-2 z-20 bg-white border rounded-md shadow-lg max-h-72  overflow-y-scroll">
           {options.map((option, index) => (
             <li
               key={index}
               onClick={() => handleSelect(option)}
               className="px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-700 cursor-pointer"
             >
-              {option}
+              {option.label}
             </li>
           ))}
         </ul>
