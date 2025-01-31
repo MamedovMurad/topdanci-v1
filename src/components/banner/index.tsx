@@ -40,7 +40,7 @@ const Banner: FunctionComponent<BannerProps> = ({ isOpen = true,defval,searchVal
             <Search defValue={defval} searchVal={searchVal} />
             {
                 isActive && <div className=" mt-16" >
-                    <div className="flex justify-center items-center gap-7 flex-wrap ">
+                    <div className="flex justify-center items-start gap-7 flex-wrap ">
                         {
                             categories?.map((item:any)=>(
                                 <CategoryCard {...item} key={item?.id}/>
