@@ -10,13 +10,13 @@ interface CategoryCardProps {
 }
  
 const CategoryCard: FunctionComponent<CategoryCardProps> = ({icon,id,name,slug}) => {
-    return ( <div className=" p-1">
+    return ( <div className=" w-fit">
         <Link href={''}>
             <div className=" flex justify-center items-center ">
                 <span  className="bg-white rounded-[14px] p-3 inline-block" dangerouslySetInnerHTML={{__html:icon}}
                 ></span>
             </div>
-            <p className=" text-sm font-bold text-center text-white mt-2 w-20">{name}</p>
+            <p className=" text-sm font-bold text-center text-white mt-2 max-w-20">{name}</p>
         </Link>
     </div> );
 }
