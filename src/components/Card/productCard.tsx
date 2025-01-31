@@ -48,7 +48,7 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item }) => {
                         </div>
                     </div>
                 </div>
-                <div className=" text-[8px] text-[#808080] w-1/3">
+                <div className=" text-[8px] text-[#808080] w-1/3 text-right">
                     <p>{item?.city}</p>
                     <p>{item?.date}</p>
                 </div>
