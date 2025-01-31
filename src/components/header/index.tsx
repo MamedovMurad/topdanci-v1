@@ -40,7 +40,8 @@ const Header: FunctionComponent<HeaderProps> = () => {
                             onSelect={handleClick}
                             Icon={DropdownSVGIcon}
                             defValue={
-                                localStorage.getItem('lang') ?
+
+                                (typeof window!=="undefined"&&localStorage.getItem('lang')) ?
                                     {
                                         label: localStorage.getItem('lang')?.toUpperCase() + "",
                                         value: localStorage.getItem('lang') + ""
