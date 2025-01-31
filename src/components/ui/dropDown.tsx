@@ -5,9 +5,11 @@ interface DropdownProps {
   options: {label:string,value:string}[];
   onSelect: ({label,value}:{label:string,value:string}) => void;
   defValue?:{label:string,value:string};
+  className?:string;
+  Icon?:any
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onSelect,defValue }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, onSelect,defValue,Icon=DownArrowSVG,className }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(defValue?.label||"");
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -37,11 +39,12 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect,defValue }) => {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-max px-4 py-2 flex items-center gap-x-1 h-full text-sm font-medium rounded-md focus:outline-none"
+        className={"w-max flex items-center gap-x-1 h-full text-sm font-medium rounded-md focus:outline-none "+
+          (className||"px-4 py-2 ")}
       >
         <span>{selectedOption || "Şəhər"}</span>
         <span>
-          <DownArrowSVG />
+         <Icon/>
         </span>
       </button>
 

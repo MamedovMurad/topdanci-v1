@@ -1,18 +1,24 @@
 'use client'
-import { Burger, LogoSVG, PlusSVG, UserSVG } from "@/svg/allSvgs";
+import { Burger, DropdownSVGIcon, LogoSVG, PlusSVG, UserSVG } from "@/svg/allSvgs";
 import Link from "next/link";
 import { FunctionComponent } from "react";
+import Dropdown from "../ui/dropDown";
 
 interface HeaderProps {
 
 }
 
 const Header: FunctionComponent<HeaderProps> = () => {
+
+    function handleClick(option: { label: string, value: string }) {
+        localStorage.setItem('lang', option.value)
+        location.reload()
+    }
     return (
         <header className=" lg:h-24 h-16">
             <div className=" hidden lg:flex justify-between mx-12 h-full items-center backdrop-blur">
                 <div>
-                   <Link href={'/'}> <LogoSVG/></Link>
+                    <Link href={'/'}> <LogoSVG /></Link>
                 </div>
                 <div>
                     <ul className=" flex gap-x-12">
@@ -20,21 +26,36 @@ const Header: FunctionComponent<HeaderProps> = () => {
                         <li><Link href={'/products'} className=" text-primaryColor text-base font-medium">Bütün  elanlar</Link></li>
                         <li><Link href={'/products'} className=" text-primaryColor text-base font-medium">Alıcılar</Link></li>
                         <li><Link href={'/products'} className=" text-primaryColor text-base font-medium">Satıcılar</Link></li>
-                       
+
                     </ul>
                 </div>
 
                 <div>
-                   <div className="flex items-center gap-x-9">
-                    <div>
-                       <Link href={'/dashboard'}  className=" flex gap-x-2 items-center cursor-pointer"> <UserSVG/>
-                       <span className=" text-primaryColor  text-sm font-medium">Səməd</span></Link>
+                    <div className="flex items-center gap-x-9">
+                        <Dropdown className=" text-primaryColor border border-primaryColor rounded p-1"
+                            options={[
+                                { label: 'AZ', value: 'az' },
+                                { label: "EN", value: 'en' },
+                                { label: "RU", value: 'ru' }]}
+                            onSelect={handleClick}
+                            Icon={DropdownSVGIcon}
+                            defValue={
+                                localStorage.getItem('lang') ?
+                                    {
+                                        label: localStorage.getItem('lang')?.toUpperCase() + "",
+                                        value: localStorage.getItem('lang') + ""
+                                    }
+                                    : { label: 'AZ', value: 'az' }
+                            } />
+                        <div>
+                            <Link href={'/dashboard'} className=" flex gap-x-2 items-center cursor-pointer"> <UserSVG />
+                                <span className=" text-primaryColor  text-sm font-medium">Səməd</span></Link>
+                        </div>
+                        <Link href={'/new-product'} className=" h-[50px] bg-[#FDBB11] text-white flex gap-x-1 items-center justify-center rounded-[14px] w-[170px]">
+                            <PlusSVG />
+                            <span>YENİ ELAN</span>
+                        </Link>
                     </div>
-                    <Link href={'/new-product'} className=" h-[50px] bg-[#FDBB11] text-white flex gap-x-1 items-center justify-center rounded-[14px] w-[170px]">
-                        <PlusSVG/>
-                        <span>YENİ ELAN</span>
-                    </Link>
-                   </div>
                 </div>
 
             </div>
@@ -43,12 +64,12 @@ const Header: FunctionComponent<HeaderProps> = () => {
                 <div>
                     <Burger />
                 </div>
-            <div>
-                   <Link href={'/'}> <LogoSVG width="117" height="20"/></Link>
+                <div>
+                    <Link href={'/'}> <LogoSVG width="117" height="20" /></Link>
                 </div>
                 <div>
                     <button className=" h-10 w-[90px] bg-primaryColor rounded-[10px] flex justify-center items-center">
-                        <PlusSVG/>
+                        <PlusSVG />
                     </button>
                 </div>
             </div>

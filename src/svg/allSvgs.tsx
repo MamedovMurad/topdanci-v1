@@ -271,7 +271,22 @@ const KatalogSVG = ()=>(
 </svg>
 
 )
+
+const DropdownSVGIcon = ()=>(
+    <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clipPath="url(#clip0_997_4858)">
+<path fillRule="evenodd" clipRule="evenodd" d="M4.79772 5.8468C4.71305 5.94489 4.59823 6 4.47852 6C4.3588 6 4.24398 5.94489 4.15931 5.8468L1.60525 2.88676C1.52301 2.78808 1.4775 2.6559 1.47853 2.51871C1.47956 2.38151 1.52704 2.25027 1.61075 2.15326C1.69446 2.05624 1.8077 2.00121 1.92608 2.00002C2.04446 1.99883 2.1585 2.05157 2.24366 2.14688L4.47852 4.73698L6.71338 2.14688C6.79853 2.05157 6.91257 1.99883 7.03095 2.00002C7.14933 2.00121 7.26257 2.05624 7.34628 2.15326C7.42999 2.25027 7.47747 2.38151 7.4785 2.51871C7.47953 2.6559 7.43402 2.78808 7.35178 2.88676L4.79772 5.8468Z" fill="#E51C23"/>
+</g>
+<defs>
+<clipPath id="clip0_997_4858">
+<rect width="8" height="8" fill="white" transform="translate(0.478516)"/>
+</clipPath>
+</defs>
+</svg>
+
+)
 export {
+    DropdownSVGIcon,
     KatalogSVG,
     OtherProductsSVG,
     FilterIconSvg,
