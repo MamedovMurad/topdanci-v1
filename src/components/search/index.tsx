@@ -6,12 +6,14 @@ import { getCities } from "@/helper/api/cammon";
 import Link from "next/link";
 
 interface SearchProps {
-
+defValue?:{label:string,value:string};
+searchVal?:string|null
 }
 
-const Search: FunctionComponent<SearchProps> = () => {
-const [searchVal, setsearchVal] = useState("");
-const [city, setcity] = useState("");
+const Search: FunctionComponent<SearchProps> = ({defValue,searchVal}) => {
+    
+const [searchValue, setsearchVal] = useState(searchVal||"");
+const [city, setcity] = useState<{label:string,value:string}|null>(defValue||null);
     const [cities, setcities] = useState([]);
     useEffect(() => {
         getCities().then((data)=>setcities(data.data))
@@ -22,12 +24,12 @@ const [city, setcity] = useState("");
     return (<div  className=" w-full" onClick={(e:any)=>e.stopPropagation()}>
         <form action="">
             <div className="flex  w-full h-[50px] rounded-xl bg-white ">
-                <input onChange={(e)=>setsearchVal(e.target.value)}  type="text" name="" id="" placeholder="Topdan məhsul axtarışı"
+                <input value={searchValue} onChange={(e)=>setsearchVal(e.target.value)}  type="text" name="" id="" placeholder="Topdan məhsul axtarışı"
                     className=" h-full rounded-xl border-none placeholder:text-[#C8C8C8] placeholder:text-sm w-full over outline-none pl-7
                             text-sm "/>
-                <Dropdown options={cities?.map((item:any)=>({label:item.name, value:item.id}))} onSelect={(e) => setcity(e)} />
+                <Dropdown defValue={city||undefined} options={cities?.map((item:any)=>({label:item.name, value:item.id}))} onSelect={(e) => setcity(e)} />
               <div>
-              <Link href={`/products/?search=${searchVal}&city=${city}`} className=" bg-buttonColor w-[58px]  h-full flex justify-center items-center rounded-xl">
+              <Link href={`/products?search-text=${searchValue}&city=${city?.value||""}&city-name=${city?.label||""}`} className=" bg-buttonColor w-[58px]  h-full flex justify-center items-center rounded-xl">
                         <SearchSVG/>
                     </Link>
               </div>

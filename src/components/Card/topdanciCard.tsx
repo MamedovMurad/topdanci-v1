@@ -9,9 +9,10 @@ summary:string;
 tel:string;
 logo:string;
 adverts_count:string;
+gallery:{src:string}[]
 }
 
-const TopdanciCard: FunctionComponent<TopdanciCardProps> = ({title,adverts_count,summary,logo,tel}) => {
+const TopdanciCard: FunctionComponent<TopdanciCardProps> = ({title,adverts_count,summary,logo,tel,gallery}) => {
     return (<div>
         <div className="flex  bg-[#F0F0F0] mb-5 p-1 lg:gap-x-7 gap-x-3 overflow-hidden w-full rounded-[14px] lg:rounded-2xl ">
             <div className=" lg:w-1/4 ">
@@ -38,7 +39,7 @@ const TopdanciCard: FunctionComponent<TopdanciCardProps> = ({title,adverts_count
                 </div>
           
                     <div className=" w-7/12 lg:block hidden">
-                    <SwiperCarousel />
+                    <SwiperCarousel gallery={gallery} />
                     </div>
               
 

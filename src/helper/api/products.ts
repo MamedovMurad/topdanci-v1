@@ -1,12 +1,12 @@
 import { api } from "."
 
 
-const getcategories = () => {
-    return api.get(`products`)
+const getProducts = (search_text="",city="") => {
+    return api.get(`adverts?search_text=${search_text}&city=${city}`)
 }
 
 export {
-getcategories,
+    getProducts,
 
    
 }

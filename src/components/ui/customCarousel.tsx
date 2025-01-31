@@ -5,7 +5,7 @@ import { useState } from "react";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const SwiperCarousel = () => {
+const SwiperCarousel = ({ gallery }: { gallery: { src: string }[] }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -22,47 +22,22 @@ const SwiperCarousel = () => {
         >
             <Swiper
                 spaceBetween={20}
-                slidesPerView={isHovered ? 4.05 : 2.4} 
+                slidesPerView={isHovered ? 4.05 : 2.4}
                 className="transition-all duration-300 ease-in-out"
             >
-                <SwiperSlide>
-                    <div className="relative w-[210px] h-[210px]">
-                        <Image alt="l" src={"/slider1.png"} layout="fill" />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="relative w-[210px] h-[210px]">
-                        <Image alt="l" src={"/slider1.png"} layout="fill" />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="relative w-[210px] h-[210px]">
-                        <Image alt="l" src={"/slider1.png"} layout="fill" />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="relative w-[210px] h-[210px]">
-                        <Image alt="l" src={"/slider1.png"} layout="fill" />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="relative w-[210px] h-[210px]">
-                        <Image alt="l" src={"/slider1.png"} layout="fill" />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="relative w-[210px] h-[210px]">
-                        <Image alt="l" src={"/slider1.png"} layout="fill" />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="relative w-[210px] h-[210px]">
-                        <Image alt="l" src={"/slider1.png"} layout="fill" />
-                    </div>
-                </SwiperSlide>
+                {gallery?.map((item,index) => (
+                    <SwiperSlide key={index}>
+                        <div className="relative w-[210px] h-[210px] rounded-[10px] overflow-hidden">
+                            <Image alt="l" src={item.src} layout="fill" />
+                        </div>
+                    </SwiperSlide>
+                ))}
+
+
+
             </Swiper>
 
-            <div className={`absolute right-12 top-24  ${isHovered?'z-0 hidden ':'z-10 block '}`}><RightArrowSVG/></div>
+            <div className={`absolute right-12 top-24  ${isHovered ? 'z-0 hidden ' : 'z-10 block '}`}><RightArrowSVG /></div>
         </div>
     );
 };

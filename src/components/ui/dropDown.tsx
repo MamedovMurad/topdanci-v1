@@ -3,12 +3,13 @@ import React, { useState, useEffect, useRef } from "react";
 
 interface DropdownProps {
   options: {label:string,value:string}[];
-  onSelect: (value: string) => void;
+  onSelect: ({label,value}:{label:string,value:string}) => void;
+  defValue?:{label:string,value:string};
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, onSelect,defValue }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>(defValue?.label||"");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Dışarıya tıklama ile dropdown'ı kapatma işlevi
@@ -27,7 +28,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
 
   const handleSelect = (option: {label:string,value:string}) => {
     setSelectedOption(option.label);
-    onSelect(option.value);
+    onSelect(option);
     setIsOpen(false);
   };
 

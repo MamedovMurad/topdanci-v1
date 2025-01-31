@@ -1,16 +1,34 @@
+"use client"
 import Banner from "@/components/banner";
 import Filter from "@/components/filter";
 import ProductsContainer from "@/containers/product";
-import { FunctionComponent } from "react";
+import { getProducts } from "@/helper/api/products";
+import { useSearchParams } from "next/navigation";
+import { FunctionComponent, useEffect, useState } from "react";
 
 interface ProductsPageProps {
     
 }
  
 const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
+  const [products, setProducts] = useState([]);
+  const searchParams = useSearchParams();
+  const search_text = searchParams.get("search-text");
+
+
+  
+  const city = searchParams.get("city");
+  const cityName = searchParams.get("city-name");
+  useEffect(() => {
+    getProducts(search_text||"",city||"").then((data)=>(
+      setProducts(data?.data?.data)
+    ))
+  }, [search_text,city]);
     return (   <main>
         <section className=" hidden lg:block">
-        <Banner isOpen={false} />
+        <Banner isOpen={false} 
+        defval={(city&&cityName)?{label:cityName,value:city}:undefined} 
+        searchVal={search_text}/>
         </section>
   
         <section >
@@ -21,7 +39,7 @@ const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
             <div className=" mb-20 lg:mt-5   ">
              
     
-        <ProductsContainer/>
+        <ProductsContainer list={products}/>
      
            
   

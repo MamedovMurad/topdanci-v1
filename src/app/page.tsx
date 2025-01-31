@@ -1,10 +1,20 @@
+"use client"
 import Banner from "@/components/banner";
 
 import ProductsContainer from "@/containers/product";
+import { getProducts } from "@/helper/api/products";
+import { useEffect, useState } from "react";
 
 
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts().then((data)=>(
+      setProducts(data?.data?.data)
+    ))
+  }, []);
   return (
 
     <main>
@@ -15,7 +25,7 @@ export default function Home() {
           <div className=" lg:my-20 my-5  ">
            
   
-      <ProductsContainer/>
+      <ProductsContainer list={products}/>
    
          
 
