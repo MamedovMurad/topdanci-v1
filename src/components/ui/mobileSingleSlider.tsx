@@ -8,7 +8,10 @@ import 'swiper/css/pagination';
 import Image from 'next/image';
 import { Pagination } from 'swiper/modules';
 
-export default () => {
+export default ({images}:{images:{
+  "src": string,
+  "alt": string
+}[]}) => {
   return (
     <Swiper
 
@@ -19,16 +22,17 @@ export default () => {
       onSwiper={(swiper) => console.log(swiper)}
       pagination={{ clickable: true }}
     >
-      <SwiperSlide>
-        <div className='h-[180px] relative mt-5'>
-            <Image alt='' src={'/bannerMobile.png'} fill/>
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className='h-[180px] relative mt-5'>
-            <Image alt='' src={'/bannerMobile.png'} fill/>
-        </div>
-        </SwiperSlide>
+      {
+        images?.map((item,index)=>(
+          <SwiperSlide key={index}>
+          <div className='h-[180px] relative mt-5'>
+              <Image alt={item.alt} src={item.src} fill/>
+          </div>
+          </SwiperSlide>
+        ))
+      }
+  
+     
    
 
    

@@ -2,7 +2,7 @@
 import Banner from "@/components/banner";
 
 import ProductsContainer from "@/containers/product";
-import { getProducts } from "@/helper/api/products";
+import { getProductDetail, getProducts } from "@/helper/api/products";
 import { useEffect, useState } from "react";
 
 
@@ -11,6 +11,7 @@ export default function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    
     getProducts().then((data)=>(
       setProducts(data?.data?.data)
     ))

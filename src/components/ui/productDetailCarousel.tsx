@@ -9,19 +9,22 @@ import { DownArrowSVG } from "@/svg/allSvgs";
 
 
 
-export default function ImageCarousel() {
+export default function ImageCarousel({images}:{images:{
+    "src": string,
+    "alt": string
+}[]}) {
     // Install Swiper modules
 SwiperCore.use([Navigation]);
-    const [currentImage, setCurrentImage] = useState("/slider1.png");
+    const [currentImage, setCurrentImage] = useState(images?.[0]);
 
-    const images = [
-        "/product.png",
-        "/slider1.png",
-        "/product.png",
-        "/slider1.png",
-        "/product.png",
-        // Add more images as needed
-    ];
+    // const images = [
+    //     "/product.png",
+    //     "/slider1.png",
+    //     "/product.png",
+    //     "/slider1.png",
+    //     "/product.png",
+    //     // Add more images as needed
+    // ];
 
     // Refs for Swiper container
     const swiperRef = useRef<any>(null);
@@ -58,8 +61,8 @@ SwiperCore.use([Navigation]);
                                 <SwiperSlide key={index} onClick={() => setCurrentImage(image)} 
                                 className={currentImage===image?"opacity-100":"opacity-50"} >
                                     <img
-                                        src={image}
-                                        alt={`Thumbnail ${index}`}
+                                        src={image.src}
+                                        alt={`Thumbnail ${image.alt}`}
                                         className="cursor-pointer w-20 h-20 rounded-md hover:scale-105 transition-transform duration-300"
                                     />
                                 </SwiperSlide>
@@ -82,8 +85,8 @@ SwiperCore.use([Navigation]);
                 {/* Large image display */}
                 <div className="mb-8 w-full flex justify-center">
                     <img
-                        src={currentImage}
-                        alt="Large view"
+                        src={currentImage.src}
+                        alt={currentImage.alt}
                         className="object-cover shadow-lg w-full h-[343px] rounded-lg"
                     />
                 </div>

@@ -11,7 +11,7 @@ interface ProductCardProps {
 
 const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item }) => {
     return (
-        <Link href={'/products/example-item'} className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
+        <Link href={'/products/'+item?.id} className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
             <div className=" relative lg:h-[217px] h-[135px] lg:rounded-2xl rounded-[10px] overflow-hidden">
                 {
                     item?.is_premium&&    <span className=" absolute top-0 left-0 z-10">

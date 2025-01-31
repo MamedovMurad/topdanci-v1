@@ -9,8 +9,18 @@ export type IAdvert = {
     "min_order": string,
     "is_premium": number,
     "is_wholesaler": number,
+    adverts_count:string|number;
+    user_tel:string;
+    user_name:string;
+    views_count:number;
+    detail_info:string;
+    similar_adverts:IAdvert[]
     "image": {
         "src": string,
         "alt": string
-    }
+    },
+    images:{
+        "src": string,
+        "alt": string
+    }[]
 }
