@@ -7,7 +7,7 @@ interface ExpiredListPageProps {
  
 const ExpiredListPage: FunctionComponent<ExpiredListPageProps> = () => {
     return ( <div>
-        <ProductsContainer status="expired"/>
+        {/* <ProductsContainer status="expired"/> */}
     </div>);
 }
  

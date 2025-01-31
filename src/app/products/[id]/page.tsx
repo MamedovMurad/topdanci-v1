@@ -143,7 +143,7 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = () => {
                 <div className="container mx-auto mb-12 ">
                     <h3 className=" font-medium text-base hidden lg:block">Bənzər elanlar</h3>
 
-                    <ProductsContainer />
+                    {/* <ProductsContainer /> */}
 
 
                 </div>

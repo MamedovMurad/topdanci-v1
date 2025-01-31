@@ -7,7 +7,7 @@ interface UnpublishedOnesPageProps {
  
 const UnpublishedOnesPage: FunctionComponent<UnpublishedOnesPageProps> = () => {
     return ( <div>
-        <ProductsContainer status="unpublished"/>
+        {/* <ProductsContainer status="unpublished"/> */}
     </div> );
 }
  

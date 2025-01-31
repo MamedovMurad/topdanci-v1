@@ -7,7 +7,7 @@ interface PendingsPageProps {
  
 const PendingsPage: FunctionComponent<PendingsPageProps> = () => {
     return ( <div>
-        <ProductsContainer status="pending"/>
+        {/* <ProductsContainer status="pending"/> */}
     </div>);
 }
  
