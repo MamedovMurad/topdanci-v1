@@ -59,7 +59,7 @@ const Banner: FunctionComponent<BannerProps> = ({ isOpen = true,defval,searchVal
     <div className="lg:hidden">
             <MobiileSearch/>
             <div className=" ">
-                <MobileSingleSlider/>
+                {/* <MobileSingleSlider/> */}
             </div>
             <div className=" px-5 mt-5">
                 <MobileSlideHeader data={categories}/>
