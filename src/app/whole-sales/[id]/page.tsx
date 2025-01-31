@@ -1,5 +1,4 @@
-import ProductCard from "@/components/Card/productCard";
-import ProductsContainer from "@/containers/product";
+
 import { FunctionComponent } from "react";
 
 interface WholeSaleProps {

@@ -4,6 +4,7 @@ import Dropdown from "../ui/dropDown";
 import { SearchSVG } from "@/svg/allSvgs";
 import { getCities } from "@/helper/api/cammon";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface SearchProps {
 defValue?:{label:string,value:string};
@@ -11,18 +12,19 @@ searchVal?:string|null
 }
 
 const Search: FunctionComponent<SearchProps> = ({defValue,searchVal}) => {
-    
+    const router = useRouter(); 
 const [searchValue, setsearchVal] = useState(searchVal||"");
 const [city, setcity] = useState<{label:string,value:string}|null>(defValue||null);
     const [cities, setcities] = useState([]);
     useEffect(() => {
         getCities().then((data)=>setcities(data.data))
     }, []);
-    function handleSubmit(){
-
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>){
+        e.preventDefault(); 
+        router.push(`/products?search-text=${searchValue}&city=${city?.value||""}&city-name=${city?.label||""}`);
     }
     return (<div  className=" w-full" onClick={(e:any)=>e.stopPropagation()}>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
             <div className="flex  w-full h-[50px] rounded-xl bg-white ">
                 <input value={searchValue} onChange={(e)=>setsearchVal(e.target.value)}  type="text" name="" id="" placeholder="Topdan məhsul axtarışı"
                     className=" h-full rounded-xl border-none placeholder:text-[#C8C8C8] placeholder:text-sm w-full over outline-none pl-7
