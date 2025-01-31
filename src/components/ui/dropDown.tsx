@@ -1,3 +1,4 @@
+"use client"
 import { DownArrowSVG } from "@/svg/allSvgs";
 import React, { useState, useEffect, useRef } from "react";
 

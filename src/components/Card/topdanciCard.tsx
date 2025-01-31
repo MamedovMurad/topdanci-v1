@@ -2,18 +2,20 @@ import { PhoneSVG } from "@/svg/allSvgs";
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import SwiperCarousel from "../ui/customCarousel";
+import Link from "next/link";
 
 interface TopdanciCardProps {
-title:string;
-summary:string;
-tel:string;
-logo:string;
-adverts_count:string;
-gallery:{src:string}[]
+    id: number;
+    title: string;
+    summary: string;
+    tel: string;
+    logo: string;
+    adverts_count: string;
+    gallery: { src: string }[]
 }
 
-const TopdanciCard: FunctionComponent<TopdanciCardProps> = ({title,adverts_count,summary,logo,tel,gallery}) => {
-    return (<div>
+const TopdanciCard: FunctionComponent<TopdanciCardProps> = ({ title, adverts_count, summary, logo, tel, gallery, id }) => {
+    return (<Link href={'/whole-sales/' + id}>
         <div className="flex  bg-[#F0F0F0] mb-5 p-1 lg:gap-x-7 gap-x-3 overflow-hidden w-full rounded-[14px] lg:rounded-2xl ">
             <div className=" lg:w-1/4 ">
                 <div >
@@ -37,15 +39,15 @@ const TopdanciCard: FunctionComponent<TopdanciCardProps> = ({title,adverts_count
                     </div>
                     <p className=" text-primaryColor font-normal text-[10px] lg:text-sm mt-2">{adverts_count} Elan</p>
                 </div>
-          
-                    <div className=" w-7/12 lg:block hidden">
+
+                <div className=" w-7/12 lg:block hidden">
                     <SwiperCarousel gallery={gallery} />
-                    </div>
-              
+                </div>
+
 
             </div>
         </div>
-    </div>);
+    </Link>);
 }
 
 export default TopdanciCard;

@@ -6,7 +6,7 @@ const getWholeSalers = () => {
 }
 
 const getWholeSalerDetail = (id:number|string) => {
-    return api.get(`wholesalers/${id}`)
+    return api.get(`wholesaler/${id}`)
 }
 
 export {

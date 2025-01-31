@@ -19,7 +19,7 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item }) => {
                 </span>
                 }
             
-                <label htmlFor="" className={"  w-[51px] h-[18px] rounded z-10 absolute bottom-2 right-2 text-xs text-center font-bold " + (item?.advert_type=="seller" ? " bg-primaryColor text-white":" bg-buttonColor") }>
+                <label htmlFor="" className={"  w-[51px] h-[18px] rounded z-10 absolute bottom-2 right-2 text-xs text-center font-bold capitalize " + (item?.advert_type=="seller" ? " bg-primaryColor text-white":" bg-buttonColor") }>
                     {item?.advert_type}
                 </label>
                 {

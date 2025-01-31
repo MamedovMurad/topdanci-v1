@@ -2,6 +2,7 @@ import { EmptySVG, LocationSvg, PhoneSVG } from "@/svg/allSvgs";
 import Image from "next/image";
 import NavLinkProduct from "./_components/navlink";
 import { FunctionComponent, ReactNode } from "react";
+import { getWholeSalerDetail } from "@/helper/api/wholeSalers";
 
 interface LayoutWholeSalesProps {
     children: ReactNode;
@@ -11,7 +12,15 @@ interface LayoutWholeSalesProps {
 const LayoutWholeSales: FunctionComponent<LayoutWholeSalesProps> = async ({ params, children }) => {
     // Await the params if required
     const { id } = await params;  // Assuming params.id is the dynamic part of your URL
+const {data}= await getWholeSalerDetail(52);
 
+
+
+
+    if (!data) {
+        return null
+    }
+    
     return (
         <main>
             <section
@@ -24,29 +33,29 @@ const LayoutWholeSales: FunctionComponent<LayoutWholeSalesProps> = async ({ para
                     <div className="lg:flex gap-x-7 lg:bg-[#F0F0F0] lg:overflow-hidden rounded-2xl p-1 pt-6">
                         <div className=" lg:block flex gap-x-7 lg:gap-x-0 px-5 lg:px-0">
                             <div className="relative lg:-translate-y-0 -translate-y-14  lg:w-[220px] lg:h-[220px] w-[120px] h-[120px] rounded-2xl overflow-hidden">
-                                <Image alt="logo" src={"/topdanci.png"} layout="fill" />
+                                <Image alt="logo" src={data.cover_photo} layout="fill" objectFit="cover"/>
                             </div>
                             <div className="lg:hidden flex  flex-col  ">
                                         <div className="flex items-center gap-x-3">
                                             <PhoneSVG color="#E51C23" />
-                                            <span className=" text-[10px]">055 973 63 13</span>
+                                            <span className=" text-[10px]">{data.tel}</span>
                                         </div>
                                         <div className="flex items-center gap-x-3 mt-4">
                                             <LocationSvg color="#E51C23" />
-                                            <span className=" text-[10px]">Bakı şəh.Mikayıl Rəfili 39</span>
+                                            <span className=" text-[10px]">{data.address}</span>
                                         </div>
                              </div>
                         </div>
                         <div className="text-black lg:px-0 px-5 lg:-translate-y-0 -translate-y-10">
-                            <h2 className="font-bold text-xl">EFOR MMC</h2>
+                            <h2 className="font-bold text-xl">{data.title}</h2>
                             <p className="text-sm mt-2">
-                                What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                            </p>
+                                {data.description_text}
+                          </p>
                             <div className="text-xs font-normal text-primaryColor mt-2">
-                                <span>Hər gün /8:00-19:00</span>
+                                <span>{data.work_date}</span>
                             </div>
                             <div>
-                                <button className="lg:mt-1 mt-2 flex w-[70px] bg-primaryColor h-[18px] items-center justify-center text-xs text-white rounded">52 Elan</button>
+                                <button className="lg:mt-1 mt-2 flex w-[70px] bg-primaryColor h-[18px] items-center justify-center text-xs text-white rounded">{data.adverts_count} Elan</button>
                             </div>
                         </div>
                         <div className=" lg:block hidden">
