@@ -12,7 +12,7 @@ const Favorites: FunctionComponent<FavoritesProps> = () => {
 
         <section>
         <div className="container mx-auto mb-20">
-            <ProductsContainer/>
+            {/* <ProductsContainer/> */}
             </div>
         </section>
     </main>  );

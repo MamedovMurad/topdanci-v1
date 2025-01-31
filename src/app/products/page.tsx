@@ -4,7 +4,7 @@ import Filter from "@/components/filter";
 import ProductsContainer from "@/containers/product";
 import { getProducts } from "@/helper/api/products";
 import { useSearchParams } from "next/navigation";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, Suspense, useEffect, useState } from "react";
 
 interface ProductsPageProps {
     
@@ -49,4 +49,12 @@ const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
       </main> );
 }
  
-export default ProductsPage;
+
+
+export default function Page() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <ProductsPage />
+    </Suspense>
+  );
+}
