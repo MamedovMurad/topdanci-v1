@@ -40,7 +40,7 @@ export default function Home() {
 
           </div>
         </div>
-        <div className="mt-12">
+        <div className="my-12">
             <PaginationUI
             pageCount={pageCount}
             
