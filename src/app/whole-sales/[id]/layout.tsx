@@ -25,7 +25,7 @@ const {data}= await getWholeSalerDetail(52);
         <main>
             <section
                 className="lg:h-[500px] h-[173px] bg-center bg-no-repeat bg-cover"
-                style={{ backgroundImage: "url('/topdanic_banner.png')" }}
+                style={{ backgroundImage: `url(${data.cover_photo})` }}
             ></section>
 
             <section className="lg:-translate-y-12">
@@ -33,7 +33,7 @@ const {data}= await getWholeSalerDetail(52);
                     <div className="lg:flex gap-x-7 lg:bg-[#F0F0F0] lg:overflow-hidden rounded-2xl p-1 pt-6">
                         <div className=" lg:block flex gap-x-7 lg:gap-x-0 px-5 lg:px-0">
                             <div className="relative lg:-translate-y-0 -translate-y-14  lg:w-[220px] lg:h-[220px] w-[120px] h-[120px] rounded-2xl overflow-hidden">
-                                <Image alt="logo" src={data.cover_photo} layout="fill" objectFit="cover"/>
+                                <Image alt="logo" src={data.logo} layout="fill" objectFit="cover"/>
                             </div>
                             <div className="lg:hidden flex  flex-col  ">
                                         <div className="flex items-center gap-x-3">

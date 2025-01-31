@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { MantineProvider } from '@mantine/core';
+import Head from 'next/head';
 
 const robotoCondensed = Roboto_Condensed({
   subsets: ['latin'],
@@ -25,7 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html >
+    <html lang={typeof window !=="undefined"&&localStorage.getItem('lang')||"az"} >
+      <Head>
+      <meta name="csrf-token" content="{{ csrf_token() }}"/>
+      </Head>
       <body
        className={robotoCondensed.className}
       >

@@ -4,6 +4,7 @@ class HttpClient {
     private _baseURL: string;
     private _headers: Record<string, string>;
     private _language: string; // Add a language property
+   
   
     constructor(options: { baseURL?: string; headers?: Record<string, string>; language?: string } = {}) {
       this._baseURL = options.baseURL || baseURL;
@@ -25,7 +26,9 @@ class HttpClient {
         HttpClient.instance = new HttpClient({
           headers: {
             "Content-Type": "application/json",
+                   'Accept': 'application/json'
           },
+          
           language: "en", // You can set a default language here if needed
         });
       }
@@ -53,6 +56,7 @@ class HttpClient {
       const res = await fetch(this._baseURL + endpoint, {
         ...options,
         headers: this._headers,
+
       });
   
       if (!res.ok) {
@@ -82,6 +86,7 @@ class HttpClient {
     post(endpoint: string, body: any, options: RequestInit = {}) {
       return this._fetchJSON(endpoint, {
         ...options,
+        credentials: 'include',
         body: JSON.stringify(body),
         method: "POST",
       });

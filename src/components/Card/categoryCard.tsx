@@ -11,7 +11,7 @@ interface CategoryCardProps {
  
 const CategoryCard: FunctionComponent<CategoryCardProps> = ({icon,id,name,slug}) => {
     return ( <div className=" w-fit">
-        <Link href={''}>
+        <Link href={'/products?category='+id}>
             <div className=" flex justify-center items-center ">
                 <span  className="bg-white rounded-[14px] p-3 inline-block" dangerouslySetInnerHTML={{__html:icon}}
                 ></span>
