@@ -16,7 +16,7 @@ const CategoryCard: FunctionComponent<CategoryCardProps> = ({icon,id,name,slug})
                 <span  className="bg-white rounded-[14px] p-3 inline-block" dangerouslySetInnerHTML={{__html:icon}}
                 ></span>
             </div>
-            <p className=" text-sm font-bold text-center text-white mt-2">{name}</p>
+            <p className=" text-sm font-bold text-center text-white mt-2 w-20">{name}</p>
         </Link>
     </div> );
 }

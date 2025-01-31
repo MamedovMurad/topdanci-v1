@@ -1,21 +1,32 @@
 "use client"
 import TopdanciCard from "@/components/Card/topdanciCard";
 import LabelHeader from "@/components/label";
-import { FunctionComponent } from "react";
+import { getWholeSalers } from "@/helper/api/wholeSalers";
+import { FunctionComponent, useEffect, useState } from "react";
 
 interface TopdancilarProps {
 
 }
 
 const Topdancilar: FunctionComponent<TopdancilarProps> = () => {
+    const [wholeSalers, setwholeSalers] = useState([]);
+    useEffect(() => {
+        getWholeSalers().then((data)=>(
+            setwholeSalers(data.data.data)
+        ))
+    }, []);
     return (<main>
       <LabelHeader/>
 
         <section>
             <div className="container mx-auto lg:px-0 px-5">
-                <TopdanciCard/>
-                <TopdanciCard/>
-                <TopdanciCard/>
+                {
+                    wholeSalers?.map((item:any)=>(
+                        <TopdanciCard key={item?.id} {...item}/>
+                    ))
+                }
+       
+        
             </div>
         </section>
 

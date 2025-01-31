@@ -21,7 +21,7 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = () => {
                                 <MobileSingleSlider/>
                             </div>
                         <div className=" px-5 lg:px-0 lg:w-5/12 lg:flex flex-col justify-between items-center gap-y-5 h-full">
-                            <div>
+                            <div className=" w-full">
                                 <div className=" rounded-[10px] bg-[#F1F3F7] py-5 lg:px-7 px-5">
                                     <div className="flex items-center gap-x-5">
                                         <button className=" flex justify-center items-center w-[74px] h-5 rounded-md bg-primaryColor text-white">Alıcı</button>
