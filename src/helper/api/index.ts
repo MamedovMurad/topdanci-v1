@@ -15,7 +15,7 @@ class HttpClient {
       }
   
       // Set the Accept-Language header with the initial language value
-      this._headers["Accept-Language"] = this._language;
+      this._headers["lang"] = this._language;
     }
   
     private static instance: HttpClient;
