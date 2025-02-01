@@ -49,7 +49,7 @@ const Categories: FunctionComponent<CategoriesProps> = () => {
         key={item.item}
       >
         <Link href={item.url} className="text-nowrap">
-          {item.item}({item.count})
+          {item.item}
         </Link>
       </li>
     </SwiperSlide>

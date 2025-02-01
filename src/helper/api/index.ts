@@ -26,7 +26,7 @@ class HttpClient {
         HttpClient.instance = new HttpClient({
           headers: {
             "Content-Type": "application/json",
-                   'Accept': 'application/json'
+               
           },
           
           language: "en", // You can set a default language here if needed
@@ -86,7 +86,7 @@ class HttpClient {
     post(endpoint: string, body: any, options: RequestInit = {}) {
       return this._fetchJSON(endpoint, {
         ...options,
-        credentials: 'include',
+     
         body: JSON.stringify(body),
         method: "POST",
       });

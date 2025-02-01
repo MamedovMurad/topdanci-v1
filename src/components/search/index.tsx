@@ -22,7 +22,7 @@ const [city, setcity] = useState<{label:string,value:string}|null>(defValue||nul
     }, []);
     function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault(); 
-        router.push(`/products?search-text=${searchValue||""}&city=${city?.value||""}&city-name=${city?.label||""}&category=${category}`);
+        router.push(`/products?search-text=${searchValue||""}&city=${city?.value||""}&city-name=${city?.label||""}&category=${category||""}`);
     }
     return (<div  className=" w-full" onClick={(e:any)=>e.stopPropagation()}>
         <form action="" onSubmit={handleSubmit}>
@@ -32,7 +32,7 @@ const [city, setcity] = useState<{label:string,value:string}|null>(defValue||nul
                             text-sm "/>
                 <Dropdown defValue={city||undefined} options={cities?.map((item:any)=>({label:item.name, value:item.id}))} onSelect={(e) => setcity(e)} />
               <div>
-              <Link href={`/products?search-text=${searchValue||""}&city=${city?.value||""}&city-name=${city?.label||""}&category=${category}`} className=" bg-buttonColor w-[58px]  h-full flex justify-center items-center rounded-xl">
+              <Link href={`/products?search-text=${searchValue||""}&city=${city?.value||""}&city-name=${city?.label||""}&category=${category||""}`} className=" bg-buttonColor w-[58px]  h-full flex justify-center items-center rounded-xl">
                         <SearchSVG/>
                     </Link>
               </div>

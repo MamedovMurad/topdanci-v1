@@ -24,7 +24,7 @@ export const  Filter: FunctionComponent<FilterProps> = ({ searchVal, defval,cate
             {
                 list?.map((item) => (
                     <li key={item.name} className={(item.type === type ? "text-primaryColor " : " cursor-pointer ")+((!type&&item.type=="")?"text-primaryColor  ":" ")} >
-                        <Link href={`/products?advert_type=${item.type}&search-text=${searchVal || ""}&city=${defval?.value || ""}&city-name=${defval?.label || ""}&category=${category}`}>{item.name}</Link></li>
+                        <Link href={`/products?advert_type=${item.type}&search-text=${searchVal || ""}&city=${defval?.value || ""}&city-name=${defval?.label || ""}&category=${category||""}`}>{item.name}</Link></li>
 
                 ))
             }

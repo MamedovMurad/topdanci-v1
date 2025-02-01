@@ -12,9 +12,10 @@ interface InputFieldProps {
     inputSize?: string;
     wrapperSize?:string;
     placeHolder?:string;
+    name?:string;
 }
 
-const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrapperSize, label, required, control, text, labelSize, inputSize,placeHolder }) => {
+const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrapperSize, label, required, control, text, labelSize, inputSize,placeHolder,name }) => {
     return (<div className={" flex justify-between items-center lg:mb-7 mb-4 "+wrapperSize }>
         <label htmlFor={id} className={" font-medium lg:text-xl text-sm  " + (labelSize || "w-1/3")}>
             <p>{label}   {required && <sup className=" inline-block ml-1 text-primaryColor ">*</sup>}</p>
@@ -25,7 +26,7 @@ const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrap
 
         </label>
         <Controller
-            name="input"
+            name={name||""}
             control={control}
             render={({ field }) => (
 

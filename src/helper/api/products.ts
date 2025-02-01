@@ -9,9 +9,26 @@ const getProductDetail=(id:string)=>{
     return api.get(`advert/${id}`)
 }
 
+
+const getUserActiveProducts = ()=>{
+    return api.get(`user/active-adverts`)
+}
+const getUserPendingProducts = ()=>{
+    return api.get(`user/pending-adverts`)
+}
+const getUserExpiredProducts = ()=>{
+    return api.get(`user/expired-adverts`)
+}
+const getUserRejectedProducts = ()=>{
+    return api.get(`user/rejected-adverts`)
+}
 export {
     getProducts,
-    getProductDetail
+    getProductDetail,
+    getUserActiveProducts,
+    getUserPendingProducts,
+    getUserExpiredProducts,
+    getUserRejectedProducts
 
    
 }
