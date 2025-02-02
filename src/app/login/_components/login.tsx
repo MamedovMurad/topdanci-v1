@@ -39,6 +39,8 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({phone}) => {
           if (response.data) {
            if (typeof window !="undefined") {
             localStorage.setItem('agent',response.data.token)
+            localStorage.setItem('user',JSON.stringify(response.data.user))
+            api.setHeader("Authorization","Bearer " + localStorage.getItem("agent"))
             await router.push('/dashboard')
            }
           }

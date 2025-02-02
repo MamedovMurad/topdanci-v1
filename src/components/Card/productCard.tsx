@@ -14,7 +14,7 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item }) => {
         <Link href={'/products/'+item?.id} className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
             <div className=" relative lg:h-[217px] h-[135px] lg:rounded-2xl rounded-[10px] overflow-hidden">
                 {
-                    item?.is_premium&&    <span className=" absolute top-0 left-0 z-10">
+                    item?.is_premium!==0&&    <span className=" absolute top-0 left-0 z-10">
                     <KingSvg color={item?.advert_type==="seller"?"#F2173C":undefined} />
                 </span>
                 }
@@ -48,7 +48,7 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item }) => {
                         </div>
                     </div>
                 </div>
-                <div className=" text-[8px] text-[#808080] w-1/3 text-right">
+                <div className=" text-[8px] text-[#808080] w-1/3 lg:text-right mt-2 lg:mt-0">
                     <p>{item?.city}</p>
                     <p>{item?.date}</p>
                 </div>

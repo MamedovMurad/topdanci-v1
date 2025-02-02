@@ -14,7 +14,7 @@ interface MyProductsProps {
 const MyProducts: FunctionComponent<MyProductsProps> = () => {
   const [products, setproducts] = useState([]);
   useEffect(() => {
-    console.log('testtttttt');
+  
     
     getUserActiveProducts().then((data)=>{
       setproducts(data.data.data)
