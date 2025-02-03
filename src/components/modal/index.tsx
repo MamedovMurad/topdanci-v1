@@ -17,6 +17,10 @@ const ModalMantine: FunctionComponent<ModalMantineProps> = ({isOpen, closeModal,
         if (isOpen) {
             open()
         }
+        else{
+            closeModal();
+            close()
+        }
     }, [isOpen]);
 
     function handleClose(){
