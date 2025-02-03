@@ -1,1 +1,1 @@
-const baseURL = 'https://api.topdanchi.az/api/v1/'
+export const baseURL = 'https://api.topdanchi.az/api/v1/'

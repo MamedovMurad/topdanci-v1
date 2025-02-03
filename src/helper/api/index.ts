@@ -26,6 +26,7 @@ class HttpClient {
         HttpClient.instance = new HttpClient({
           headers: {
             "Content-Type": "application/json",
+              'Accept': 'application/json'
                
           },
           
@@ -103,12 +104,13 @@ class HttpClient {
     postWithFormData(endpoint: string, body: Record<string, any>) {
       const formData = new FormData();
       for (const [key, value] of Object.entries(body)) {
-        formData.append(key, value);
+        formData.append('img['+key+']', value);
       }
   
       return fetch(this._baseURL + endpoint, {
-        headers: { Authorization: "Bearer " + localStorage.getItem("agent") },
+        headers: { Authorization: "Bearer " + localStorage.getItem("agent"), "Accept":"application/json" },
         method: "POST",
+        
         body: formData,
       });
     }

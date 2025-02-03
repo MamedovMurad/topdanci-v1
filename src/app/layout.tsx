@@ -7,6 +7,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { MantineProvider } from '@mantine/core';
 import Head from 'next/head';
+import { Notifications } from '@mantine/notifications';
 
 const robotoCondensed = Roboto_Condensed({
   subsets: ['latin'],
@@ -34,7 +35,7 @@ export default function RootLayout({
        className={robotoCondensed.className}
       >
         <Header/>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>  <Notifications />{children}</MantineProvider>
      
         <Footer/>
       </body>

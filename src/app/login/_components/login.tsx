@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import { FunctionComponent, useState } from "react";
 
 interface LoginPageProps {
-    phone:string|null
+    phone:string|null,
+    callBack?:any
 }
  
-const LoginPage: FunctionComponent<LoginPageProps> = ({phone}) => {
+const LoginPage: FunctionComponent<LoginPageProps> = ({phone,callBack}) => {
        const [otp, setotp] = useState("");
        const router =  useRouter()
        const handleChange = (e:any) => {
@@ -41,6 +42,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({phone}) => {
             localStorage.setItem('agent',response.data.token)
             localStorage.setItem('user',JSON.stringify(response.data.user))
             api.setHeader("Authorization","Bearer " + localStorage.getItem("agent"))
+            callBack&&callBack()
             await router.push('/dashboard')
            }
           }

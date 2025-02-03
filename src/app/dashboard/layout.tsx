@@ -21,7 +21,7 @@ const Dashboard: FunctionComponent<DashboardProps> = ({children}) => {
             redirect('/login')
            }
         }
-    }, [typeof window=="undefined"]);
+    }, [typeof window!=="undefined"]);
     return (<main>
          <section className=" lg:block hidden">
          <LabelHeader title="Şəxsi kabinet"/>

@@ -13,9 +13,10 @@ interface InputFieldProps {
     wrapperSize?:string;
     placeHolder?:string;
     name?:string;
+    isDisabled?:boolean
 }
 
-const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrapperSize, label, required, control, text, labelSize, inputSize,placeHolder,name }) => {
+const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrapperSize, isDisabled, label, required, control, text, labelSize, inputSize,placeHolder,name }) => {
     return (<div className={" flex justify-between items-center lg:mb-7 mb-4 "+wrapperSize }>
         <label htmlFor={id} className={" font-medium lg:text-xl text-sm  " + (labelSize || "w-1/3")}>
             <p>{label}   {required && <sup className=" inline-block ml-1 text-primaryColor ">*</sup>}</p>
@@ -26,12 +27,12 @@ const InputField: FunctionComponent<InputFieldProps> = ({ type = "text", id,wrap
 
         </label>
         <Controller
-            name={name||""}
+            name={(name||"")}
             control={control}
             render={({ field }) => (
 
-                <input className={" outline-none border-none rounded lg:h-[50px] h-[30px]  text-[10px] lg:text-lg pl-2 " + (inputSize || "w-2/3")}
-                   placeholder={placeHolder} type={type} id={id} {...field} />
+                <input className={" outline-none border-none rounded lg:h-[50px] h-[30px] disabled:bg-slate-400  text-[10px] lg:text-lg pl-2 " + (inputSize || "w-2/3")}
+                   placeholder={placeHolder} type={type} id={id} {...field} disabled={isDisabled} />
 
             )}
         />
