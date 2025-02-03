@@ -2,16 +2,28 @@ import { KingSvg } from "@/svg/allSvgs";
 import { IAdvert } from "@/types/Model";
 import Image from "next/image";
 import Link from "next/link";
+
 import { FunctionComponent } from "react";
 
 interface ProductCardProps {
     status?: 'expired' | 'pending' | 'active' | 'unpublished';
-    item?:IAdvert
+    item?:IAdvert;
+    callBack?:(data:any)=>void;
 }
 
-const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item }) => {
+const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item,callBack }) => {
+    function handlecallBackDelete(data:any){
+
+        callBack&& callBack(data)
+    }
+
+    function handleClick(e:any,data:any){
+e.stopPropagation();
+callBack&& callBack(data)
+    }
+
     return (
-        <Link href={'/products/'+item?.id} className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
+        <Link href={status?("javascript:void(0)"):('/products/'+item?.id)} className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
             <div className=" relative lg:h-[217px] h-[135px] lg:rounded-2xl rounded-[10px] overflow-hidden">
                 {
                     item?.is_premium!==0&&    <span className=" absolute top-0 left-0 z-10">
@@ -57,8 +69,16 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item }) => {
             </div>
 
             {
-    status==="expired"&&<div className=" w-full p-[10px]">
-        <button className=" w-full h-[35px] font-semibold text-base bg-[#D9D9D9] rounded-[10px] flex justify-center items-center ">Bərpa et</button>
+    status==="expired"&&<div onClick={(e)=>handleClick(e,item?.id)} className=" w-full p-[10px]">
+        <button onClick={(e)=>handleClick(e,item?.id)} className=" w-full h-[35px] font-semibold text-base bg-[#D9D9D9] rounded-[10px] flex justify-center items-center ">Bərpa et</button>
+    </div>
+}
+{
+    status==="active"&&<div className="lg:px-[10px] px-[6px]">
+        <div className=" flex gap-x-3 py-2  border-t-[1px] border-[#979797] ">
+        <Link  className="text-[15px] font-semibold" href={'/new-product?'+item?.id}>Düzəliş et</Link>
+        <button onClick={(e)=>{e.stopPropagation();handlecallBackDelete(item?.id)}} className=" text-[15px] font-semibold">Elanı sil</button>
+    </div>
     </div>
 }
         </Link>);

@@ -34,8 +34,8 @@ const Profile: FunctionComponent<DashboardProps> = () => {
             <div className=" w-1/2">
                 <form action="">
                     <InputField id="fdsf" label="Adınız" name="name" required control={control} />
-                    <InputField id="fdssdff" label="E-mail" name="mail" required control={control} />
-                    <InputField id="fdghfsf" label="Mobil nömrə" name="tel" required control={control} />
+                    <InputField id="fdssdff" label="E-mail" name="email" required control={control} />
+                    
 
                     <div className="flex justify-center items-center mt-3">
                         <button className=" text-white text-xl font-bold bg-primaryColor w-[170px] h-10 rounded-[10px] flex justify-center items-center">Yadda saxla</button>

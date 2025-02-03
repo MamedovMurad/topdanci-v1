@@ -59,7 +59,7 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
 
     function insertAdvert(){
         
-        api.post('advert-store',formValue).then((data)=>{
+        api.post('new-advert',formValue).then((data)=>{
             notifications.show({
                 title: 'Default notification',
                 message: 'Do not forget to star Mantine on GitHub! 🌟',
@@ -162,7 +162,7 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                         </div>
 
                                         <div className=" flex  justify-between lg:mt-7 mt-4 ">
-                                            <CustomTextArea control={control} id="fdsafds" label="Məzmun" />
+                                            <CustomTextArea control={control} id="detail" name={'detail'}  label="Məzmun" />
                                         </div>
 
                                         <div className=" flex  justify-between lg:mt-7 mt-4 ">
