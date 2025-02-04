@@ -27,7 +27,7 @@ const AboutWholeSale: FunctionComponent<AboutWholeSaleProps> = async ({params}) 
             </div>
 
             <div className="mt-10">
-            <iframe className=" w-full lg:h-[598px] h-[188px]" height="598" src="https://www.youtube.com/embed/QGV0lLvAV2E?si=TFCEv6TA1LEk6N7w" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe className=" w-full lg:h-[598px] h-[188px]" height="598" src={data.video_url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
         </div>
     </div>);
