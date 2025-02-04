@@ -76,7 +76,7 @@ callBack&& callBack(data)
 {
     status==="active"&&<div className="lg:px-[10px] px-[6px]">
         <div className=" flex gap-x-3 py-2  border-t-[1px] border-[#979797] ">
-        <Link  className="text-[15px] font-semibold" href={'/new-product?'+item?.id}>Düzəliş et</Link>
+        <Link  className="text-[15px] font-semibold" href={'/edit-product?id='+item?.id}>Düzəliş et</Link>
         <button onClick={(e)=>{e.stopPropagation();handlecallBackDelete(item?.id)}} className=" text-[15px] font-semibold">Elanı sil</button>
     </div>
     </div>

@@ -6,31 +6,33 @@ import CustomRadio from "@/components/form/radio";
 import SelectField from "@/components/form/selectField";
 import CustomTextArea from "@/components/form/textarea";
 import LabelHeader from "@/components/label";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, Suspense, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import UsersRules from "./_components/usersRules";
-import { getcategories, getSubCategories } from "@/helper/api/categories";
+
+import { getcategories } from "@/helper/api/categories";
 import { getCities, getUnits } from "@/helper/api/cammon";
 import { api } from "@/helper/api";
 import LoginPage from "../login/_components/login";
 import { notifications } from "@mantine/notifications";
 import '@mantine/notifications/styles.css';
+import { useSearchParams } from "next/navigation";
+import { getProductDetail } from "@/helper/api/products";
 interface NewProductPageProps {
 
 }
 
-const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
+const EditProductPage: FunctionComponent<NewProductPageProps> = () => {
     const [cat, setcat] = useState([]);
-    const [subCat, setSubCat] = useState([]);
     const [cities, setcities] = useState([]);
     const [units, setunits] = useState([]);
     const [files, setFiles] = useState([]);
-    const [formValue, setformValue] = useState<null | any>(null);
+      const searchParams = useSearchParams();
+      const id = searchParams.get("id");
+ 
     const { control, watch, handleSubmit } = useForm({
         defaultValues: {
             min_order_count: null,
             wholesale_price: null,
-            category_id:null,
             tel: null,
             images: [
                 "https://api.artelie.az/storage/images/adverts/1680766402-20be2f43-189c-4cfc-b14e-1ab83ed7c971.jpg"
@@ -38,43 +40,15 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
         },
     });
 
-
+    console.log({ cat });
 
     function onSubmit(a: any) {
 
-        api.post('otp', { tel: a?.tel }).then((data) => {
-            if (data.msg) {
-                
-                setformValue(a)
-            }else{
-                return    notifications.show({
-                    color: 'red',
-                    title: 'Notification with custom styles',
-                    message: 'It is red',
-                  
-                  })
-            }
-        })
-        // api.post('advert-store',a)
+  
 
     }
 
-    function insertAdvert(){
-        
-        api.post('new-advert',formValue).then((data)=>{
-            notifications.show({
-                title: 'Default notification',
-                message: 'Do not forget to star Mantine on GitHub! 🌟',
-              })
-        }).catch((err:any)=>{
-            notifications.show({
-                color: 'red',
-                title: 'Notification with custom styles',
-                message: 'It is red',
-              
-              })
-        })
-    }
+  
     useEffect(() => {
         getcategories().then((data) => {
             setcat(data.data?.map((item: { id: number, name: string }) => ({ label: item.name, value: item.id })))
@@ -87,28 +61,20 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
         })
     }, []);
 
-
-
-    const [min_order_count, wholesale_price,category_id] = watch(["min_order_count", "wholesale_price","category_id"])
-
-
     useEffect(() => {
-       if (category_id) {
-        getSubCategories(category_id).then((data)=>{
-            setSubCat(data.data?.map((item: { id: number, name: string }) => ({ label: item.name, value: item.id })))
-
+        getProductDetail(id||'').then((data)=>{
+            
         })
-       }
-    }, [category_id]);
+    }, [id]);
+
+    const [min_order_count, wholesale_price] = watch(["min_order_count", "wholesale_price"])
     return (
 
 
         <>
 
             {
-                formValue ? <main className=" lg:flex hidden   justify-center h-[100svh] w-full bg-no-repeat bg-center bg-contain" style={{ backgroundImage: "url('/Group.png')" }}>
-                    <LoginPage phone={formValue.tel} callBack={insertAdvert}/>
-                </main> : <main>
+                <main>
                     <LabelHeader title="Yeni elan" />
                     <section>
                         <div className="mx-auto container">
@@ -118,7 +84,7 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                     <div className="lg:w-9/12 w-full">
                                         <div className=" border-b-2 rounded-sm border-white">
                                             <InputField control={control} id="name" label="Adınız" name="name_surname" required />
-                                            <InputField control={control} id="email" label="E-mail" type="email" required name="email" />
+                                            <InputField control={control} id="email" label="E-mail" required name="email" />
                                             <InputField control={control} id="phone" label="Mobil nömrə" name="tel"
                                                 text="Bu nömrəyə SMS-kod göndəriləcək" required />
                                         </div>
@@ -126,14 +92,11 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                             <InputField control={control} id="Elan-adi" label="Elan adı" name="advert_title" required />
                                         </div>
                                         <div className=" flex gap-x-3 lg:mt-14 mt-4">
-                                            <CustomRadio value="0" control={control} id="isSeller" label="Alıcı" name="advert_type"  />
-                                            <CustomRadio value="1" control={control} id="isSeller" label="Satıcı " name="advert_type"  />
+                                            <CustomRadio value="0" control={control} id="isSeller" label="Alıcı" name="advert_type" />
+                                            <CustomRadio value="1" control={control} id="isSeller" label="Satıcı " name="advert_type" />
                                         </div>
                                         <div className="mt-7">
                                             <SelectField control={control} id="Kateqoriya" label="Kateqoriya" name="category_id" options={cat} required />
-                                          {
-                                            category_id&& <SelectField control={control} id="sub_cat" label="ALt Kateqoriya" name="sub__id" options={subCat} required />
-                                          } 
                                             <SelectField control={control} id="city" label="Şəhər" name="city_id" options={cities} required />
                                             <InputField control={control} id="Qiymət" label="Qiymət" name="retail_price" required={false} />
                                         </div>
@@ -191,13 +154,13 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                 </div>
                                 <div className=" mt-8 lg:px-0 px-5">
                                     <CheckboxField required={false} control={control} id="35sdfdfadsfa4l" reverse={false}
-                                        label={<span className=" font-light text-sm lg:ml-3">Siz Topdançı.az-ın <a href="" className=" underline" target="_blank">İstifadəçi razılaşması</a> ilə razı olduğunuzu təsdiq edirsiniz.</span>} />
+                                        label={<span className=" font-light text-sm">Siz Topdançı.az-ın <a href="" className=" underline" target="_blank">İstifadəçi razılaşması</a> ilə razı olduğunuzu təsdiq edirsiniz.</span>} />
                                 </div>
                                 <div className=" flex justify-center items-center mt-7 mb-7">
                                     <button className=" rounded-[10px] text-white bg-primaryColor flex justify-center items-center w-[170px] h-10 text-xl font-bold">Davam et</button>
                                 </div>
                             </form>
-                            <UsersRules />
+                   
 
 
                         </div>
@@ -209,4 +172,12 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
     );
 }
 
-export default NewProductPage;
+
+
+export default function Page() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <EditProductPage />
+    </Suspense>
+  );
+}

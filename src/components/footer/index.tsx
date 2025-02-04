@@ -1,5 +1,7 @@
+"use client"
 import { HeardIconSVG, HeardSVG, HomeIconSVG, MarketIcon, PlusIconSvg, UserIconSVG, UserSVG } from "@/svg/allSvgs";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FunctionComponent } from "react";
 
 interface FooterProps {
@@ -7,6 +9,9 @@ interface FooterProps {
 }
  
 const Footer: FunctionComponent<FooterProps> = () => {
+    const pathname = usePathname()
+    console.log({pathname});
+    
     return ( <footer className=" lg:bg-primaryColor lg:h-[240px] lg:py-8 mt-24 lg:mt-0">
         <div className="container mx-auto hidden lg:block">
             <div >
@@ -64,35 +69,36 @@ const Footer: FunctionComponent<FooterProps> = () => {
                 </ul>
             </div>
         </div>
+
         <div className="lg:hidden fixed bottom-0 z-30 h-20 bg-white w-full flex flex-col items-center justify-center">
                 <ul className="flex  px-5 justify-between items-center ">
                 <li className=" text-center">
-                            <Link href={''}>
-                                <button className=" flex justify-center items-center rounded-[20px] w-16 h-8 "><HomeIconSVG color="#404040"/></button>
+                            <Link href={'/'}>
+                                <button className={" flex justify-center items-center rounded-[20px] w-16 h-8 " +(pathname==="/" ?"bg-[#FFCC23]":"")}><HomeIconSVG  color={pathname==="/"? "white":"#404040"}/></button>
                               <span className=" font-medium text-[11px]">Home</span>
                             </Link>
                         </li>
                         <li className=" text-center">
-                            <Link href={''}>
-                                <button className=" bg-[#FFCC23]  flex justify-center items-center rounded-[20px] w-16 h-8 "><MarketIcon color="white" /></button>
+                            <Link href={'/whole-sales'}>
+                                <button className={" flex justify-center items-center rounded-[20px] w-16 h-8 " +(pathname==="/whole-sales" ?"bg-[#FFCC23]":"")}><MarketIcon color={pathname==="/whole-sales"? "white":"#404040"}/></button>
                               <span className=" font-medium text-[11px]">Topdançılar</span>
                             </Link>
                         </li>
                         <li className=" text-center">
-                            <Link href={''}>
-                                <button className="  flex justify-center items-center rounded-[20px] w-16 h-8 "><PlusIconSvg/></button>
+                            <Link href={'/new-product'}>
+                                <button className={" flex justify-center items-center rounded-[20px] w-16 h-8 " +(pathname==="/new-product" ?"bg-[#FFCC23]":"")}><PlusIconSvg color={pathname==="/new-product"? "white":"#404040"}/></button>
                               <span className=" font-medium text-[11px]">Yeni Elan</span>
                             </Link>
                         </li>
                         <li className=" text-center">
-                            <Link href={''}>
-                                <button className="  flex justify-center items-center rounded-[20px] w-16 h-8 "><HeardIconSVG/></button>
+                            <Link href={'/favorites'}>
+                                <button className={" flex justify-center items-center rounded-[20px] w-16 h-8 " +(pathname==="/favorites" ?"bg-[#FFCC23]":"")}><HeardIconSVG color={pathname==="/favorites"? "white":"#404040"}/></button>
                               <span className=" font-medium text-[11px]">Seçilənlər</span>
                             </Link>
                         </li>
                         <li className=" text-center">
-                            <Link href={''}>
-                                <button className="  flex justify-center items-center rounded-[20px] w-16 h-8 "><UserIconSVG/></button>
+                            <Link href={'/dashboard'}>
+                                <button className={" flex justify-center items-center rounded-[20px] w-16 h-8 " +(pathname.startsWith("/dashboard/") ?"bg-[#FFCC23]":"")}><UserIconSVG color={pathname.startsWith("/dashboard/")? "white":"#404040"}/></button>
                               <span className=" font-medium text-[11px]">Hesab</span>
                             </Link>
                         </li>
