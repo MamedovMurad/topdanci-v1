@@ -18,7 +18,11 @@ interface FileUploadProps {
 const FileUpload: FunctionComponent<FileUploadProps> = ({ label, id, name, required, control,callBack }) => {
   async function  handlechange (files:any){
    
-      api.postWithFormData('file-upload-temporary',files)
+      api.postWithFormData('file-upload-temporary',files).then((data:any)=>{
+        console.log(data.data?.path,'lllll');
+        
+        callBack((prevState:any) => ([...prevState,...data.data?.path]));
+      })
 
 
 
@@ -45,7 +49,7 @@ const FileUpload: FunctionComponent<FileUploadProps> = ({ label, id, name, requi
               onChange={(e) => {field.onChange(e.target.files); handlechange(e.target.files)}} // Set files in RHF
             />
             <label htmlFor={id} className=" w-full flex justify-center items-center gap-x-2  lg:h-[50px] h-[30px] lg:text-lg text-sm font-medium cursor-pointer">
-              {(field.value?.length)?(field.value?.length)+ " Fayl seçilib": (<><PhotoIconSVG/> Şəkil əlavə et</>)}
+              {(<><PhotoIconSVG/> Şəkil əlavə et</>)}
             </label>
           </div>
         )}

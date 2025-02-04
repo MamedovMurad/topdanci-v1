@@ -85,9 +85,9 @@ const pathname = usePathname()
                     <Link href={'/'}> <LogoSVG width="117" height="20" /></Link>
                 </div>
                 <div>
-                    <button className=" h-10 w-[90px] bg-primaryColor rounded-[10px] flex justify-center items-center">
+                    <Link href={'/new-product'} className=" h-10 w-[90px] bg-primaryColor rounded-[10px] flex justify-center items-center">
                         <PlusSVG />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </header>);

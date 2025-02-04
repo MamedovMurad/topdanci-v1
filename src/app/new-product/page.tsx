@@ -15,6 +15,7 @@ import { api } from "@/helper/api";
 import LoginPage from "../login/_components/login";
 import { notifications } from "@mantine/notifications";
 import '@mantine/notifications/styles.css';
+import Images from "./_components/images";
 interface NewProductPageProps {
 
 }
@@ -26,6 +27,9 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
     const [units, setunits] = useState([]);
     const [files, setFiles] = useState([]);
     const [formValue, setformValue] = useState<null | any>(null);
+
+    console.log(files,'fiels');
+    
     const { control, watch, handleSubmit } = useForm({
         defaultValues: {
             min_order_count: null,
@@ -61,7 +65,7 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
 
     function insertAdvert(){
         
-        api.post('new-advert',formValue).then((data)=>{
+        api.post('new-advert',{...formValue, images:files}).then((data)=>{
             notifications.show({
                 title: 'Default notification',
                 message: 'Do not forget to star Mantine on GitHub! 🌟',
@@ -100,9 +104,15 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
         })
        }
     }, [category_id]);
+
+    function removeImage(id:string){
+        const newFiels = files.filter((item)=>item!==id)
+        setFiles(newFiels);
+    }
     return (
 
 
+   
         <>
 
             {
@@ -187,6 +197,11 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                                 name="dfasdfas"
                                                 label="Şəkil" callBack={setFiles} required />
                                         </div>
+                                     {
+                                        files&&   <div className=" mt-2">
+                                        <Images removeItem={removeImage} images={files}  />
+                                    </div>
+                                     }
                                     </div>
                                 </div>
                                 <div className=" mt-8 lg:px-0 px-5">

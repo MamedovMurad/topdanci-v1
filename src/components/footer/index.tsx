@@ -71,7 +71,7 @@ const Footer: FunctionComponent<FooterProps> = () => {
         </div>
 
         <div className="lg:hidden fixed bottom-0 z-30 h-20 bg-white w-full flex flex-col items-center justify-center">
-                <ul className="flex  px-5 justify-between items-center ">
+                <ul className="flex   w-full justify-between items-center ">
                 <li className=" text-center">
                             <Link href={'/'}>
                                 <button className={" flex justify-center items-center rounded-[20px] w-16 h-8 " +(pathname==="/" ?"bg-[#FFCC23]":"")}><HomeIconSVG  color={pathname==="/"? "white":"#404040"}/></button>
