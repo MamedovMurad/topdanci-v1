@@ -7,6 +7,8 @@ import PaginationUI from "@/components/ui/pagination";
 import { api } from "@/helper/api";
 import { notifications } from "@mantine/notifications";
 import '@mantine/notifications/styles.css';
+import DeleteModal from "@/components/modal/deleteModal";
+import ModalMantine from "@/components/modal";
 interface ExpiredListPageProps {
     
 }
@@ -14,6 +16,7 @@ interface ExpiredListPageProps {
 const ExpiredListPage: FunctionComponent<ExpiredListPageProps> = () => {
     const [products, setproducts] = useState([]);
     const [pageCount, setpageCount] = useState(0);
+    const [open, setopen] = useState(false);
     useEffect(() => {
       getUserExpiredProducts().then((data)=>{
         setproducts(data.data.data)
@@ -27,13 +30,25 @@ api.post('restore-advert/'+id,'').then((data)=>{
     setproducts(data.data.data)
     setpageCount(data?.data?.pagination?.total / 12)
 
-           notifications.show({
-                          title: 'Default notification',
-                          message: 'Məhsulunuz bərpa edildi',
-                        })
+   setopen(true)
   })
 })
 }
+
+
+useEffect(() => {
+  let timeout:any;
+  if (open) {
+    timeout = setTimeout(() => {
+      setopen(false);
+    }, 3000);
+  }
+
+  // Cleanup function
+  return () => clearTimeout(timeout);
+}, [open]);
+
+
     return ( 
     <div className=" px-5 lg:px-0">
    {
@@ -45,6 +60,7 @@ api.post('restore-advert/'+id,'').then((data)=>{
               pageCount={pageCount}
               isAuth
             />
+           <ModalMantine isOpen={open} closeModal={()=>setopen(false)} modalBody={ <DeleteModal title="Bərpa edildi" text="Məhsulunuz bərpa edildi" closeModal={()=>setopen(false)}/>}/>
           </div>
     </>:
     <Empty text="Hazırda expired elanınız yoxdur"  />
