@@ -1,6 +1,6 @@
 "use client"
 
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, Suspense, useEffect, useState } from "react";
 
 import Empty from "./_components/empty";
 import { getUserActiveProducts } from "@/helper/api/products";
@@ -11,6 +11,7 @@ import { notifications } from "@mantine/notifications";
 import '@mantine/notifications/styles.css';
 import ModalMantine from "@/components/modal";
 import DeleteModal from "@/components/modal/deleteModal";
+import { useSearchParams } from "next/navigation";
 
 
 interface MyProductsProps {
@@ -18,16 +19,18 @@ interface MyProductsProps {
 }
 
 const MyProducts: FunctionComponent<MyProductsProps> = () => {
+    const searchParams = useSearchParams();
   const [products, setproducts] = useState([]);
   const [pageCount, setpageCount] = useState(0);
   const [isOpen, setisOpen] = useState<boolean|number>(false);
+  const page = searchParams.get("page");
   useEffect(() => {
-    getUserActiveProducts().then((data) => {
+    getUserActiveProducts(page||"").then((data) => {
       setproducts(data.data.data)
       setpageCount(data?.data?.pagination?.total / 12)
 
     })
-  }, [pageCount,]);
+  }, [page]);
 
   function deleteProduct(id:number){
     api.delete('delete-advert/'+id).then((data)=>{
@@ -66,4 +69,10 @@ const MyProducts: FunctionComponent<MyProductsProps> = () => {
     </div>);
 }
 
-export default MyProducts;
+export default function Page() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <MyProducts />
+    </Suspense>
+  );
+}

@@ -5,11 +5,12 @@ interface CustomRadioProps {
   control: any;
   id: string;
   name: string;
-  value: string;
+  value: string|number;
   required?: boolean;
+  checked?:boolean
 }
 
-const CustomRadio = ({ label, control, id, name, value, required }: CustomRadioProps) => {
+const CustomRadio = ({ label, control, id, name, value, required,checked=false }: CustomRadioProps) => {
   return (
     <Controller
       name={name}
@@ -21,6 +22,7 @@ const CustomRadio = ({ label, control, id, name, value, required }: CustomRadioP
         <div className="flex flex-col">
           <label className="flex items-center cursor-pointer flex-row-reverse">
             <input
+            
               type="radio"
               className="hidden peer"
               id={id}

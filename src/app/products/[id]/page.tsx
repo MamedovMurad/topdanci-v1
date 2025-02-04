@@ -69,9 +69,9 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ pa
                                     </div>
                                 </div>
                                 <div>
-                                    <p className=" text-sm font-normal text-[#808080]">Elanın nömrəsi:35537250 </p>
+                                    <p className=" text-sm font-normal text-[#808080]">Elanın nömrəsi:{data.id} </p>
                                     <p className=" text-sm font-normal text-[#808080] mt-2">Baxışların sayı: {data.views_count}   </p>
-                                    <p className=" text-sm font-normal text-[#808080] mt-2">Yeniləndi: Bugün, 09:55 </p>
+                                    <p className=" text-sm font-normal text-[#808080] mt-2">{data.date} </p>
                                 </div>
                             </div>
                             {/* buttons */}
@@ -116,9 +116,9 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ pa
                                     </div>
                                 </div>
                                 <div>
-                                    <p className=" text-sm font-normal text-[#808080]">Elanın nömrəsi:35537250 </p>
+                                    <p className=" text-sm font-normal text-[#808080]">Elanın nömrəsi:{data.id} </p>
                                     <p className=" text-sm font-normal text-[#808080] mt-2">Baxışların sayı: {data.views_count}   </p>
-                                    <p className=" text-sm font-normal text-[#808080] mt-2">Yeniləndi: Bugün, 09:55 </p>
+                                    <p className=" text-sm font-normal text-[#808080] mt-2">{data.date} </p>
                                 </div>
                             </div>
                         </div>

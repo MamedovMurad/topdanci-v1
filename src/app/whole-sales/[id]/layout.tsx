@@ -1,4 +1,4 @@
-import { EmptySVG, LocationSvg, PhoneSVG } from "@/svg/allSvgs";
+import { EmptySVG, LocationSvg, PhoneSVG, TickIcon } from "@/svg/allSvgs";
 import Image from "next/image";
 import NavLinkProduct from "./_components/navlink";
 import { FunctionComponent, ReactNode } from "react";
@@ -66,10 +66,10 @@ const {data}= await getWholeSalerDetail(52);
                                     </div>
                                     <div className="flex justify-between items-center mt-3">
                                         <div className="w-full flex gap-x-4 items-center">
-                                            <span>Bəli</span> <EmptySVG />
+                                            <span>Bəli</span> {data.retail_sales===1?<TickIcon/>:<EmptySVG />}
                                         </div>
                                         <div className="w-full flex gap-x-4 items-center">
-                                            <span>Xeyr</span> <EmptySVG />
+                                            <span>Xeyr</span> {data.retail_sales===0?<TickIcon/>:<EmptySVG />}
                                         </div>
                                     </div>
                                     <div className="mt-10">

@@ -49,7 +49,9 @@ const CheckboxField = ({
           </div>
           <span className="mr-2 text-gray-700 font-medium text-xl">
             {label}
-            <sup className="text-primaryColor">*</sup>
+          {
+            required&&  <sup className="text-primaryColor">*</sup>
+          }
           </span>
         </label>
     );

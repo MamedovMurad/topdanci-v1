@@ -2,15 +2,18 @@
 "use client"
 import ProductsContainer from "@/containers/product";
 import { getUserRejectedProducts } from "@/helper/api/products";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, Suspense, useEffect, useState } from "react";
 import Empty from "../_components/empty";
 import PaginationUI from "@/components/ui/pagination";
+import { useSearchParams } from "next/navigation";
 
 interface UnpublishedOnesPageProps {
     
 }
  
 const UnpublishedOnesPage: FunctionComponent<UnpublishedOnesPageProps> = () => {
+        const searchParams = useSearchParams();
+        const page = searchParams.get("page");
     const [products, setproducts] = useState([]);
     const [pageCount, setpageCount] = useState(0);
     useEffect(() => {
@@ -19,7 +22,7 @@ const UnpublishedOnesPage: FunctionComponent<UnpublishedOnesPageProps> = () => {
         setpageCount(data?.data?.pagination?.total / 12)
         
       })
-    }, []);
+    }, [page]);
     return ( <div className=" px-5 lg:px-0">
    {
     products?.length>0?  <>
@@ -36,4 +39,10 @@ const UnpublishedOnesPage: FunctionComponent<UnpublishedOnesPageProps> = () => {
     </div> );
 }
  
-export default UnpublishedOnesPage;
+export default function Page() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <UnpublishedOnesPage />
+    </Suspense>
+  );
+}

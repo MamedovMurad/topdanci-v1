@@ -9,20 +9,28 @@ const getProductDetail=(id:string)=>{
     return api.get(`advert/${id}`)
 }
 
+const getProductWholeSales=(wholesaler_id="",page="")=>{
+    return api.get(`adverts?page=${page}&wholesaler_id=${wholesaler_id}`)
 
-const getUserActiveProducts = ()=>{
-    return api.get(`user/active-adverts`)
 }
-const getUserPendingProducts = ()=>{
-    return api.get(`user/pending-adverts`)
+const getUserActiveProducts = (page="")=>{
+    return api.get(`user/active-adverts?page=`+page)
 }
-const getUserExpiredProducts = ()=>{
-    return api.get(`user/expired-adverts`)
+const getUserPendingProducts = (page="")=>{
+    return api.get(`user/pending-advert?page${page}`)
 }
-const getUserRejectedProducts = ()=>{
-    return api.get(`user/rejected-adverts`)
+const getUserExpiredProducts = (page="")=>{
+    return api.get(`user/expired-adverts?page${page}`)
+}
+const getUserRejectedProducts = (page="")=>{
+    return api.get(`user/rejected-adverts?page${page}`)
+}
+const getEditProduct=(id:string)=>{
+    return api.get(`edit-advert/${id}`)
 }
 export {
+    getProductWholeSales,
+    getEditProduct,
     getProducts,
     getProductDetail,
     getUserActiveProducts,

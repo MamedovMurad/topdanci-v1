@@ -1,7 +1,7 @@
 "use client"
 import ProductsContainer from "@/containers/product";
 import { getUserExpiredProducts } from "@/helper/api/products";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, Suspense, useEffect, useState } from "react";
 import Empty from "../_components/empty";
 import PaginationUI from "@/components/ui/pagination";
 import { api } from "@/helper/api";
@@ -9,20 +9,23 @@ import { notifications } from "@mantine/notifications";
 import '@mantine/notifications/styles.css';
 import DeleteModal from "@/components/modal/deleteModal";
 import ModalMantine from "@/components/modal";
+import { useSearchParams } from "next/navigation";
 interface ExpiredListPageProps {
     
 }
  
 const ExpiredListPage: FunctionComponent<ExpiredListPageProps> = () => {
+    const searchParams = useSearchParams();
     const [products, setproducts] = useState([]);
     const [pageCount, setpageCount] = useState(0);
+    const page = searchParams.get("page");
     const [open, setopen] = useState(false);
     useEffect(() => {
-      getUserExpiredProducts().then((data)=>{
+      getUserExpiredProducts(page||"").then((data)=>{
         setproducts(data.data.data)
         setpageCount(data?.data?.pagination?.total / 12)
       })
-    }, [pageCount]);
+    }, [page]);
 
 function restoreProduct(id:number){
 api.post('restore-advert/'+id,'').then((data)=>{
@@ -68,4 +71,10 @@ useEffect(() => {
     </div> );
 }
  
-export default ExpiredListPage;
+export default function Page() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <ExpiredListPage />
+    </Suspense>
+  );
+}

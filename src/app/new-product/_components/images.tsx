@@ -8,7 +8,7 @@ interface ImagesProps {
 }
  
 const Images: FunctionComponent<ImagesProps> = ({images,removeItem}) => {
-    return ( <div className="flex items-center gap-x-2 justify-center">
+    return ( <div className="flex flex-wrap items-center gap-2 justify-center">
         {
             images.map((item)=>(
                 <div className=" relative">
