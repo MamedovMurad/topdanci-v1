@@ -12,7 +12,7 @@ interface LayoutWholeSalesProps {
 const LayoutWholeSales: FunctionComponent<LayoutWholeSalesProps> = async ({ params, children }) => {
     // Await the params if required
     const { id } = await params;  // Assuming params.id is the dynamic part of your URL
-const {data}= await getWholeSalerDetail(52);
+const {data}= await getWholeSalerDetail(id);
 
 
 
