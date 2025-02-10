@@ -52,11 +52,11 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({phone,callBack}) => {
         }
       };
 
-    return ( <form action="" onSubmit={handleSubmit}  className=" mt-20 py-11 px-[92px] bg-white bg-opacity-50 w-[550px] h-[510px] bg-[rgba(242, 242, 242, 0.8)]  border-[2px] border-white rounded-[20px]" style={{
+    return ( <form action="" onSubmit={handleSubmit}  className=" mt-20 lg:py-11 lg:px-[92px] lg:bg-white bg-opacity-50 lg:w-[550px] lg:h-[510px] bg-[rgba(242, 242, 242, 0.8)]  lg:border-[2px] border-white rounded-[20px]" style={{
         backdropFilter: "blur(17px)"
     }}>
-         <h1 className=" text-3xl font-bold">Nömrənin təsdiqlənməsi</h1>
-         <p className=" mt-5 text-[#111]">(0xx) xxx-xx-xx nömrəsinə SMS-kod göndərildi</p>
+         <h1 className=" lg:text-3xl text-2xl font-bold">Nömrənin təsdiqlənməsi</h1>
+         <p className=" mt-5 text-[#111] lg:text-base text-sm">(0xx) xxx-xx-xx nömrəsinə SMS-kod göndərildi</p>
 
          <div className=" relative">
                 <input value={otp} onChange={handleChange} type="number" name="otp_code" 

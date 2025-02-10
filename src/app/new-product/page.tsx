@@ -24,18 +24,22 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
     const [cat, setcat] = useState([]);
     const [subCat, setSubCat] = useState([]);
     const [cities, setcities] = useState([]);
+    const [telIsDisable, setTelIsDisable] = useState(false);
     const [units, setunits] = useState([]);
     const [files, setFiles] = useState([]);
     const [formValue, setformValue] = useState<null | any>(null);
+    
 
     console.log(files,'fiels');
     
-    const { control, watch, handleSubmit } = useForm({
+    const { control, watch, handleSubmit ,reset} = useForm({
         defaultValues: {
             min_order_count: null,
             wholesale_price: null,
             category_id:null,
             tel: null,
+            email:null,
+            name_surname:null,
             images: [
                 "https://api.artelie.az/storage/images/adverts/1680766402-20be2f43-189c-4cfc-b14e-1ab83ed7c971.jpg"
             ]
@@ -45,26 +49,43 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
 
 
     function onSubmit(a: any) {
+   
+            api.post('otp', { tel: a?.tel }).then((data) => {
+                if (data.msg) {
+                    
+                    setformValue(a)
+                }else{
+                    return    notifications.show({
+                        color: 'red',
+                        title: 'Notification with custom styles',
+                        message: 'It is red',
+                      
+                      })
+                }
+            })
+        
+     
+        // api.post('advert-store',a)
 
-        api.post('otp', { tel: a?.tel }).then((data) => {
-            if (data.msg) {
-                
-                setformValue(a)
-            }else{
-                return    notifications.show({
+    }
+
+    function insertAdvert(datas?:any){
+        if (datas) {
+            api.post('new-advert',{...datas, images:files}).then((data)=>{
+                notifications.show({
+                    title: 'Default notification',
+                    message: 'Do not forget to star Mantine on GitHub! 🌟',
+                  })
+            }).catch((err:any)=>{
+                notifications.show({
                     color: 'red',
                     title: 'Notification with custom styles',
                     message: 'It is red',
                   
                   })
-            }
-        })
-        // api.post('advert-store',a)
-
-    }
-
-    function insertAdvert(){
-        
+            })
+            return 
+        }
         api.post('new-advert',{...formValue, images:files}).then((data)=>{
             notifications.show({
                 title: 'Default notification',
@@ -78,6 +99,7 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
               
               })
         })
+    
     }
     useEffect(() => {
         getcategories().then((data) => {
@@ -89,6 +111,17 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
         getUnits().then((data) => {
             setunits(data.data?.map((item: { id: number, name: string }) => ({ label: item.name, value: item.id })))
         })
+      
+        if (localStorage.getItem('user')) {
+            const current_user =JSON.parse(localStorage.getItem('user')||'')
+          
+            
+            reset({...current_user,name_surname:current_user.name})
+            setTelIsDisable(true)
+        }
+           
+
+        
     }, []);
 
 
@@ -123,13 +156,14 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                     <section>
                         <div className="mx-auto container">
 
-                            <form action="" onSubmit={handleSubmit(onSubmit)} >
+                            <form action="" onSubmit={handleSubmit(telIsDisable?insertAdvert: onSubmit)} >
                                 <div className="  bg-[#E8E9F2] rounded-[20px] lg:py-14 lg:px-32 px-5 py-5">
                                     <div className="lg:w-9/12 w-full">
                                         <div className=" border-b-2 rounded-sm border-white">
                                             <InputField control={control} id="name" label="Adınız" name="name_surname" required />
                                             <InputField control={control} id="email" label="E-mail" type="email" required name="email" />
                                             <InputField control={control} id="phone" label="Mobil nömrə" name="tel"
+                                            isDisabled={telIsDisable}
                                                 text="Bu nömrəyə SMS-kod göndəriləcək" required />
                                         </div>
                                         <div className="  lg:mt-14 mt-4">
@@ -175,7 +209,7 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                         <div className=" flex  justify-between lg:mt-7 mt-4 ">
 
                                             <div className=" mb-7 flex items-center w-full justify-between">
-                                                <div> <span className="mr-2 text-gray-700 font-medium lg:ext-xl text-sm">
+                                                <div> <span className="mr-2 text-gray-700 font-medium lg:text-xl text-sm">
                                                     Pərakəndə satış mümkündür
                                                     <sup className=" text-primaryColor">*</sup></span>
                                                 </div>
@@ -192,16 +226,18 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                             <CustomTextArea control={control} id="detail" name={'detail'}  label="Məzmun" />
                                         </div>
 
-                                        <div className=" flex  justify-between lg:mt-7 mt-4 ">
+                                        <div className="    lg:mt-7 mt-4 ">
                                             <FileUpload control={control} id="fdsafsdfdsfdss"
                                                 name="dfasdfas"
                                                 label="Şəkil" callBack={setFiles} required />
-                                        </div>
-                                     {
+
+{
                                         files&&   <div className=" mt-2">
                                         <Images removeItem={removeImage} images={files}  />
                                     </div>
                                      }
+                                        </div>
+                                
                                     </div>
                                 </div>
                                 <div className=" mt-8 lg:px-0 px-5">

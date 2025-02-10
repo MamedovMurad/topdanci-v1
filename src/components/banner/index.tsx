@@ -36,7 +36,8 @@ const Banner: FunctionComponent<BannerProps> = ({ isOpen = true,defval,searchVal
     
     return (
     <>
-     <div onClick={handleBanner} className={" hidden lg:block cursor-pointer  bg-no-repeat bg-center bg-cover rounded-[20px] "+ (isActive?"h-[487px]":"h-20")} style={{ backgroundImage: "url('banner.png')" }}>
+     <div onClick={handleBanner} className={" hidden lg:block  cursor-pointer  bg-no-repeat bg-center bg-cover rounded-[20px] "+ (isActive?"h-[487px]":"h-20")} 
+     style={{ backgroundImage: "url('/banner.png')" }}>
         <div  className={" flex flex-col items-center  w-[740px] mx-auto "+(isActive?"pt-20":"py-4")}>
             <Search defValue={defval} searchVal={searchVal} category={category} />
             {

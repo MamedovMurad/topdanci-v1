@@ -17,9 +17,14 @@ export default ({data}: any) => {
       {
         data?.map((item: any) => (
           <SwiperSlide key={item.id}>
-            <Link href={'/products?category='+item.id}  dangerouslySetInnerHTML={{__html:item?.icon}} className='  w-[55px] h-[55px] bg-[#E8E9F2] rounded-lg flex justify-center items-center'>
+           <div>
+           <Link href={'/products?category='+item.id}  dangerouslySetInnerHTML={{__html:item?.icon}} className='  w-[55px] h-[55px] bg-[#E8E9F2] rounded-lg flex justify-center items-center'>
              
-            </Link>
+             </Link>
+             <Link href={'/products?category='+item.id} className=' text-center text-sm flex justify-center font-semibold w-[55px] mt-1'>
+             {item.name}
+             </Link>
+           </div>
           </SwiperSlide>
 
         ))

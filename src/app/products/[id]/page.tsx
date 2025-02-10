@@ -1,4 +1,5 @@
 
+import Banner from "@/components/banner";
 import MobileSingleSlider from "@/components/ui/mobileSingleSlider";
 import ImageCarousel from "@/components/ui/productDetailCarousel";
 import ProductsContainer from "@/containers/product";
@@ -26,7 +27,8 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ pa
     return (
         <main className=" lg:pt-9">
             <section>
-                <div className="container mx-auto">
+                <Banner isOpen={false}/>
+                <div className="container mx-auto mt-2">
                     <div className="lg:flex gap-x-5 items-center justify-between h-max">
                         <div className=" w-7/12 h-max hidden lg:block">
                             <ImageCarousel images={data.images} /></div>

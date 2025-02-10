@@ -17,7 +17,7 @@ const getUserActiveProducts = (page="")=>{
     return api.get(`user/active-adverts?page=`+page)
 }
 const getUserPendingProducts = (page="")=>{
-    return api.get(`user/pending-advert?page${page}`)
+    return api.get(`user/pending-adverts?page${page}`)
 }
 const getUserExpiredProducts = (page="")=>{
     return api.get(`user/expired-adverts?page${page}`)
