@@ -311,7 +311,16 @@ const TickIcon = ()=>(
 
 
 )
+
+const BurgerExitIcon = ()=>(
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="5.86816" y="19.5103" width="20" height="3" rx="1.5" transform="rotate(-45 5.86816 19.5103)" fill="#E51C23"/>
+<rect x="7.98962" y="5.36816" width="20" height="3" rx="1.5" transform="rotate(45 7.98962 5.36816)" fill="#E51C23"/>
+</svg>
+
+)
 export {
+    BurgerExitIcon,
     TickIcon,
     DropdownSVGIcon,
     KatalogSVG,

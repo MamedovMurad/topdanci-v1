@@ -8,6 +8,8 @@ interface TopdancilarProps {
 
 }
 
+
+
 const Topdancilar: FunctionComponent<TopdancilarProps> = () => {
     const [wholeSalers, setwholeSalers] = useState([]);
     useEffect(() => {

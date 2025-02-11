@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FunctionComponent, useEffect, useState } from "react";
 import Dropdown from "../ui/dropDown";
 import { usePathname } from "next/navigation";
+import BurgerUI from "../burger";
 
 interface HeaderProps {
 
@@ -78,9 +79,8 @@ const pathname = usePathname()
             </div>
 
             <div className="flex lg:hidden px-5 justify-between items-center pt-3">
-                <div>
-                    <Burger />
-                </div>
+                <BurgerUI/>
+            
                 <div>
                     <Link href={'/'}> <LogoSVG width="117" height="20" /></Link>
                 </div>
