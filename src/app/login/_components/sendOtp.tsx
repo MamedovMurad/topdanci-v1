@@ -41,9 +41,11 @@ const SendOtp: FunctionComponent<SendOtpProps> = ({callBack}) => {
           setphone(e.target.value);
         }
       };
-    return (<form action="" onSubmit={handlePost} className=" mt-20 lg:py-11 lg:px-[92px] lg:w-[550px] lg:h-[510px] bg-[rgba(242, 242, 242, 0.8)]  lg:border-[2px] border-white rounded-[20px]" style={{
+    return (<form action="" onSubmit={handlePost} className=" mt-20 lg:py-11 lg:px-[92px] lg:w-[550px] lg:h-[510px] lg:bg-[#f2f2f2a0]   lg:border-[2px] border-white rounded-[20px]" style={{
         backdropFilter: "blur(9px)"
     }}>
+        <div className=" h-full w-full flex flex-col justify-center">
+
         <h1 className=" lg:text-3xl text-2xl font-bold">Kabinetə Giriş</h1>
         <div>
             <div className=" relative">
@@ -66,6 +68,9 @@ const SendOtp: FunctionComponent<SendOtpProps> = ({callBack}) => {
                 <button className=" outline-none border-none text-base">Parolu unutmusunuz?</button>
             </div> */}
         </div>
+
+        </div>
+    
     </form>);
 }
 
