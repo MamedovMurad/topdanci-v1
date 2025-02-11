@@ -5,6 +5,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import Dropdown from "../ui/dropDown";
 import { usePathname } from "next/navigation";
 import BurgerUI from "../burger";
+import DropdownHeader from "../ui/headerDropDown";
 
 interface HeaderProps {
 
@@ -65,10 +66,18 @@ const pathname = usePathname()
                                     }
                                     : { label: 'AZ', value: 'az' }
                             } />
-                        <div>
+                    <div>
+                    {
+                                   (typeof window!=="undefined"&&localStorage.getItem('user'))? 
+                                   <DropdownHeader onSelect={()=>''} defValue={userName}/> :      <div>
                             <Link href={'/dashboard'} className=" flex gap-x-2 items-center cursor-pointer"> <UserSVG />
                                 <span className=" text-primaryColor  text-sm font-medium">{userName}</span></Link>
                         </div>
+                            }
+                    </div>
+                  
+
+
                         <Link href={'/new-product'} className=" h-[50px] bg-[#FDBB11] text-white flex gap-x-1 items-center justify-center rounded-[14px] w-[170px]">
                             <PlusSVG />
                             <span>YENİ ELAN</span>

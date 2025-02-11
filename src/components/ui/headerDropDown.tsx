@@ -1,19 +1,19 @@
 "use client"
-import { DownArrowSVG } from "@/svg/allSvgs";
+import { DownArrowSVG, UserSVG } from "@/svg/allSvgs";
+import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 
 interface DropdownProps {
-  options: {label:string,value:string}[];
+
   onSelect: ({label,value}:{label:string,value:string}) => void;
-  defValue?:{label:string,value:string};
+  defValue?:string;
   className?:string;
   Icon?:any;
   color?:string
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onSelect,defValue,Icon=DownArrowSVG,className,color="text-gray-700 hover:bg-blue-100 hover:text-blue-700" }) => {
+const DropdownHeader: React.FC<DropdownProps> = ({  onSelect,defValue,Icon=DownArrowSVG,className,color="text-gray-700 hover:bg-blue-100 hover:text-blue-700" }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(defValue?.label||"");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Dışarıya tıklama ile dropdown'ı kapatma işlevi
@@ -31,7 +31,6 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect,defValue,Icon=Dow
   }, []);
 
   const handleSelect = (option: {label:string,value:string}) => {
-    setSelectedOption(option.label);
     onSelect(option);
     setIsOpen(false);
   };
@@ -44,27 +43,27 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect,defValue,Icon=Dow
         className={"w-max flex items-center gap-x-1 h-full text-sm font-medium rounded-md focus:outline-none "+
           (className||"px-4 py-2 ")}
       >
-        <span>{selectedOption || "Şəhər"}</span>
+        <div>
+                            <Link href={'#'} className=" flex gap-x-2 items-center cursor-pointer"> <UserSVG />
+                                <span className=" text-primaryColor  text-sm font-medium">{defValue}</span></Link>
+                        </div>
         <span>
-         <Icon/>
+   
         </span>
       </button>
 
       {isOpen && (
-        <ul className="absolute left-0 w-48 mt-2 z-20 bg-white border rounded-md shadow-lg max-h-72  overflow-y-scroll">
-          {options.map((option, index) => (
-            <li
-              key={index}
-              onClick={() => handleSelect(option)}
-              className={"px-4 py-2 text-sm  cursor-pointer " +(color)}
-            >
-              {option.label}
-            </li>
-          ))}
-        </ul>
+        <div className=" absolute top-10 bg-primaryColor px-6 py-3  rounded-b-[20px]">
+          <ul className="w-[154px]">
+            <li className=" text-white font-medium text-base py-2"> <Link href={'/dashboard'}>Şəxsi hesab</Link></li>
+            <li className=" text-white font-medium text-base py-2"> <Link href={'/dashboard'}>Şəxsi hesabı artır</Link></li>
+            <li className=" text-white font-medium text-base py-2"> <Link href={'/dashboard'}>Seçilmişlər</Link></li>
+            <li className=" text-white font-medium text-base py-2"> <Link href={'/dashboard'}>Çıxış</Link></li>
+          </ul>
+        </div>
       )}
     </div>
   );
 };
 
-export default Dropdown;
+export default DropdownHeader;
