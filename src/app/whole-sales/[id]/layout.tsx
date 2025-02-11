@@ -8,11 +8,11 @@ import { Metadata } from "next";
 
 interface LayoutWholeSalesProps {
   children: ReactNode;
-  params: { id: string };  // Typed params for better clarity
+  params: { id?: any };  // Correct type definition for params
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const response = await getWholeSalerDetail(params.id);
+export async function generateMetadata({ params }:any) {
+  const response = await getWholeSalerDetail(params.id); // fetch data using params.id directly
   const data = response.data;
 
   return {
@@ -21,12 +21,13 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-const LayoutWholeSales = async ({ params, children }: LayoutWholeSalesProps) => {
-  const response = await getWholeSalerDetail(params.id);
+const LayoutWholeSales = async ({ params, children }: any) => {
+  // You can directly access params.id without awaiting
+  const response = await getWholeSalerDetail(params.id||-1); 
   const data = response.data;
 
   if (!data) {
-    return <div>No data found</div>;  // Better fallback for missing data
+    return <div>No data found</div>;  // Fallback if no data
   }
 
   return (
