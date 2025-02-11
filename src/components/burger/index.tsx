@@ -1,13 +1,23 @@
 "use client"
 import { Burger, BurgerExitIcon, CancelIcon } from "@/svg/allSvgs";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface IBurgerUIProps {
 }
 
 const BurgerUI: React.FunctionComponent<IBurgerUIProps> = (props) => {
+      const pathname = usePathname();
 const [isopen, setisopen] = useState(false)
+
+useEffect(() => {
+  setisopen(false)
+
+
+}, [pathname])
+
+
     return (
         <div >
             <div className=" cursor-pointer " onClick={()=>setisopen(!isopen)}>
