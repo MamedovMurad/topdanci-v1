@@ -3,6 +3,7 @@ import Image from "next/image";
 import NavLinkProduct from "./_components/navlink";
 import { FunctionComponent, ReactNode } from "react";
 import { getWholeSalerDetail } from "@/helper/api/wholeSalers";
+import { formatPhoneNumber } from "@/hooks/phoneFormatter";
 
 interface LayoutWholeSalesProps {
     children: ReactNode;
@@ -14,6 +15,7 @@ const LayoutWholeSales: FunctionComponent<LayoutWholeSalesProps> = async ({ para
     const { id } = await params;  // Assuming params.id is the dynamic part of your URL
 const {data}= await getWholeSalerDetail(id);
 
+console.log(data);
 
 
 
@@ -38,7 +40,7 @@ const {data}= await getWholeSalerDetail(id);
                             <div className="lg:hidden flex  flex-col  ">
                                         <div className="flex items-center gap-x-3">
                                             <PhoneSVG color="#E51C23" />
-                                            <span className=" text-[10px]">{data.tel}</span>
+                                            <span className=" text-[10px]">{formatPhoneNumber(data.tel)}</span>
                                         </div>
                                         <div className="flex items-center gap-x-3 mt-4">
                                             <LocationSvg color="#E51C23" />
@@ -75,11 +77,11 @@ const {data}= await getWholeSalerDetail(id);
                                     <div className="mt-10">
                                         <div className="flex items-center gap-x-3">
                                             <PhoneSVG color="#E51C23" />
-                                            <span>055 973 63 13</span>
+                                            <span>{formatPhoneNumber(data.tel)}</span>
                                         </div>
                                         <div className="flex items-center gap-x-3 mt-4">
                                             <LocationSvg color="#E51C23" />
-                                            <span>Bakı şəh.Mikayıl Rəfili 39</span>
+                                            <span>{data.address}</span>
                                         </div>
                                     </div>
                                 </div>
