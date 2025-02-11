@@ -4,27 +4,41 @@ import NavLinkProduct from "./_components/navlink";
 import { FunctionComponent, ReactNode } from "react";
 import { getWholeSalerDetail } from "@/helper/api/wholeSalers";
 import { formatPhoneNumber } from "@/hooks/phoneFormatter";
+import { Metadata } from "next";
 
 interface LayoutWholeSalesProps {
     children: ReactNode;
     params: any;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+    const { id } = await params;  // Assuming params.id is the dynamic part of your URL
+    const response= await getWholeSalerDetail(id);
+    const data =  response
+  
+    return {
+      title: data.meta.meta_title,
+      description: data.meta.meta_description,
+    };
+  }
 const LayoutWholeSales: FunctionComponent<LayoutWholeSalesProps> = async ({ params, children }) => {
+
+
     // Await the params if required
     const { id } = await params;  // Assuming params.id is the dynamic part of your URL
-const {data}= await getWholeSalerDetail(id);
-
-console.log(data);
+const response= await getWholeSalerDetail(id);
+const data = response.data
+console.log(response);
 
 
 
     if (!data) {
         return null
     }
-    
+ 
     return (
         <main>
+
             <section
                 className="lg:h-[500px] h-[173px] bg-center bg-no-repeat bg-cover"
                 style={{ backgroundImage: `url(${data.cover_photo})` }}

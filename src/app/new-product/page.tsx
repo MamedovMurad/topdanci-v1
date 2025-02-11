@@ -95,6 +95,8 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                 title: 'Default notification',
                 message: 'Do not forget to star Mantine on GitHub! 🌟',
               })
+
+              router.push('/dashboard/my-products/pendings')
         }).catch((err:any)=>{
             notifications.show({
                 color: 'red',
