@@ -12,7 +12,7 @@ interface LayoutWholeSalesProps {
     params: any;
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }:any) {
     const { id } = await params;  // Assuming params.id is the dynamic part of your URL
     const response= await getWholeSalerDetail(id);
     const data =  response
