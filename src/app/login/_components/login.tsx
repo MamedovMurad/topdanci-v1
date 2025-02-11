@@ -43,7 +43,9 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({phone,callBack}) => {
             localStorage.setItem('user',JSON.stringify(response.data.user))
             api.setHeader("Authorization","Bearer " + localStorage.getItem("agent"))
             callBack&&callBack()
+          if (!callBack) {
             await router.push('/dashboard')
+          }
            }
           }
         //   console.log("Response:", response.data);

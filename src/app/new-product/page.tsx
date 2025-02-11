@@ -16,11 +16,13 @@ import LoginPage from "../login/_components/login";
 import { notifications } from "@mantine/notifications";
 import '@mantine/notifications/styles.css';
 import Images from "./_components/images";
+import { useRouter } from "next/navigation";
 interface NewProductPageProps {
 
 }
 
 const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
+      const router =  useRouter()
     const [cat, setcat] = useState([]);
     const [subCat, setSubCat] = useState([]);
     const [cities, setcities] = useState([]);
@@ -84,6 +86,8 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                   
                   })
             })
+
+            router.push('/dashboard/my-products/pendings')
             return 
         }
         api.post('new-advert',{...formValue, images:files}).then((data)=>{
@@ -232,9 +236,11 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                                 label="Şəkil" callBack={setFiles} required />
 
 {
-                                        files&&   <div className=" mt-2">
+                                        files&&   <div className=" w-full flex justify-end items-center">
+                                            <div className=" mt-2 w-2/3">
                                         <Images removeItem={removeImage} images={files}  />
                                     </div>
+                                        </div>
                                      }
                                         </div>
                                 
