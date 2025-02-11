@@ -16,8 +16,8 @@ export async function generateMetadata({ params }:any) {
   const data = response.data;
 
   return {
-    title: data.meta.meta_title || "Default Title",
-    description: data.meta.meta_description || "Default description",
+    title: data.meta?.meta_title || "Default Title",
+    description: data.meta?.meta_description || "Default description",
   };
 }
 
