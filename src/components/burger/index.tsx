@@ -1,21 +1,25 @@
 "use client"
 import { Burger, BurgerExitIcon, CancelIcon } from "@/svg/allSvgs";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 
 interface IBurgerUIProps {
 }
 
 const BurgerUI: React.FunctionComponent<IBurgerUIProps> = (props) => {
       const pathname = usePathname();
+        const searchParams = useSearchParams();
+        const advert_type = searchParams.get("advert_type");
 const [isopen, setisopen] = useState(false)
 
 useEffect(() => {
   setisopen(false)
 
-
-}, [pathname])
+if (typeof window!=="undefined"&&window.location.href) {
+    
+}
+}, [pathname,advert_type])
 
 
     return (
@@ -46,4 +50,14 @@ useEffect(() => {
     );
 };
 
-export default BurgerUI;
+
+
+
+
+export default function Page() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <BurgerUI />
+    </Suspense>
+  );
+}

@@ -25,7 +25,7 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ pa
         return null
     }
     return (
-        <main className=" lg:pt-9">
+        <main className=" ">
             <section>
                 <Banner isOpen={false}/>
                 <div className="container mx-auto mt-2">
@@ -91,17 +91,16 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ pa
                                 <div className=" bg-[#F1F3F7] flex justify-between p-5 rounded-[10px]">
                                     <div>
                                         <p className=" text-[#808080] text-sm font-normal">Şəhər</p>
-                                        <p className=" text-[#808080] text-sm font-normal mt-2">Diaqonal</p>
                                         <p className=" text-[#808080] text-sm font-normal mt-2">Malın növü</p>
-                                        <p className=" text-[#808080] text-sm font-normal mt-2">Smart?</p>
-                                        <p className=" text-[#808080] text-sm font-normal mt-2">Marka</p>
+                                        <p className=" text-[#808080] text-sm font-normal mt-2">Pərakəndə satış</p>
+
                                     </div>
                                     <div className=" text-sm min-w-28">
-                                        <p>Bakı</p>
-                                        <p className=" mt-2">82 sm (32")</p>
-                                        <p className=" mt-2">Televizorlar</p>
+                                        <p>{data.city}</p>
+                                        <p className=" mt-2">{data.category.name}</p>
+                                      
                                         <p className=" mt-2">Bəli</p>
-                                        <p className=" mt-2">Shivaki</p>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -138,17 +137,17 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ pa
                             <div className=" bg-[#F1F3F7] flex justify-between p-5 rounded-[10px]">
                                 <div>
                                     <p className=" text-[#808080] text-sm font-normal">Şəhər</p>
-                                    <p className=" text-[#808080] text-sm font-normal mt-2">Diaqonal</p>
+
                                     <p className=" text-[#808080] text-sm font-normal mt-2">Malın növü</p>
-                                    <p className=" text-[#808080] text-sm font-normal mt-2">Smart?</p>
-                                    <p className=" text-[#808080] text-sm font-normal mt-2">Marka</p>
+                                    <p className=" text-[#808080] text-sm font-normal mt-2">Pərakəndə satış</p>
+
                                 </div>
                                 <div className=" text-sm min-w-28">
                                     <p>{data.city}</p>
-                                    <p className=" mt-2">82 sm (32")</p>
-                                    <p className=" mt-2">Televizorlar</p>
+                                    <p className=" mt-2">{data.category.name}</p>
+                              
                                     <p className=" mt-2">Bəli</p>
-                                    <p className=" mt-2">Shivaki</p>
+
                                 </div>
                             </div>
                         </div>

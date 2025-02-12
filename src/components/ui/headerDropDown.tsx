@@ -53,12 +53,12 @@ const DropdownHeader: React.FC<DropdownProps> = ({  onSelect,defValue,Icon=DownA
       </button>
 
       {isOpen && (
-        <div className=" absolute top-10 bg-primaryColor px-6 py-3  rounded-b-[20px]">
+        <div className=" absolute top-12 left-5 bg-primaryColor px-6 py-3  rounded-b-[20px]">
           <ul className="w-[154px]">
             <li className=" text-white font-medium text-base py-2"> <Link href={'/dashboard'}>Şəxsi hesab</Link></li>
             <li className=" text-white font-medium text-base py-2"> <Link href={'/dashboard'}>Şəxsi hesabı artır</Link></li>
             <li className=" text-white font-medium text-base py-2"> <Link href={'/dashboard'}>Seçilmişlər</Link></li>
-            <li className=" text-white font-medium text-base py-2"> <Link href={'/dashboard'}>Çıxış</Link></li>
+            <li onClick={()=>{localStorage.removeItem('user'); localStorage.removeItem('agent'); location.reload()}} className=" text-white font-medium text-base py-2"> <Link href={''}>Çıxış</Link></li>
           </ul>
         </div>
       )}

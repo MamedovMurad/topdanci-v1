@@ -59,7 +59,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({phone,callBack}) => {
         backdropFilter: "blur(17px)"
     }}>
          <h1 className=" lg:text-3xl text-2xl font-bold">Nömrənin təsdiqlənməsi</h1>
-         <p className=" mt-5 text-[#111] lg:text-base text-sm">{ formatPhoneNumber(phone||"")} nömrəsinə SMS-kod göndərildi</p>
+         <p className=" mt-5 text-[#111] lg:text-base text-sm">{ formatPhoneNumber(phone||"")+""} nömrəsinə SMS-kod göndərildi</p>
 
          <div className=" relative">
                 <input value={otp} onChange={handleChange} type="number" name="otp_code" 

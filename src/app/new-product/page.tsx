@@ -176,8 +176,8 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                             <InputField control={control} id="Elan-adi" label="Elan adı" name="advert_title" required />
                                         </div>
                                         <div className=" flex gap-x-3 lg:mt-14 mt-4">
-                                            <CustomRadio value="0" control={control} id="isSeller" label="Alıcı" name="advert_type"  />
-                                            <CustomRadio value="1" control={control} id="isSeller" label="Satıcı " name="advert_type"  />
+                                            <CustomRadio value="0" control={control} id="isSeller" label="Alıcı" name="advert_type" required  />
+                                            <CustomRadio value="1" control={control} id="isSeller" label="Satıcı " name="advert_type" required />
                                         </div>
                                         <div className="mt-7">
                                             <SelectField control={control} id="Kateqoriya" label="Kateqoriya" name="category_id" options={cat} required />
@@ -185,20 +185,20 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                             category_id&& <SelectField control={control} id="sub_cat" label="ALt Kateqoriya" name="sub__id" options={subCat} required />
                                           } 
                                             <SelectField control={control} id="city" label="Şəhər" name="city_id" options={cities} required />
-                                            <InputField control={control} id="Qiymət" label="Qiymət" name="retail_price" required={false} />
+                                            <InputField control={control} id="Qiymət" type="number" label="Qiymət" name="retail_price" required={false} />
                                         </div>
 
 
 
                                         <div className=" flex  justify-between lg:mt-14 mt-5 ">
-                                            <InputField wrapperSize="lg:w-[54%] w-[57%]" isDisabled={min_order_count === "0"} placeHolder="100 ədəd" name="min_order_count" labelSize=" w-full" inputSize="lg:w-[135px] w-[75px]" control={control} id="354fgfd" label="Minimum sifariş " required />
+                                            <InputField wrapperSize="lg:w-[54%] w-[57%]" isDisabled={min_order_count === "0"} placeHolder="100 ədəd" type="number" name="min_order_count" labelSize=" w-full" inputSize="lg:w-[135px] w-[75px]" control={control} id="354fgfd" label="Minimum sifariş " required />
                                             <div className=" mb-7 flex items-center">
                                                 <CheckboxField control={control} id="354l" label="Razılaşma yolu ilə " value="0" name="min_order_count" />
                                             </div>
                                         </div>
 
                                         <div className=" flex  justify-between lg:mt-7 mt-4 ">
-                                            <InputField labelSize=" w-full" isDisabled={wholesale_price === "0"} name="wholesale_price" wrapperSize="lg:w-[54%] w-[57%]" placeHolder="Qiymət" inputSize="lg:w-[135px] w-[75px]" control={control} id="354fgfftd" label="Topdan qiymət  " text="AZN (1 ədəd) " required />
+                                            <InputField labelSize=" w-full" type="number" isDisabled={wholesale_price === "0"} name="wholesale_price" wrapperSize="lg:w-[54%] w-[57%]" placeHolder="Qiymət" inputSize="lg:w-[135px] w-[75px]" control={control} id="354fgfftd" label="Topdan qiymət  " text="AZN (1 ədəd) " required />
                                             <div className=" mb-7 flex items-center">
                                                 <CheckboxField control={control} id="354llll" label="Razılaşma yolu ilə " value="0" name="wholesale_price" />
                                             </div>
@@ -215,14 +215,14 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                         <div className=" flex  justify-between lg:mt-7 mt-4 ">
 
                                             <div className=" mb-7 flex items-center w-full justify-between">
-                                                <div> <span className="mr-2 text-gray-700 font-medium lg:text-xl text-sm">
+                                                <div> <span className="mr-2 font-medium lg:text-xl text-sm">
                                                     Pərakəndə satış mümkündür
                                                     <sup className=" text-primaryColor">*</sup></span>
                                                 </div>
                                                 <div>
                                                     <div className="flex gap-x-8">
-                                                        <CustomRadio value="0" control={control} id="354l" name="retail_sales" label="Bəli" />
-                                                        <CustomRadio value="1" control={control} id="354l" name="retail_sales" label="Xeyr" />
+                                                        <CustomRadio value="0" control={control} id="354l" name="retail_sales" required label="Bəli" />
+                                                        <CustomRadio value="1" control={control} id="354l" name="retail_sales" required label="Xeyr" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -249,8 +249,8 @@ const NewProductPage: FunctionComponent<NewProductPageProps> = () => {
                                     </div>
                                 </div>
                                 <div className=" mt-8 lg:px-0 px-5">
-                                    <CheckboxField required={false} control={control} id="35sdfdfadsfa4l" reverse={false}
-                                        label={<span className=" font-light text-sm lg:ml-3">Siz Topdançı.az-ın <a href="" className=" underline" target="_blank">İstifadəçi razılaşması</a> ilə razı olduğunuzu təsdiq edirsiniz.</span>} />
+                                    {/* <CheckboxField name="rules" control={control} id="35sdfdfadsfa4l" r
+                                        label={<span className=" font-light text-sm lg:ml-3">Siz Topdançı.az-ın <a href="" className=" underline" target="_blank">İstifadəçi razılaşması</a> ilə razı olduğunuzu təsdiq edirsiniz.</span>} /> */}
                                 </div>
                                 <div className=" flex justify-center items-center mt-7 mb-7">
                                     <button className=" rounded-[10px] text-white bg-primaryColor flex justify-center items-center w-[170px] h-10 text-xl font-bold">Davam et</button>

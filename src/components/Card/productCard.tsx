@@ -54,13 +54,13 @@ callBack&& callBack(data)
 
                     <div>
                         <div className="flex items-center gap-x-1 lg:mt-3 mt-[6px]">
-                            <p className=" lg:text-[10px] text-[6px] text-[#808080]">Minimum sifariş</p>
+                            <p className=" lg:text-[10px] text-xs text-[#808080]">Minimum sifariş</p>
                             <p className="lg:text-[10px] text-[6px]">|</p>
                             <p className="  text-primaryColor text-xs font-medium">{item?.min_order}</p>
                         </div>
                     </div>
                 </div>
-                <div className=" text-[8px] text-[#808080] w-1/3 lg:text-right mt-2 lg:mt-0">
+                <div className=" text-[.65rem] text-[#808080] w-1/3 lg:text-right mt-2 lg:mt-0">
                     <p>{item?.city}</p>
                     <p>{item?.date}</p>
                 </div>

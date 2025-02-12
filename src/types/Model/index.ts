@@ -19,6 +19,9 @@ export type IAdvert = {
         "src": string,
         "alt": string
     },
+    category:{
+        name:string
+    }
     images:{
         "src": string,
         "alt": string
