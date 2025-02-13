@@ -16,6 +16,9 @@ const getProductWholeSales=(wholesaler_id="",page="")=>{
 const getUserActiveProducts = (page="")=>{
     return api.get(`user/active-adverts?page=`+page)
 }
+const getFavProducts = (page="")=>{
+    return api.get(`favorites?page=`+page)
+}
 const getUserPendingProducts = (page="")=>{
     return api.get(`user/pending-adverts?page${page}`)
 }
@@ -28,12 +31,14 @@ const getUserRejectedProducts = (page="")=>{
 const getEditProduct=(id:string)=>{
     return api.get(`edit-advert/${id}`)
 }
+
 export {
     getProductWholeSales,
     getEditProduct,
     getProducts,
     getProductDetail,
     getUserActiveProducts,
+    getFavProducts,
     getUserPendingProducts,
     getUserExpiredProducts,
     getUserRejectedProducts

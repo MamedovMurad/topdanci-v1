@@ -45,7 +45,7 @@ callBack&& callBack(data)
                      <p className=" text-xs font-bold ">Yoxlama davam edir</p>
                  </div> 
                 }
-                <Image src={item?.image.src||"/"} alt={item?.image.alt||''} className=" w-full h-full object-cover" layout='fill' />
+                <Image placeholder="blur"   blurDataURL="/blur1.webp" src={item?.image.src||"/"} alt={item?.image.alt||''} className=" w-full h-full object-cover" layout='fill' />
             </div>
             <div className="  lg:flex items-end  justify-between lg:p-[10px] px-[6px] h-24 lg:mt-2  mt-[2px]">
                 <div>
@@ -55,12 +55,12 @@ callBack&& callBack(data)
                     <div>
                         <div className="flex items-center gap-x-1 lg:mt-3 mt-[6px]">
                             <p className=" lg:text-[10px] text-xs text-[#808080]">Minimum sifariş</p>
-                            <p className="lg:text-[10px] text-[6px]">|</p>
-                            <p className="  text-primaryColor text-xs font-medium">{item?.min_order}</p>
+                            <p className="lg:text-[10px] text-xs">|</p>
+                            <p className="lg:text-[10px]  text-primaryColor text-xs font-medium">{item?.min_order}</p>
                         </div>
                     </div>
                 </div>
-                <div className=" text-[.65rem] text-[#808080] w-1/3 lg:text-right mt-2 lg:mt-0">
+                <div className=" text-[.65rem] text-[#808080] lg:w-1/3 lg:text-right mt-2 lg:mt-0">
                     <p>{item?.city}</p>
                     <p>{item?.date}</p>
                 </div>

@@ -1,8 +1,9 @@
 "use client"
+import { generateUUID } from "@/hooks/useUUID";
 import { HeardIconSVG, HeardSVG, HomeIconSVG, MarketIcon, PlusIconSvg, UserIconSVG, UserSVG } from "@/svg/allSvgs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 interface FooterProps {
     
@@ -10,7 +11,13 @@ interface FooterProps {
  
 const Footer: FunctionComponent<FooterProps> = () => {
     const pathname = usePathname()
-    console.log({pathname});
+   
+    useEffect(() => {
+        if (typeof window!=="undefined"&&!localStorage.getItem('uuid')) {
+            localStorage.setItem("uuid",generateUUID())
+        }
+    }, [])
+    
     
     return ( <footer className=" lg:bg-primaryColor lg:h-[240px] lg:py-8 mt-24 lg:mt-0">
         <div className="container mx-auto hidden lg:block">

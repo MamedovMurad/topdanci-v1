@@ -1,5 +1,6 @@
 import LabelHeader from "@/components/label";
-import ProductsContainer from "@/containers/product";
+import  FavoritesPageClient  from "@/containers/FavoritesPageClient";
+
 import { FunctionComponent } from "react";
 
 interface FavoritesProps {
@@ -7,15 +8,7 @@ interface FavoritesProps {
 }
  
 const Favorites: FunctionComponent<FavoritesProps> = () => {
-    return (<main>
-        <LabelHeader title="Seçilmişlər"/>
-
-        <section>
-        <div className="container mx-auto mb-20">
-            {/* <ProductsContainer/> */}
-            </div>
-        </section>
-    </main>  );
+    return (<FavoritesPageClient/> );
 }
  
 export default Favorites;

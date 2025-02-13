@@ -12,13 +12,15 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [pageCount, setpageCount] = useState(0);
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
-    
+    setloading(true)
     getProducts().then((data)=>
       {
         setProducts(data?.data?.data)
         setpageCount(data?.data?.pagination?.total / 12)
+        setloading(false)
       }
     )
   }, []);
@@ -34,7 +36,7 @@ export default function Home() {
            <Filter/>
            </div>
   
-      <ProductsContainer list={products}/>
+      <ProductsContainer list={products} loading={loading}/>
    
          
 

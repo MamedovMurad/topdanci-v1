@@ -4,15 +4,17 @@ class HttpClient {
     private _baseURL: string;
     private _headers: Record<string, string>;
     private _language: string; // Add a language property
+    private _uuid?:string;
    
   
     constructor(options: { baseURL?: string; headers?: Record<string, string>; language?: string } = {}) {
       this._baseURL = options.baseURL || baseURL;
       this._headers = options.headers || {};
       this._language = typeof window !== "undefined"?localStorage.getItem('lang')||'az' : 'az';// Default to English if no language is set
-      
+      this._uuid = typeof window !== "undefined"?localStorage.getItem('uuid')||undefined:undefined;
       if (typeof window !== "undefined") {
         this._headers.Authorization = "Bearer " + localStorage.getItem("agent");
+        this._headers["uuid"] = this._uuid||""
       }
   
       // Set the Accept-Language header with the initial language value

@@ -14,6 +14,7 @@ interface ProductsPageProps {
 const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
   const [products, setProducts] = useState([]);
   const [pageCount, setpageCount] = useState(0);
+  const [loading, setloading] = useState(false);
   const searchParams = useSearchParams();
   const search_text = searchParams.get("search-text");
   const type = searchParams.get("advert_type");
@@ -24,10 +25,12 @@ const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
   const city = searchParams.get("city");
   const cityName = searchParams.get("city-name");
   useEffect(() => {
+    setloading(true)
     getProducts(search_text || "", city || "", type || "", page || "", category || "")
       .then((data) => {
         setProducts(data?.data?.data)
         setpageCount(data?.data?.pagination?.total / 12)
+        setloading(false)
       })
   }, [search_text, city, type, page, category]);
   return (<main>
@@ -48,7 +51,7 @@ const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
         <div className=" mb-20 lg:mt-5   ">
 
 
-          <ProductsContainer list={products} />
+          <ProductsContainer loading={loading} list={products} />
 
 
           <div className="mt-12">
