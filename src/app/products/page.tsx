@@ -51,7 +51,12 @@ const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
         <div className=" mb-20 lg:mt-5   ">
 
 
-          <ProductsContainer loading={loading} list={products} />
+          <ProductsContainer loading={loading} list={products} callBack={()=>    getProducts(search_text || "", city || "", type || "", page || "", category || "")
+      .then((data) => {
+        setProducts(data?.data?.data)
+        setpageCount(data?.data?.pagination?.total / 12)
+        
+      })} />
 
 
           <div className="mt-12">
