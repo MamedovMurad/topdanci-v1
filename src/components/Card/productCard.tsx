@@ -24,7 +24,7 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item,callBack
     }
 
     return (
-        <div  className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
+        <div  className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] min-h-[255px]")}>
             <div className=" relative lg:h-[217px] h-[135px] lg:rounded-2xl rounded-[10px] overflow-hidden">
                 {
                     item?.is_premium!==0&&    <span className=" absolute top-0 left-0 z-10">

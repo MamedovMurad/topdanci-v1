@@ -8,7 +8,7 @@ interface FavoritesProps {
 }
  
 const Favorites: FunctionComponent<FavoritesProps> = () => {
-    return (<FavoritesPageClient/> );
+    return (<FavoritesPageClient /> );
 }
  
 export default Favorites;
