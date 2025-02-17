@@ -33,7 +33,11 @@ const FavoritesPageClient = (props: Props) => {
                     <div className=" mb-20 lg:mt-5   ">
 
 
-                        <ProductsContainer list={products} />
+                        <ProductsContainer list={products} callBack={() => getFavProducts(page || "")
+                            .then((data) => {
+                                setProducts(data?.data?.data)
+                                setpageCount(data?.data?.pagination?.total / 12)
+                            })} />
 
 
                         <div className="mt-12">

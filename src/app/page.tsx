@@ -36,7 +36,13 @@ export default function Home() {
            <Filter/>
            </div>
   
-      <ProductsContainer list={products} loading={loading}/>
+      <ProductsContainer list={products} loading={loading} callBack={()=>getProducts().then((data)=>
+      {
+        setProducts(data?.data?.data)
+        setpageCount(data?.data?.pagination?.total / 12)
+        setloading(false)
+      }
+    )}/>
    
          
 

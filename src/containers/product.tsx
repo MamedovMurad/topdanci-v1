@@ -7,7 +7,7 @@ import { FunctionComponent } from "react";
  interface ProductsContainerProps {
      status?: 'expired' | 'pending' | 'active' | 'unpublished';
      list?:IAdvert[];
-     callBack?:(data:any)=>void;
+     callBack?:any;
      loading?:boolean;
      
 }

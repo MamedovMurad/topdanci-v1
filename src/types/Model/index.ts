@@ -9,6 +9,7 @@ export type IAdvert = {
     "min_order": string,
     "is_premium": number,
     "is_wholesaler": number,
+    is_favorited:boolean;
     adverts_count:string|number;
     user_tel:string;
     user_name:string;

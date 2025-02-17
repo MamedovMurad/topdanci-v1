@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FunctionComponent } from "react";
+import ProductRefreshButton from "../heard";
 
 interface ProductCardProps {
     status?: 'expired' | 'pending' | 'active' | 'unpublished';
@@ -18,18 +19,19 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item,callBack
     }
 
     function handleClick(e:any,data:any){
-e.stopPropagation();
-callBack&& callBack(data)
+        e.stopPropagation();
+        callBack&& callBack(data)
     }
 
     return (
-        <Link href={status?("javascript:void(0)"):('/products/'+item?.id)} className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
+        <div  className={" w-full   block overflow-hidden lg:bg-[#F0F0F0] bg-white lg:rounded-2xl rounded-[10px] "+(status?"":"lg:h-[324px] h-[238px]")}>
             <div className=" relative lg:h-[217px] h-[135px] lg:rounded-2xl rounded-[10px] overflow-hidden">
                 {
                     item?.is_premium!==0&&    <span className=" absolute top-0 left-0 z-10">
                     <KingSvg color={item?.advert_type==="seller"?"#F2173C":undefined} />
                 </span>
                 }
+                <ProductRefreshButton color="white" loading={false} isFav={item?.is_favorited||false} id={item?.id||0} className=" cursor-pointer absolute right-2 z-10 top-2" callBack={callBack} />
             
                 <label htmlFor="" className={"  w-[51px] h-[18px] rounded z-10 absolute bottom-2 right-2 text-xs text-center font-bold capitalize " + (item?.advert_type=="seller" ? " bg-primaryColor text-white":" bg-buttonColor") }>
                     {item?.advert_type}
@@ -47,7 +49,7 @@ callBack&& callBack(data)
                 }
                 <Image placeholder="blur"   blurDataURL="/blur1.webp" src={item?.image.src||"/"} alt={item?.image.alt||''} className=" w-full h-full object-cover" layout='fill' />
             </div>
-            <div className="  lg:flex items-end  justify-between lg:p-[10px] px-[6px] h-24 lg:mt-2  mt-[2px]">
+            <Link href={status?("javascript:void(0)"):('/products/'+item?.id)} className="  lg:flex items-end  justify-between lg:p-[10px] px-[6px] h-24 lg:mt-2  mt-[2px]">
                 <div>
                     <p className=" font-bold lg:text-base text-sm ">{item?.price}</p>
                     <p className=" lg:text-sm text-xs font-bold lg:font-normal  ">{item?.title}</p>
@@ -66,7 +68,7 @@ callBack&& callBack(data)
                 </div>
 
 
-            </div>
+            </Link>
 
             {
     status==="expired"&&<div onClick={(e)=>handleClick(e,item?.id)} className=" w-full p-[10px]">
@@ -81,7 +83,7 @@ callBack&& callBack(data)
     </div>
     </div>
 }
-        </Link>);
+        </div>);
 }
 
 export default ProductCard;

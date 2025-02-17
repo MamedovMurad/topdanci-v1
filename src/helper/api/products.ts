@@ -32,7 +32,14 @@ const getEditProduct=(id:string)=>{
     return api.get(`edit-advert/${id}`)
 }
 
+const addFavorite = (id:number)=>{
+    return api.post(`add-favorite/${id}`,"")
+}
+const deleteFav = (id:number)=>{
+    return api.delete("delete-favorite/"+id)
+}
 export {
+    addFavorite,
     getProductWholeSales,
     getEditProduct,
     getProducts,
@@ -41,7 +48,8 @@ export {
     getFavProducts,
     getUserPendingProducts,
     getUserExpiredProducts,
-    getUserRejectedProducts
+    getUserRejectedProducts,
+    deleteFav
 
    
 }

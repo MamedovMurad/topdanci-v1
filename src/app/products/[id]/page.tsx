@@ -1,7 +1,9 @@
 
 import Banner from "@/components/banner";
+import ProductRefreshButton from "@/components/heard";
 import MobileSingleSlider from "@/components/ui/mobileSingleSlider";
 import ImageCarousel from "@/components/ui/productDetailCarousel";
+import { HeardContainer } from "@/containers/heardContainer";
 import ProductsContainer from "@/containers/product";
 import { getProductDetail } from "@/helper/api/products";
 import { HeardSVG, PhoneSVG, UserSVG } from "@/svg/allSvgs";
@@ -15,7 +17,7 @@ interface ProductDetailPageProps {
 const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ params }) => {
     const { id } = await params;  // Assuming params.id is the dynamic part of your URL
     const { data ,similar_adverts}: { data: IAdvert,similar_adverts:IAdvert[] } = await getProductDetail(id);
-    console.log(data);
+
     
 
 
@@ -44,7 +46,8 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ pa
                                             (data.advert_type === "seller" ? "bg-primaryColor text-white"
                                             : "bg-buttonColor")}>
                                             {data.advert_type}</button>
-                                        <span><HeardSVG /></span>
+                                            <HeardContainer id={data.id}/>
+                                    
                                     </div>
                                     <h3 className=" font-medium lg:text-2xl text-xl lg:mt-5 mt-2">{data.title}</h3>
                                     <div className="lg:mt-5 mt-2 flex items-center ">
