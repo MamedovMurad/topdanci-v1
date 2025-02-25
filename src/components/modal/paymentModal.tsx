@@ -1,6 +1,7 @@
 "use client"
 import { api } from "@/helper/api";
 import { notifications } from "@mantine/notifications";
+import { useRouter } from "next/navigation";
 import { FunctionComponent, useState } from "react";
 
 interface PaymentModalProps {
@@ -9,10 +10,12 @@ closeModal:()=>void
 
 const PaymentModal: FunctionComponent<PaymentModalProps> = ({closeModal}) => {
     const [value, setvalue] = useState(10);
-
+    const router = useRouter()
     async function handleSubmit(e:any) {
+        
         e.preventDefault()
         api.post('payment/add-balance',{amount:value}).then((data)=>{
+            router.push(data.payment_url)
             closeModal()
         }).catch((error)=>{
              notifications.show({
@@ -29,7 +32,7 @@ const PaymentModal: FunctionComponent<PaymentModalProps> = ({closeModal}) => {
 
             <form action="" onSubmit={handleSubmit} className=" mt-5">
                 <div className=" rounded-[14px] bg-white h-11 md:w-[360px] flex justify-center items-center">
-                    <p className=" text-primaryColor font-medium text-xl">{value}</p>
+                    <input onChange={(e:any)=>setvalue(e.target.value)}  value={value} className=" text-primaryColor font-medium text-xl w-full px-5 outline-none"/>
                 </div>
                 <div className=" mt-5">
                     <ul className=" flex w-full justify-between items-center flex-wrap lg:flex-nowrap gap-5 md:gap-0">
