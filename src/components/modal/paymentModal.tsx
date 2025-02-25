@@ -4,15 +4,17 @@ import { notifications } from "@mantine/notifications";
 import { FunctionComponent, useState } from "react";
 
 interface PaymentModalProps {
-
+closeModal:()=>void
 }
 
-const PaymentModal: FunctionComponent<PaymentModalProps> = () => {
+const PaymentModal: FunctionComponent<PaymentModalProps> = ({closeModal}) => {
     const [value, setvalue] = useState(10);
 
     async function handleSubmit(e:any) {
         e.preventDefault()
-        api.post('user/add-balance',{amaunt:value}).then((data)=>data).catch((error)=>{
+        api.post('user/add-balance',{amaunt:value}).then((data)=>{
+            closeModal()
+        }).catch((error)=>{
              notifications.show({
                                     color: 'red',
                                     title: 'Sistemdə xəta baş verdi!',

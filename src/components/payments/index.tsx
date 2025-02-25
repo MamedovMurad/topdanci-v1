@@ -33,7 +33,7 @@ const pathname = usePathname()
            <button onClick={()=>setisOpen(!isOpen)} className="text-white font-bold text-xl bg-primaryColor rounded-[10px] flex justify-center items-center lg:w-[170px] w-[130px] lg:h-[45px] h-[60px]">Artır</button>
            </div>
         </div>
-        <ModalMantine modalBody={<PaymentModal/>} isOpen={isOpen} closeModal={()=>setisOpen(false)}/>
+        <ModalMantine modalBody={<PaymentModal  closeModal={()=>setisOpen(false)}/>} isOpen={isOpen} closeModal={()=>setisOpen(false)}/>
     </div> );
 }
  
