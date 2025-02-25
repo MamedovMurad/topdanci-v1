@@ -7,7 +7,7 @@ import { FunctionComponent, ReactNode, useEffect } from "react";
 interface ModalMantineProps {
     isOpen:boolean,
     closeModal:()=>void,
-    modalBody:ReactNode
+    modalBody:ReactNode,
 }
  
 const ModalMantine: FunctionComponent<ModalMantineProps> = ({isOpen, closeModal,modalBody}) => {
