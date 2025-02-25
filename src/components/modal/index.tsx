@@ -8,9 +8,10 @@ interface ModalMantineProps {
     isOpen:boolean,
     closeModal:()=>void,
     modalBody:ReactNode,
+    size?:string
 }
  
-const ModalMantine: FunctionComponent<ModalMantineProps> = ({isOpen, closeModal,modalBody}) => {
+const ModalMantine: FunctionComponent<ModalMantineProps> = ({isOpen, closeModal,modalBody,size="xl"}) => {
     const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const ModalMantine: FunctionComponent<ModalMantineProps> = ({isOpen, closeModal,
         close()
     }
     return ( 
-        <Modal opened={opened} onClose={handleClose} size={"xl"} withCloseButton={false} padding={0} radius={20}>
+        <Modal opened={opened} onClose={handleClose} size={size} withCloseButton={false} padding={0} radius={20}>
          {modalBody}
       </Modal>);
 }

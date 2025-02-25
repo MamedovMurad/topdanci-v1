@@ -17,7 +17,10 @@ export default function ImageCarousel({ images }: {
         "alt": string
     }[]
 }) {
+    console.log(images,'images1');
+    
     const [isopen, setisopen] = useState<number|null>(null)
+    const [active, setactive] = useState(0)
     // Install Swiper modules
     SwiperCore.use([Navigation]);
     const [currentImage, setCurrentImage] = useState(images?.[0]);
@@ -42,7 +45,7 @@ export default function ImageCarousel({ images }: {
                             <Swiper
                                 direction="vertical" // Vertical swiper
                                 slidesPerView={3} // Number of slides visible
-                                onSlideChange={({ activeIndex }) => setCurrentImage(images[activeIndex])}
+                                onSlideChange={({ activeIndex }) => {setCurrentImage(images[activeIndex]), setactive(activeIndex)}}
                                 navigation={{
                                     nextEl: ".swiper-button-next", // Next button
                                     prevEl: ".swiper-button-prev", // Prev button
@@ -52,7 +55,7 @@ export default function ImageCarousel({ images }: {
                                 ref={swiperRef} // Add ref to Swiper
                             >
                                 {images.map((image, index) => (
-                                    <SwiperSlide key={index} onClick={() => {setCurrentImage(image)}}
+                                    <SwiperSlide key={index} onClick={() => {setCurrentImage(image); setactive(index)}}
                                         className={currentImage === image ? "opacity-100" : "opacity-50"} >
                                         <img
                                             src={image.src}
@@ -79,7 +82,7 @@ export default function ImageCarousel({ images }: {
                     {/* Large image display */}
                     <div className="mb-8 w-full flex justify-center">
                         <img
-                        onClick={()=>setisopen( images.findIndex((item)=>item.src===currentImage.src)||0)}
+                        onClick={()=>setisopen(active)}
                             src={currentImage.src}
                             alt={currentImage.alt}
                             className="object-cover shadow-lg w-full h-[343px] rounded-lg"
@@ -89,7 +92,7 @@ export default function ImageCarousel({ images }: {
 
                 </div>
             </div>
-            <ModalMantine  isOpen={isopen!==null} closeModal={()=>setisopen(null)} modalBody={<ShowImage images={images} current={isopen||0}/>}/>
+            <ModalMantine size="100%"  isOpen={isopen!==null} closeModal={()=>setisopen(null)} modalBody={<ShowImage images={images} current={isopen||0}/>}/>
         </>
 
     );
