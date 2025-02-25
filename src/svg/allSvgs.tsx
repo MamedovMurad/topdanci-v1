@@ -319,7 +319,20 @@ const BurgerExitIcon = ()=>(
 </svg>
 
 )
+
+const SuccesIcon = ()=>(
+    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M25.0003 49.047C11.4562 49.047 0.476562 38.0675 0.476562 24.5235C0.476562 10.9795 11.4562 0 25.0003 0C38.5445 0 49.5241 10.9795 49.5241 24.5235C49.5241 38.0675 38.5445 49.047 25.0003 49.047Z" fill="#00CC60"/>
+<path d="M20.0071 37.2315L9.32227 26.5468L13.1665 22.7026L20.0071 29.5431L37.2857 12.2646L41.1299 16.1088L20.0071 37.2315Z" fill="white"/>
+</svg>
+
+)
+const ErrorIcon = ()=>(
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="50"  height="50"  viewBox="0 0 24 24"  fill="none"  stroke="white"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-exclamation-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 9v4" /><path d="M12 16v.01" /></svg>
+)
 export {
+    ErrorIcon,
+    SuccesIcon,
     BurgerExitIcon,
     TickIcon,
     DropdownSVGIcon,
