@@ -47,9 +47,12 @@ const ProductCard: FunctionComponent<ProductCardProps> = ({ status,item,callBack
                      <p className=" text-xs font-bold ">Yoxlama davam edir</p>
                  </div> 
                 }
+                <Link href={status?("javascript:void(0)"):('/products/'+item?.id)} >
                 <Image placeholder="blur"   blurDataURL="/blur1.webp" src={item?.image.src||"/"} alt={item?.image.alt||''} className=" w-full h-full object-cover" layout='fill' />
+                </Link>
             </div>
-            <Link href={status?("javascript:void(0)"):('/products/'+item?.id)} className="  lg:flex items-end block  justify-between lg:p-[10px] px-[6px] h-24 lg:mt-2  mt-[2px]">
+            <Link href={status?("javascript:void(0)"):('/products/'+item?.id)} 
+            className="  lg:flex items-end block  justify-between lg:p-[10px] px-[6px] h-24 lg:mt-2  mt-[2px]">
                 <div>
                     <p className=" font-bold lg:text-base text-sm ">{item?.price}</p>
                     <p className=" lg:text-sm text-xs font-bold lg:font-normal  ">{item?.title}</p>

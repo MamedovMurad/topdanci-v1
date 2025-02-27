@@ -34,15 +34,15 @@ const ProductsPage: FunctionComponent<ProductsPageProps> = () => {
       })
   }, [search_text, city, type, page, category]);
   return (<main>
-    <section className=" hidden lg:block">
-      <Banner isOpen={false}
+    <section className="  lg:block">
+      <Banner isOpen={true}
         defval={(city && cityName) ? { label: cityName, value: city } : undefined}
         searchVal={search_text}
         category={category} />
     </section>
 
     <section >
-      <div className="container mx-auto lg:mt-5  ">
+      <div className="container mx-auto mt-5 ">
         <div className=" lg:block hidden">
           <Filter defval={(city && cityName) ? { label: cityName, value: city } : undefined}
             searchVal={search_text} 

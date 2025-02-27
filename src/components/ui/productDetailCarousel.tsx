@@ -85,7 +85,8 @@ export default function ImageCarousel({ images }: {
                         onClick={()=>setisopen(active)}
                             src={currentImage.src}
                             alt={currentImage.alt}
-                            className="object-cover shadow-lg w-full h-[343px] rounded-lg"
+                            className="object-cover shadow-lg w-full h-[343px] rounded-lg cursor-zoom-in"
+                            
                         />
                     </div>
 

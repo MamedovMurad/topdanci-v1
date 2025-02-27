@@ -45,7 +45,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({phone,callBack}) => {
             api.setHeader("Authorization","Bearer " + localStorage.getItem("agent"))
             callBack&&callBack()
           if (!callBack) {
-            await router.push('/dashboard')
+            await router.push('/')
           }
            }
           }

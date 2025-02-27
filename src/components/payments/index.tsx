@@ -4,6 +4,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import ModalMantine from "../modal";
 import PaymentModal from "../modal/paymentModal";
 import { usePathname } from "next/navigation";
+import { getUser } from "@/helper/api/auth";
 
 interface PaymentsProps {
     
@@ -18,13 +19,18 @@ const pathname = usePathname()
    
         
         if (typeof window!=="undefined"&&localStorage.getItem('user')!==null) {
-            setbalance(JSON.parse(localStorage.getItem("user")||"").balance+""||"")
+            getUser().then(data=>{
+               setbalance(data.balance)
+                
+            })
+            
            }
     }
     useEffect(() => {
   
         changeBalance()
     }, [pathname]);
+    
     const [isOpen, setisOpen] = useState(false);
     return ( <div className=" mt-8 lg:mt-0 w-full lg:w-fit">
         <div className="flex lg:w-[360px] lg:h-[90px] h-[60px] items-center justify-center gap-x-7 lg:bg-[#E8E9F2] rounded-[20px]">

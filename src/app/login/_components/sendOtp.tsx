@@ -1,6 +1,6 @@
 import { GoolgeSVG } from "@/svg/allSvgs";
 import axios from "axios";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 
 interface SendOtpProps {
     callBack:(e:any)=>void
@@ -71,10 +71,20 @@ console.log(formatToRawPhone(phone));
       };
 
       const handleChange = (e:any) => {
-     
-          setphone(formatPhoneNumber(e.target.value));
+     if (e.target.value.length>2) {
+      setphone(formatPhoneNumber(e.target.value));
+      return
+     }else{
+      setphone(formatPhoneNumber("0"))
+     }
+        
         
       };
+
+      useEffect(() => {
+setphone(formatPhoneNumber("0"))
+      }, [])
+      
     return (<form action="" onSubmit={handlePost} className=" mt-20 lg:py-11 lg:px-[92px] lg:w-[550px] lg:h-[510px] lg:bg-[#f2f2f2a0]   lg:border-[2px] border-white rounded-[20px]" style={{
         backdropFilter: "blur(9px)"
     }}>
@@ -83,7 +93,7 @@ console.log(formatToRawPhone(phone));
         <h1 className=" lg:text-3xl text-2xl font-bold">Kabinetə Giriş</h1>
         <div>
             <div className=" relative">
-                <input type="text" name="phone" placeholder="(0xx)-xxx-xx-xx" maxLength={15} value={phone} onChange={handleChange}
+                <input type="text" name="phone" placeholder="(0xx)-xxx-xx-xx"  maxLength={15} value={phone} onChange={handleChange}
                     className="  mt-3 text-base pl-4 h-14 text-[#00000080] w-full outline-none border-none rounded-[10px] bg-white" />
 
             </div>                    {/* <input type="password" placeholder="Şifrə" className=" mt-3 text-base pl-4 h-14 w-full outline-none border-none rounded-[10px] bg-white" /> */}

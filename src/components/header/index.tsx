@@ -1,5 +1,5 @@
 'use client'
-import { Burger, DropdownSVGIcon, LogoSVG, PlusSVG, UserSVG } from "@/svg/allSvgs";
+import { Burger, DropdownSVGIcon, LogoSVG, PlusSVG, RedHeart, UserSVG } from "@/svg/allSvgs";
 import Link from "next/link";
 import { FunctionComponent, useEffect, useState } from "react";
 import Dropdown from "../ui/dropDown";
@@ -12,19 +12,19 @@ interface HeaderProps {
 }
 
 const Header: FunctionComponent<HeaderProps> = () => {
-const [userName, setuserName] = useState("Daxil ol");
-const pathname = usePathname()
+    const [userName, setuserName] = useState("Daxil ol");
+    const pathname = usePathname()
 
 
-    function changeUserName(){
-   
-        
-        if (typeof window!=="undefined"&&localStorage.getItem('user')!==null) {
-            setuserName(JSON.parse(localStorage.getItem("user")||"").name||"")
-           }
+    function changeUserName() {
+
+
+        if (typeof window !== "undefined" && localStorage.getItem('user') !== null) {
+            setuserName(JSON.parse(localStorage.getItem("user") || "").name || "")
+        }
     }
     useEffect(() => {
-  
+
         changeUserName()
     }, [pathname]);
 
@@ -50,7 +50,10 @@ const pathname = usePathname()
 
                 <div>
                     <div className="flex items-center gap-x-9">
-                        <Dropdown className=" text-primaryColor border border-primaryColor rounded p-1"
+                        <div>
+                            <Link href={"favorites"}><RedHeart/></Link>
+                        </div>
+                        <Dropdown className=" text-primaryColor border border-primaryColor rounded px-2 py-0"
                             options={[
                                 { label: 'AZ', value: 'az' },
                                 { label: "EN", value: 'en' },
@@ -59,23 +62,23 @@ const pathname = usePathname()
                             Icon={DropdownSVGIcon}
                             defValue={
 
-                                (typeof window!=="undefined"&&localStorage.getItem('lang')) ?
+                                (typeof window !== "undefined" && localStorage.getItem('lang')) ?
                                     {
                                         label: localStorage.getItem('lang')?.toUpperCase() + "",
                                         value: localStorage.getItem('lang') + ""
                                     }
                                     : { label: 'AZ', value: 'az' }
                             } />
-                    <div>
-                    {
-                                   (typeof window!=="undefined"&&localStorage.getItem('user'))? 
-                                   <DropdownHeader onSelect={()=>''} defValue={userName}/> :      <div>
-                            <Link href={'/dashboard'} className=" flex gap-x-2 items-center cursor-pointer"> <UserSVG />
-                                <span className=" text-primaryColor  text-sm font-medium">{userName}</span></Link>
-                        </div>
+                        <div>
+                            {
+                                (typeof window !== "undefined" && localStorage.getItem('user')) ?
+                                    <DropdownHeader onSelect={() => ''} defValue={userName} /> : <div>
+                                        <Link href={'/dashboard'} className=" flex gap-x-2 items-center cursor-pointer"> <UserSVG />
+                                            <span className=" text-primaryColor  text-sm font-medium">{userName}</span></Link>
+                                    </div>
                             }
-                    </div>
-                  
+                        </div>
+
 
 
                         <Link href={'/new-product'} className=" h-[50px] bg-[#FDBB11] text-white flex gap-x-1 items-center justify-center rounded-[14px] w-[170px]">
@@ -88,8 +91,8 @@ const pathname = usePathname()
             </div>
 
             <div className="flex lg:hidden px-5 justify-between items-center pt-3">
-                <BurgerUI/>
-            
+                <BurgerUI />
+
                 <div>
                     <Link href={'/'}> <LogoSVG width="117" height="20" /></Link>
                 </div>
