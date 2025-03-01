@@ -63,7 +63,8 @@ const MyProducts: FunctionComponent<MyProductsProps> = () => {
           : <Empty text="Hazırda aktiv elanınız yoxdur" button />
       }
 
-<ModalMantine isOpen={!!isOpen} closeModal={()=>setisOpen(false)} 
+<ModalMantine 
+isOpen={!!isOpen} closeModal={()=>setisOpen(false)} 
  modalBody={<DeleteModal closeModal={()=>setisOpen(false)}  
  callBack={()=>deleteProduct( typeof isOpen ==="boolean"?0:isOpen)} />}/>
     </div>);

@@ -9,6 +9,7 @@ import { getProductDetail } from "@/helper/api/products";
 import { HeardSVG, PhoneSVG, UserSVG } from "@/svg/allSvgs";
 import { IAdvert } from "@/types/Model";
 import { FunctionComponent } from "react";
+import ButtonsDetailPage from "./_components/Buttons";
 
 interface ProductDetailPageProps {
     params: any
@@ -80,14 +81,7 @@ const ProductDetailPage: FunctionComponent<ProductDetailPageProps> = async ({ pa
                                 </div>
                             </div>
                             {/* buttons */}
-                            <div className=" my-3 lg:my-0 flex justify-center gap-x-5 items-center w-full">
-                                <button className=" w-full gap-x-5 flex h-[38px] justify-center items-center rounded-[10px] bg-[#FFCC23]">
-                                    <span className=" font-medium lg:text-base text-xs">Elanı irəli çək</span> <span className=" lg:text-sm font-extrabold text-[10px]">1 AZN</span>
-                                </button>
-                                <button className=" w-full flex h-[38px] text-white gap-x-5 justify-center items-center rounded-[10px] bg-primaryColor">
-                                    <span className=" font-medium lg:text-base text-xs">Premium et</span> <span className=" lg:text-sm text-[10px] font-extrabold">5 AZN</span>
-                                </button>
-                            </div>
+           <ButtonsDetailPage id={data.id}/>
                             {/* mobile */}
 
                             <div className=" block lg:hidden ">

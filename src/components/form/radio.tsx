@@ -7,10 +7,11 @@ interface CustomRadioProps {
   name: string;
   value: string|number;
   required?: boolean;
-  checked?:boolean
+  checked?:boolean;
+  className?:string
 }
 
-const CustomRadio = ({ label, control, id, name, value, required,checked=false }: CustomRadioProps) => {
+const CustomRadio = ({ label, control, id, name, value, required,checked=false,className="" }: CustomRadioProps) => {
   return (
     <Controller
       name={name}
@@ -19,8 +20,8 @@ const CustomRadio = ({ label, control, id, name, value, required,checked=false }
         required: required ? "This field is required" : false,
       }}
       render={({ field, fieldState: { error } }) => (
-        <div className="flex flex-col">
-          <label className="flex items-center cursor-pointer flex-row-reverse">
+        <div className={"flex flex-col "+className}>
+          <label className={"flex items-center cursor-pointer flex-row-reverse "+className}>
             <input
             
               type="radio"

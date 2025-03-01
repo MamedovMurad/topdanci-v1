@@ -67,7 +67,12 @@ class HttpClient {
           localStorage.clear();
           window.location.href = "/";
           throw new Error("Unauthorized: Please login again.");
-        } else {
+        } 
+        if (res.status===400) {
+         const {message}=await res.json()
+         throw new Error(message);
+        }
+        else {
           throw new Error("Request failed with status " + res.status);
         }
       }
