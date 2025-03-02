@@ -12,10 +12,15 @@ const login = (tel:string,otp:string|number)=>{
 const  getUser = ()=>{
          return api.get(`user`)
 }
+
+const getPaymentHistory=(page="")=>{
+    return api.get("user/payment-history?page="+page)
+}
 export {
     otpSend,
     login,
-    getUser
+    getUser,
+    getPaymentHistory
 
    
 }
