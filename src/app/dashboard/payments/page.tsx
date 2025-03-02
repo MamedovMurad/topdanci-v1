@@ -3,6 +3,7 @@
 import Submenu from "@/components/submenu";
 import PaginationUI from "@/components/ui/pagination";
 import { getPaymentHistory } from "@/helper/api/auth";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { FunctionComponent, Suspense, useEffect, useState } from "react";
 import swal from "sweetalert";
@@ -71,7 +72,7 @@ const PaymentsPage: FunctionComponent<PaymentsPageProps> = () => {
                                     <li key={item.id} className=" even:bg-[#FCFCFF] px-7 ">
                                         <ul className=" py-[10px] flex items-center gap-x-3 w-full ">
                                             <li className={columns[0].width + " px-4"}>{item.id}</li>
-                                            <li className={columns[1].width + " px-4"}>{item.advert_name}</li>
+                                            <li className={columns[1].width + " px-4"}><Link className=" text-blue-500 underline" href={"/products/"+item.advert_id}>{item.advert_name}</Link></li>
                                             <li className={columns[2].width + " px-4"}>{item.service}</li>
                                             <li className={columns[3].width + " px-4"}>{item.amount}</li>
                                             <li className={columns[4].width + " px-4"}>{item.payment_type}</li>

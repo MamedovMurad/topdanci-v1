@@ -22,3 +22,7 @@ body {
 }
 
 
+.swal-icon--success__ring {
+  @apply !border-4 border-[#a5dc86]; /* Tailwind utility classes: 4px border and green border color */
+}
+
