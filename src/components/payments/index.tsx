@@ -20,7 +20,9 @@ const pathname = usePathname()
         
         if (typeof window!=="undefined"&&localStorage.getItem('user')!==null) {
             getUser().then(data=>{
-               setbalance(data.balance)
+           
+                
+               setbalance(data.data?.balance)
                 
             })
             
