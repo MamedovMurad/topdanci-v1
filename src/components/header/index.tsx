@@ -6,6 +6,7 @@ import Dropdown from "../ui/dropDown";
 import { usePathname } from "next/navigation";
 import BurgerUI from "../burger";
 import DropdownHeader from "../ui/headerDropDown";
+import { getUser } from "@/helper/api/auth";
 
 interface HeaderProps {
 
@@ -21,8 +22,11 @@ const Header: FunctionComponent<HeaderProps> = () => {
 
         if (typeof window !== "undefined" && localStorage.getItem('user') !== null) {
             setuserName(JSON.parse(localStorage.getItem("user") || "").name || "")
+            getUser().then(data=>{localStorage.setItem("user", JSON.stringify(data.data))})
         }
     }
+
+
     useEffect(() => {
 
         changeUserName()

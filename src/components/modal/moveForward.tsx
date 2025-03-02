@@ -135,7 +135,7 @@ const MoveForwardModal: FunctionComponent<PaymentModalProps> = ({ callBack, clos
             <ul className=" flex gap-y-4 flex-col mt-3 px-5">
 
                 <li className=" flex  w-full" >
-                    <CustomRadio className=" w-full justify-between" label={"Balansdan ödə"} id={"type__balance"} value={"1"} checked  control={control} name="payment_type" />
+                    <CustomRadio className=" w-full justify-between" label={`Şəxsi hesab (${JSON.parse(localStorage.getItem("user")+"").balance} AZN) `} id={"type__balance"} value={"1"} checked  control={control} name="payment_type" />
                 </li>
 
                 <li className=" flex  w-full" >
