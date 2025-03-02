@@ -8,6 +8,7 @@ import { notifications } from "@mantine/notifications";
 import { useRouter } from "next/navigation";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
+import swal from "sweetalert";
 interface PaymentModalProps {
     callBack?: () => void;
     closeModal?: () => void;
@@ -19,7 +20,7 @@ const MoveForwardModal: FunctionComponent<PaymentModalProps> = ({ callBack, clos
     const title = type === "premium" ? "VIP et" : "Elanı irəli çək"
     const text = type === "premium" ? "Elan bütün digər elanlardan yuxarıda axtarış nəticələri səhifələrinin VIP bölməsində təsadüfi qaydada göstəriləcək." : 'Elan bütün və axtarış nəticələrinin içində birinci yerə qalxacaq.'
     const [data, setdata] = useState<any>(null)
-    const { control, watch, handleSubmit, reset } = useForm({
+    const { control, watch, handleSubmit, reset, setValue } = useForm({
         defaultValues: {
             price_id: null,
             payment_type: "1",  //1-balance . 2-online-card
@@ -29,11 +30,18 @@ const MoveForwardModal: FunctionComponent<PaymentModalProps> = ({ callBack, clos
     async function fetchPrice() {
         api.get("prices-info").then((data) => {
             setdata(data)
+
+            if (type==="forward") {
+                return  setValue("price_id",data?.move_forvard_price_info?.[1].id)
+             }
+             return setValue("price_id",data?.premium_price_info?.[1].id)
         })
     }
 
     useEffect(() => {
         fetchPrice()
+
+     
     }, [])
     const router = useRouter()
 
@@ -43,22 +51,24 @@ const MoveForwardModal: FunctionComponent<PaymentModalProps> = ({ callBack, clos
 
                 if (!data.payment_url) {
                     closeModal && closeModal()
-                    return notifications.show({
-                        color: 'blue',
-                        title: 'Notification with custom styles',
-                        message: data.message,
 
-                    })
+                    swal({
+                        title:'Success',
+                        text: data.message,
+                        icon: "success",
+                      });
+                    return 
                 }
 
                 return router.push(data?.payment_url)
             }).catch((error: any) => {
                 console.log(error);
                 
-                return notifications.show({
-                    color: 'red',
+                return swal({
+                 
                     title: 'Sistemdə xəta baş verdi!',
-                    message: error.message,
+                    text: error.message,
+                    icon: "error",
 
                 })
             })
@@ -69,20 +79,20 @@ const MoveForwardModal: FunctionComponent<PaymentModalProps> = ({ callBack, clos
 
                 if (!data.payment_url) {
                     closeModal && closeModal()
-                    return notifications.show({
-                        color: 'blue',
-                        title: 'Notification with custom styles',
-                        message: data.message,
-
-                    })
+                    return         swal({
+                        title:'Success',
+                        text: data.message,
+                        icon: "success",
+                      });
                 }
 
                 return router.push(data?.payment_url)
             }).catch((error: any) => {
-                return notifications.show({
-                    color: 'red',
+                return swal({
+                 
                     title: 'Sistemdə xəta baş verdi!',
-                    message: error.message,
+                    text: error.message,
+                    icon: "error",
 
                 })
             })
@@ -93,34 +103,34 @@ const MoveForwardModal: FunctionComponent<PaymentModalProps> = ({ callBack, clos
 
     return (<div className=" w-full h-full rounded-lg bg-[#E8E9F2] p-8">
         <div className=" flex">
-            <h3 className=" text-sm font-semibold text-[#444]/70">{title}</h3>
+            <h3 className=" text-2xl font-semibold text-[#444]/70">{title}</h3>
         </div>
 
         <div>
-            <p className=" text-sm text-[#444]/70">{text}</p>
+            <p className=" text-base text-[#444]/70">{text}</p>
         </div>
 
         <form action="" onSubmit={handleSubmit(onSubmit)}>
-            <p className=" text-center text-[#333]/80 my-3 ">Xidmətin müddəti</p>
+            <p className=" text-center text-[#333]/80 my-3 text-xl font-medium ">Xidmətin müddəti</p>
             <hr className=" h-[2px] bg-black/30" />
             <ul className=" flex gap-y-4 flex-col mt-5 px-5 mb-5">
                 {
                     type === "forward" ?
-                        data?.move_forvard_price_info?.map((item: any) => (
+                        data?.move_forvard_price_info?.map((item: any,index:number) => (
                             <li className=" flex  w-full" key={item.id}>
-                                <CustomRadio className=" w-full justify-between" label={item.description} id={item.id + "premium"} value={item.id} required control={control} name="price_id" />
+                                <CustomRadio checked={index===1} className=" w-full justify-between" label={item.description} id={item.id + "premium"} value={item.id} required control={control} name="price_id" />
                             </li>
                         ))
                         :
-                        data?.premium_price_info?.map((item: any) => (
+                        data?.premium_price_info?.map((item: any,index:number) => (
                             <li className=" flex  w-full" key={item.id}>
-                                <CustomRadio className=" w-full justify-between" label={item.description} id={item.id + "premium"} value={item.id} required control={control} name="price_id" />
+                                <CustomRadio checked={index===1}  className=" w-full justify-between" label={item.description} id={item.id + "premium"} value={item.id} required control={control} name="price_id" />
                             </li>
                         ))
                 }
 
             </ul>
-            <p className=" text-center text-[#333]/80 my-3 ">Ödəniş üsulu</p>
+            <p className=" text-center text-[#333]/80 my-3 font-medium text-xl ">Ödəniş üsulu</p>
             <hr className=" h-[2px] bg-black/30" />
             <ul className=" flex gap-y-4 flex-col mt-3 px-5">
 
