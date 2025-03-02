@@ -118,13 +118,13 @@ const MoveForwardModal: FunctionComponent<PaymentModalProps> = ({ callBack, clos
                     type === "forward" ?
                         data?.move_forvard_price_info?.map((item: any,index:number) => (
                             <li className=" flex  w-full" key={item.id}>
-                                <CustomRadio checked={index===1} className=" w-full justify-between" label={item.description} id={item.id + "premium"} value={item.id} required control={control} name="price_id" />
+                                <CustomRadio checked={index===1} className=" w-full justify-between" label={item.description} id={item.id + "premium"} value={item.id}  control={control} name="price_id" />
                             </li>
                         ))
                         :
                         data?.premium_price_info?.map((item: any,index:number) => (
                             <li className=" flex  w-full" key={item.id}>
-                                <CustomRadio checked={index===1}  className=" w-full justify-between" label={item.description} id={item.id + "premium"} value={item.id} required control={control} name="price_id" />
+                                <CustomRadio checked={index===1}  className=" w-full justify-between" label={item.description} id={item.id + "premium"} value={item.id}  control={control} name="price_id" />
                             </li>
                         ))
                 }
@@ -135,18 +135,20 @@ const MoveForwardModal: FunctionComponent<PaymentModalProps> = ({ callBack, clos
             <ul className=" flex gap-y-4 flex-col mt-3 px-5">
 
                 <li className=" flex  w-full" >
-                    <CustomRadio className=" w-full justify-between" label={"Balance"} id={"type__balance"} value={"1"} checked required control={control} name="payment_type" />
+                    <CustomRadio className=" w-full justify-between" label={"Balansdan ödə"} id={"type__balance"} value={"1"} checked  control={control} name="payment_type" />
                 </li>
 
                 <li className=" flex  w-full" >
-                    <CustomRadio className=" w-full justify-between" label={"Bank kartı"} id={"type__balance"} value={"2"} required control={control} name="payment_type" />
+                    <CustomRadio className=" w-full justify-between" label={"Kartla ödə"} id={"type__balance"} value={"2"}  control={control} name="payment_type" />
                 </li>
 
 
             </ul>
             <div className="flex justify-center items-center mt-5">
-                <button className=" bg-primaryColor rounded-lg px-20 text-white font-semibold py-2 ">Ödə</button>
+                <button className=" bg-primaryColor rounded-lg px-20 text-white font-semibold py-2 ">Ödəniş et</button>
             </div>
+
+            <p className=" text-center text-gray-600 text-sm font-medium mt-3">"Ödəniş et" düyməsini sıxmaqla siz Topdanchi.az-ın İstifadəçi razılaşmasını və Ofertanı qəbul etdiyinizi təsdiqləmiş olursunuz</p>
         </form>
     </div>);
 }
